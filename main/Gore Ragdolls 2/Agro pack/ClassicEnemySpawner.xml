@@ -1,0 +1,10 @@
+<prefab version="1.0.0">
+	<group name="instance=MOD/main/Gore Ragdolls 2/Agro pack/ClassicEnemySpawner.xml" pos="-8.0 0.0 -0.2" rot="0.0 0.0 0.0">
+		<script pos="0.0 0.0 0.0" file="MOD/main/Gore Ragdolls 2/scripts/SpawnPad.lua">
+			<body pos="-0.1 0.0 -0.2" dynamic="true">
+				<vox tags="Spawn=Enemy DiffRag=4 Type=Classic" pos="0.1 0.0 0.2" rot="0.0 0.0 0.0" strength="1000000000000000000000" collide="false" prop="false" file="MOD/main/Gore Ragdolls 2/Agro pack/Radios/radio_friendly.vox"/>
+			</body>
+		</script>
+	</group>
+</prefab>
+

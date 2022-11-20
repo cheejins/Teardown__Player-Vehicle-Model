@@ -1,0 +1,102 @@
+<prefab version="0.9.5">
+	<group id_="387341408" open_="true" name="instance=LEVEL/Gore Ragdolls 2/SnakeyWakey's ragdoll pack/ConstructionWorker.xml" pos="43.8 -0.2 5.6" rot="0.0 0.0 0.0">
+		<script id_="1251682944" pos="0.1 0.0 0.2" rot="0.0 40.0 0.0" file="MOD/main/Gore Ragdolls 2/scripts/empty.lua">
+			<body id_="631805632" open_="true" name="foot_R" tags="RRLEG bodypart" pos="-0.3 0.5 -0.1" dynamic="true">
+				<vox id_="1354580736" tags="RRLEG nocull" pos="0.2 -0.4 0.1" density="2" strength="1" file="MOD/main/Gore Ragdolls 2/SnakeyWakey's ragdoll pack/vox/gore/worker.vox" object="foot_R">
+					<joint id_="2025120512" tags="knee" pos="0.0 0.5 -0.1" rot="0 90" type="hinge" rotspring="0" collide="false" limits="-90 0"/>
+					<rope id_="727952768" pos="0.0 0.7 -0.1" rot="0 0 -90" color="0.5">
+						<location id_="1627882496" pos="0.0 0.0 0.0" rot="0.0 0.0 0.0"/>
+						<location id_="783661760" pos="0.2 0.0 0.0" rot="0.0 0.0 0.0"/>
+					</rope>
+				</vox>
+			</body>
+			<body id_="852282176" open_="true" name="Head" tags="Head bodypart" pos="0.0 1.7 0.1" dynamic="true">
+				<vox id_="1951387904" open_="true" pos="0.0 -0.1 -0.2" density="8" strength="1" file="MOD/main/Gore Ragdolls 2/SnakeyWakey's ragdoll pack/vox/gore/worker.vox" object="head">
+					<rope id_="1189747584" pos="-0.0 0.2 0.0" color="0.5">
+						<location id_="1214783872" pos="0.0 0.0 0.0" rot="0.0 0.0 0.0"/>
+						<location id_="1542221696" pos="0.0 -0.3 0.0" rot="0.0 0.0 0.0"/>
+					</rope>
+					<voxbox id_="227685968" open_="true" tags="unbreakable" pos="0.1 0.1 0.1" collide="true" prop="true" size="1 1 1" material="heavymetal" color="0.0 0.0 0.0">
+						<joint id_="1467506176" tags="eye" pos="0.05 0.05" type="hinge" rotstrength="1"/>
+						<joint id_="854248384" tags="eye" pos="0.05 0.05" rot="90" type="hinge" rotstrength="1"/>
+						<rope id_="874172544" color="0.5" slack="0">
+							<location id_="2032526464" pos="0.05 0.05 0.05" rot="0.0 0.0 0.0"/>
+							<location id_="111549080" pos="-0.05 0.05 -0.15"/>
+						</rope>
+					</voxbox>
+					<voxbox id_="1693684736" open_="true" tags="unbreakable" pos="-0.1 0.1 0.1" collide="true" prop="true" size="1 1 1" material="heavymetal" color="0.0 0.0 0.0">
+						<joint id_="528973344" tags="eye" pos="0.05 0.05" type="hinge" rotstrength="1"/>
+						<joint id_="1904854528" tags="eye" pos="0.05 0.05" rot="90" type="hinge" rotstrength="1"/>
+						<rope id_="800505536" color="0.5" slack="0">
+							<location id_="1816834304" pos="0.05 0.05 0.05" rot="0.0 0.0 0.0"/>
+							<location id_="1445681280" pos="0.15 0.05 -0.15"/>
+						</rope>
+					</voxbox>
+					<vox id_="1793698688" open_="true" tags="jaw" pos="0.0 0.0 0.1" prop="true" file="MOD/main/Gore Ragdolls 2/SnakeyWakey's ragdoll pack/vox/gore/worker.vox" object="jaw">
+						<joint id_="1644201984" tags="jaw" pos="0.2 0.1 -0.2" rot="0 90" type="hinge" limits="0 20"/>
+						<joint id_="394092032" tags="jaw" pos="-0.1 0.1 -0.2" rot="0 90" type="hinge" limits="0 20"/>
+					</vox>
+				</vox>
+			</body>
+			<body id_="917035712" open_="true" name="Torso" tags="Torso bodypart" pos="0.0 1.3 -0.1" rot="0 180" dynamic="true">
+				<vox id_="711174528" open_="true" pos="0.0 -0.4 0.0" rot="0 180 " density="1" strength="1" file="MOD/main/Gore Ragdolls 2/SnakeyWakey's ragdoll pack/vox/gore/worker.vox" object="body">
+					<joint id_="1793960832" tags="hip" pos="-0.1 0.1 -0.0" rot="0.0 90.0 0.0" type="hinge" collide="false" limits="-90 90"/>
+					<group id_="1742184320" name="skeleton" pos="0.0 0.1 -0.05" rot="0.0 0.0 0.0">
+						<voxbox id_="1081672192" tags="unbreakable" pos="0.0 0.05 0.0" texture="7" size="1 5 1" material="masonry" color="0.43 0.0 0.0"/>
+						<voxbox id_="1739103872" tags="unbreakable" pos="-0.15 0.4 0.0" texture="7" size="4 1 1" material="masonry" color="0.43 0.0 0."/>
+						<voxbox id_="1095304448" tags="unbreakable" pos="-0.15 0.2 0.0" texture="7" size="4 1 1" material="masonry" color="0.43 0.0 0."/>
+					</group>
+				</vox>
+				<joint id_="1602977280" tags="neck" pos="-0.05 0.3 -0.0" rot="90 -45" type="hinge" rotstrength="0.01" collide="false" limits="0 90"/>
+			</body>
+			<body id_="2034623744" open_="true" name="UArm_L" tags="LARM bodypart" pos="0.5 1.6 -0.1" dynamic="true">
+				<vox id_="750957312" pos="-0.1 -0.4 0.0" density="1" strength="1" file="MOD/main/Gore Ragdolls 2/SnakeyWakey's ragdoll pack/vox/gore/worker.vox" object="Uarm_L">
+					<voxbox id_="901306112" tags="unbreakable" pos="-0.05 0.05 -0.05" texture="7" size="1 3 1" material="masonry" color="0.43 0.0 0."/>
+				</vox>
+				<joint id_="3408080" tags="shoulder" pos="-0.2 -0.1 0.0" rot="0 90" type="hinge" collide="false" limits="-90 0"/>
+			</body>
+			<body id_="1100154496" open_="true" name="LArm_R" tags="RRARM bodypart" pos="-0.2 1.1 -0.1" dynamic="true">
+				<vox id_="1748410624" open_="true" pos="-0.1 -0.3 0.0" density="1" strength="1" file="MOD/main/Gore Ragdolls 2/SnakeyWakey's ragdoll pack/vox/gore/worker.vox" object="larm_L">
+					<joint id_="210317856" tags="hand1" pos="0.0 0.4 0.0" rot="0 90" type="hinge" collide="false" limits="0 90"/>
+					<rope id_="226702864" pos="0.0 0.5 0.0" rot="0 0 -90" color="0.5">
+						<location id_="1554281088" pos="0.0 0.0 0.0" rot="0.0 0.0 0.0"/>
+						<location id_="1699452160" pos="0.2 0.0 0.0" rot="0.0 0.0 0.0"/>
+					</rope>
+				</vox>
+			</body>
+			<body id_="1689096832" open_="true" name="LArm_R" tags="LLARM bodypart" pos="0.5 1.1 -0.1" dynamic="true">
+				<vox id_="1748017408" open_="true" pos="-0.1 -0.3 0.0" density="1" strength="1" file="MOD/main/Gore Ragdolls 2/SnakeyWakey's ragdoll pack/vox/gore/worker.vox" object="larm_L">
+					<joint id_="798736000" tags="hand1" pos="0.0 0.4 0.0" rot="0 90" type="hinge" collide="false" limits="-90 0"/>
+					<rope id_="514357920" pos="0.0 0.5 0.0" rot="0 0 -90" color="0.5">
+						<location id_="268386304" pos="0.0 0.0 0.0" rot="0.0 0.0 0.0"/>
+						<location id_="355620032" pos="0.2 0.0 0.0" rot="0.0 0.0 0.0"/>
+					</rope>
+				</vox>
+			</body>
+			<body id_="2078601088" open_="true" name="UArm_R" tags="RARM bodypart" pos="-0.2 1.6 -0.1" dynamic="true">
+				<vox id_="522550432" open_="true" pos="-0.1 -0.4 0.0" density="1" strength="1" file="MOD/main/Gore Ragdolls 2/SnakeyWakey's ragdoll pack/vox/gore/worker.vox" object="Uarm_L">
+					<joint id_="1087374208" tags="shoulder" pos="0.1 0.3 0.0" rot="0 90" type="hinge" collide="false" limits="-90 0"/>
+					<voxbox id_="1161106688" tags="unbreakable" pos="-0.05 0.05 -0.05" texture="7" size="1 3 1" material="masonry" color="0.43 0.0 0."/>
+				</vox>
+			</body>
+			<body id_="416047936" open_="true" name="foot_L" tags="LLLEG bodypart" pos="0.0 0.5 -0.1" dynamic="true">
+				<vox id_="1692177280" open_="true" tags="LLLEG nocull" pos="0.2 -0.4 0.1" density="3.5" strength="1" file="MOD/main/Gore Ragdolls 2/SnakeyWakey's ragdoll pack/vox/gore/worker.vox" object="foot_L">
+					<joint id_="815448704" tags="knee" pos="0.0 0.5 -0.1" rot="0 90" type="hinge" rotspring="0" limits="-90 0"/>
+					<rope id_="1883816192" pos="0.0 0.7 -0.1" rot="0 0 -90" color="0.5">
+						<location id_="1886831104" pos="0.0 0.0 0.0" rot="0.0 0.0 0.0"/>
+						<location id_="2055203328" pos="0.2 0.0 0.0" rot="0.0 0.0 0.0"/>
+					</rope>
+				</vox>
+			</body>
+			<body id_="605655168" open_="true" name="Leg_L" tags="LLEG bodypart" pos="0.0 1.0 -0.1" dynamic="true">
+				<vox id_="1507157888" open_="true" pos="0.2 -0.4 0.0" density="1" strength="1" file="MOD/main/Gore Ragdolls 2/SnakeyWakey's ragdoll pack/vox/gore/worker.vox" object="Leg_L">
+					<joint id_="1139740544" tags="hip" pos="0.0 0.4 0.0" rot="0 90" type="hinge" collide="false" limits="-90 90"/>
+				</vox>
+			</body>
+			<body id_="988670912" open_="true" name="Leg_R" tags="RLEG bodypart" pos="-0.3 1.0 -0.1" dynamic="true">
+				<vox id_="1887355392" pos="0.2 -0.4 0.0" density="1" strength="1" file="MOD/main/Gore Ragdolls 2/SnakeyWakey's ragdoll pack/vox/gore/worker.vox" object="Leg_R"/>
+			</body>
+		</script>
+	</group>
+</prefab>
+

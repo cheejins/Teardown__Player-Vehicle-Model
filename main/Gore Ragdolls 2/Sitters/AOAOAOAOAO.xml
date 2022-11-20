@@ -1,0 +1,24 @@
+<prefab version="1.0.0">
+	<group name="instance=MOD/main/Gore Ragdolls 2/Sitters/AOAOAOAOAO.xml" pos="0.1 -0.1 0.5">
+		<vox tags="bodypart TORSO ragdollname=GSoldier11Funky" pos="-0.1 0.5 -0.3" rot="10" density="1" strength="1" file="MOD/main/Gore Ragdolls 2/Darren's ragdoll pack/vox/gore/Gsoldier11.vox" object="body">
+			<vox tags="bodypart" pos="0.0 0.7 0.0" rot="-10" density="8" strength="1" file="MOD/main/Gore Ragdolls 2/Darren's ragdoll pack/vox/gore/Gsoldier11.vox" object="head_3">
+				<voxbox tags="unbreakable" pos="0.1 0.1 0.1" collide="true" prop="false" size="1 1 1" material="heavymetal" color="0.0 0.0 0.0"/>
+				<voxbox tags="unbreakable" pos="-0.1 0.1 0.1" collide="true" prop="false" size="1 1 1" material="heavymetal" color="0.0 0.0 0.0"/>
+				<vox tags="bodypart" pos="0.0 0.0 0.1" prop="false" file="MOD/main/Gore Ragdolls 2/Darren's ragdoll pack/vox/gore/Gsoldier12.vox" object="jaw"/>
+			</vox>
+			<vox tags="bodypart" pos="-0.1 0.3 0.3" rot="-110" density="1" strength="1" file="MOD/main/Gore Ragdolls 2/Darren's ragdoll pack/vox/gore/Gsoldier12.vox" object="Leg_R">
+				<vox tags="bodypart" pos="0.0 0.3 -0.5" rot="120.0 0.0 0.0" density="2" strength="1" file="MOD/main/Gore Ragdolls 2/Darren's ragdoll pack/vox/gore/Gsoldier12.vox" object="foot_R"/>
+			</vox>
+			<vox tags="bodypart" pos="0.2 0.3 0.3" rot="-110" density="1" strength="1" file="MOD/main/Gore Ragdolls 2/Darren's ragdoll pack/vox/gore/Gsoldier12.vox" object="Leg_L">
+				<vox tags="bodypart" pos="0.0 0.0 -0.5" rot="90.0 0.0 0.0" density="3.5" strength="1" file="MOD/main/Gore Ragdolls 2/Darren's ragdoll pack/vox/gore/Gsoldier12.vox" object="foot_L"/>
+			</vox>
+			<vox tags="bodypart" pos="0.4 0.6 0.3" rot="-90 0 30" density="1" strength="1" file="MOD/main/Gore Ragdolls 2/Darren's ragdoll pack/vox/gore/Gsoldier11.vox" object="Uarm_L">
+				<vox tags="bodypart" pos="-0.0 -0.4 0.0" rot="0.0 0.0 0.0" density="1" strength="1" file="MOD/main/Gore Ragdolls 2/Darren's ragdoll pack/vox/gore/Gsoldier12.vox" object="larm_L"/>
+			</vox>
+			<vox tags="bodypart" pos="-0.3 0.6 0.3" rot="-90 0 -30" density="1" strength="1" file="MOD/main/Gore Ragdolls 2/Darren's ragdoll pack/vox/gore/Gsoldier11.vox" object="Uarm_L">
+				<vox tags="bodypart" pos="0.4 -0.2 0.0" rot="0.0 0.0 60.0" density="1" strength="1" file="MOD/main/Gore Ragdolls 2/Darren's ragdoll pack/vox/gore/Gsoldier12.vox" object="larm_L"/>
+			</vox>
+		</vox>
+	</group>
+</prefab>
+

@@ -1,0 +1,8 @@
+<prefab version="0.9.5">
+	<group id_="595824128" name="instance=LEVEL/Gore Ragdolls 2/SnakeyWakey's ragdoll pack/Soldier5.xml" pos="36.5 0.6 5.6" rot="0.0 0.0 0.0">
+		<body id_="1410355328" pos="0.0 -0.8 -0.4" dynamic="true">
+			<vox id_="1319516800" pos="0.2 -11.5 0.4" file="MOD/main/Gore Ragdolls 2/SnakeyWakey's ragdoll pack/vox/gore/soldier5.vox"/>
+		</body>
+	</group>
+</prefab>
+

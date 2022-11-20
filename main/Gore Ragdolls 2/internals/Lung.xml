@@ -1,0 +1,6 @@
+<prefab version="1.0.0">
+	<group name="instance=MOD/main/Gore Ragdolls 2/internals/Lung.xml" pos="11.3 0.3 0.0" rot="0.0 0.0 0.0">
+		<vox tags="bodypart gore" file="MOD/main/Gore Ragdolls 2/internals/Lung.vox"/>
+	</group>
+</prefab>
+

@@ -1,0 +1,102 @@
+<prefab version="0.9.5">
+	<group id_="1221075712" name="instance=LEVEL/Gore Ragdolls 2/Squareblock's ragdoll pack/Jeremy.xml" pos="1.5 -0.2 2.9" rot="0.0 0.0 0.0">
+		<script id_="2055531008" open_="true" pos="0.1 0.0 0.2" rot="0.0 40.0 0.0" file="MOD/main/Gore Ragdolls 2/scripts/empty.lua">
+			<body id_="1081868800" open_="true" name="foot_R" tags="RRLEG bodypart" pos="-0.3 0.5 -0.1" dynamic="true">
+				<vox id_="1212817664" open_="true" tags="RRLEG nocull" pos="0.2 -0.4 0.1" density="2" strength="1" file="MOD/main/Gore Ragdolls 2/Squareblock's ragdoll pack/vox/gore/jeremy.vox" object="foot_R">
+					<joint id_="585993152" tags="knee" pos="0.0 0.5 -0.1" rot="0 90" type="hinge" rotspring="0" collide="false" limits="-90 0"/>
+					<rope id_="2135555328" pos="0.0 0.7 -0.1" rot="0 0 -90" color="0.5">
+						<location id_="504592448" pos="0.0 0.0 0.0" rot="0.0 0.0 0.0"/>
+						<location id_="2081353728" pos="0.2 0.0 0.0" rot="0.0 0.0 0.0"/>
+					</rope>
+				</vox>
+			</body>
+			<body id_="1900135680" open_="true" name="Head" tags="Head bodypart" pos="0.0 1.7 0.1" dynamic="true">
+				<vox id_="1773315840" open_="true" pos="0.0 -0.1 -0.2" density="8" strength="1" file="MOD/main/Gore Ragdolls 2/Squareblock's ragdoll pack/vox/gore/jeremy.vox" object="head_3">
+					<rope id_="670343104" pos="-0.0 0.2 -0.0" color="0.5">
+						<location id_="659987776" pos="0.0 0.0 0.0" rot="0.0 0.0 0.0"/>
+						<location id_="669228928" pos="0.0 -0.3 0.0" rot="0.0 0.0 0.0"/>
+					</rope>
+					<voxbox id_="1653770880" tags="unbreakable" pos="0.1 0.1 0.1" collide="true" prop="true" size="1 1 1" material="heavymetal" color="0.0 0.0 0.0">
+						<joint id_="339103968" tags="eye" pos="0.05 0.05" type="hinge" rotstrength="1"/>
+						<joint id_="1445812352" tags="eye" pos="0.05 0.05" rot="90" type="hinge" rotstrength="1"/>
+						<rope id_="1472880384" color="0.5" slack="0">
+							<location id_="1474453376" pos="0.05 0.05 0.05" rot="0.0 0.0 0.0"/>
+							<location id_="1987893760" pos="-0.05 0.05 -0.15"/>
+						</rope>
+					</voxbox>
+					<voxbox id_="1962791936" open_="true" tags="unbreakable" pos="-0.1 0.1 0.1" collide="true" prop="true" size="1 1 1" material="heavymetal" color="0.0 0.0 0.0">
+						<joint id_="96540424" tags="eye" pos="0.05 0.05" type="hinge" rotstrength="1"/>
+						<joint id_="487093280" tags="eye" pos="0.05 0.05" rot="90" type="hinge" rotstrength="1"/>
+						<rope id_="1864612992" color="0.5" slack="0">
+							<location id_="318131168" pos="0.05 0.05 0.05" rot="0.0 0.0 0.0"/>
+							<location id_="1934150912" pos="0.15 0.05 -0.15"/>
+						</rope>
+						<vox id_="2111174528" tags="jaw" pos="0.1 -0.1 0.0" prop="true" file="MOD/main/Gore Ragdolls 2/Squareblock's ragdoll pack/vox/gore/jeremy.vox" object="jaw">
+							<joint id_="1576302592" tags="jaw" pos="0.2 0.1 -0.2" rot="0 90" type="hinge" limits="0 20"/>
+							<joint id_="1352155776" tags="jaw" pos="-0.1 0.1 -0.2" rot="0 90" type="hinge" limits="0 20"/>
+						</vox>
+					</voxbox>
+				</vox>
+			</body>
+			<body id_="1616609664" open_="true" name="Torso" tags="Torso bodypart" pos="0.0 1.3 -0.1" rot="0 180" dynamic="true">
+				<vox id_="1522428672" open_="true" pos="0.0 -0.4 0.0" rot="0 180 " density="1" strength="1" file="MOD/main/Gore Ragdolls 2/Squareblock's ragdoll pack/vox/gore/jeremy.vox" object="body">
+					<joint id_="598970048" tags="hip" pos="-0.1 0.1 -0.0" rot="0.0 90.0 0.0" type="hinge" collide="false" limits="-90 90"/>
+					<group id_="1772201600" name="skeleton" pos="0.0 0.1 -0.05" rot="0.0 0.0 0.0">
+						<voxbox id_="434005888" tags="unbreakable" pos="0.0 0.05 0.0" texture="7" size="1 5 1" material="masonry" color="0.43 0.0 0.0"/>
+						<voxbox id_="365254432" tags="unbreakable" pos="-0.15 0.4 0.0" texture="7" size="4 1 1" material="masonry" color="0.43 0.0 0."/>
+						<voxbox id_="68882544" tags="unbreakable" pos="-0.15 0.2 0.0" texture="7" size="4 1 1" material="masonry" color="0.43 0.0 0."/>
+					</group>
+				</vox>
+				<joint id_="992406656" tags="neck" pos="-0.05 0.3 -0.0" rot="90 -45" type="hinge" rotstrength="0.01" collide="false" limits="0 90"/>
+			</body>
+			<body id_="1465212288" open_="true" name="UArm_L" tags="LARM bodypart" pos="0.5 1.6 -0.1" dynamic="true">
+				<vox id_="680370752" pos="-0.1 -0.4 0.0" density="1" strength="1" file="MOD/main/Gore Ragdolls 2/Squareblock's ragdoll pack/vox/gore/jeremy.vox" object="Uarm_L">
+					<voxbox id_="1183259136" tags="unbreakable" pos="-0.05 0.05 -0.05" texture="7" size="1 3 1" material="masonry" color="0.43 0.0 0."/>
+				</vox>
+				<joint id_="1860287360" tags="shoulder" pos="-0.2 -0.1 0.0" rot="0 90" type="hinge" collide="false" limits="-90 0"/>
+			</body>
+			<body id_="158737888" open_="true" name="LArm_R" tags="RRARM bodypart" pos="-0.2 1.1 -0.1" dynamic="true">
+				<vox id_="1870052864" open_="true" pos="-0.1 -0.3 0.0" density="1" strength="1" file="MOD/main/Gore Ragdolls 2/Squareblock's ragdoll pack/vox/gore/jeremy.vox" object="larm_L">
+					<joint id_="169945216" tags="hand1" pos="0.0 0.4 0.0" rot="0 90" type="hinge" collide="false" limits="0 90"/>
+					<rope id_="1247160704" pos="0.0 0.5 0.0" rot="0 0 -90" color="0.5">
+						<location id_="914348544" pos="0.0 0.0 0.0" rot="0.0 0.0 0.0"/>
+						<location id_="325078400" pos="0.2 0.0 0.0" rot="0.0 0.0 0.0"/>
+					</rope>
+				</vox>
+			</body>
+			<body id_="1637189248" open_="true" name="LArm_R" tags="LLARM bodypart" pos="0.5 1.1 -0.1" dynamic="true">
+				<vox id_="765638272" open_="true" pos="-0.1 -0.3 0.0" density="1" strength="1" file="MOD/main/Gore Ragdolls 2/Squareblock's ragdoll pack/vox/gore/jeremy.vox" object="larm_L">
+					<joint id_="904583104" tags="hand1" pos="0.0 0.4 0.0" rot="0 90" type="hinge" collide="false" limits="-90 0"/>
+					<rope id_="1718196608" pos="0.0 0.5 0.0" rot="0 0 -90" color="0.5">
+						<location id_="216085376" pos="0.0 0.0 0.0" rot="0.0 0.0 0.0"/>
+						<location id_="1976358656" pos="0.2 0.0 0.0" rot="0.0 0.0 0.0"/>
+					</rope>
+				</vox>
+			</body>
+			<body id_="1501390336" open_="true" name="UArm_R" tags="RARM bodypart" pos="-0.2 1.6 -0.1" dynamic="true">
+				<vox id_="2027021184" open_="true" pos="-0.1 -0.4 0.0" density="1" strength="1" file="MOD/main/Gore Ragdolls 2/Squareblock's ragdoll pack/vox/gore/jeremy.vox" object="Uarm_L">
+					<joint id_="177154624" tags="shoulder" pos="0.1 0.3 0.0" rot="0 90" type="hinge" collide="false" limits="-90 0"/>
+					<voxbox id_="1498441088" tags="unbreakable" pos="-0.05 0.05 -0.05" texture="7" size="1 3 1" material="masonry" color="0.43 0.0 0."/>
+				</vox>
+			</body>
+			<body id_="663002624" open_="true" name="foot_L" tags="LLLEG bodypart" pos="0.0 0.5 -0.1" dynamic="true">
+				<vox id_="2050681088" open_="true" tags="LLLEG nocull" pos="0.2 -0.4 0.1" density="3.5" strength="1" file="MOD/main/Gore Ragdolls 2/Squareblock's ragdoll pack/vox/gore/jeremy.vox" object="foot_L">
+					<joint id_="1141510144" tags="knee" pos="0.0 0.5 -0.1" rot="0 90" type="hinge" rotspring="0" limits="-90 0"/>
+					<rope id_="1929432064" pos="0.0 0.7 -0.1" rot="0 0 -90" color="0.5">
+						<location id_="174205328" pos="0.0 0.0 0.0" rot="0.0 0.0 0.0"/>
+						<location id_="991554688" pos="0.2 0.0 0.0" rot="0.0 0.0 0.0"/>
+					</rope>
+				</vox>
+			</body>
+			<body id_="1497523456" open_="true" name="Leg_L" tags="LLEG bodypart" pos="0.0 1.0 -0.1" dynamic="true">
+				<vox id_="1863367808" open_="true" pos="0.2 -0.4 0.0" density="1" strength="1" file="MOD/main/Gore Ragdolls 2/Squareblock's ragdoll pack/vox/gore/jeremy.vox" object="Leg_L">
+					<joint id_="424043808" tags="hip" pos="0.0 0.4 0.0" rot="0 90" type="hinge" collide="false" limits="-90 90"/>
+				</vox>
+			</body>
+			<body id_="1651214720" open_="true" name="Leg_R" tags="RLEG bodypart" pos="-0.3 1.0 -0.1" dynamic="true">
+				<vox id_="1335443072" pos="0.2 -0.4 0.0" density="1" strength="1" file="MOD/main/Gore Ragdolls 2/Squareblock's ragdoll pack/vox/gore/jeremy.vox" object="Leg_R"/>
+			</body>
+		</script>
+	</group>
+</prefab>
+

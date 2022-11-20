@@ -1,0 +1,150 @@
+<prefab version="1.0.0">
+	<group name="instance=MOD/main/Gore Ragdolls 2/Agro pack/ClassicEnemyDefender.xml" pos="-20.0 0.1 3.9" rot="0.0 50.0 0.0">
+		<script>
+			<script>
+				<body name="foot_R" tags="RRLEG bodypart" pos="-0.3 0.5 -0.1" dynamic="true">
+					<vox tags="RRLEG nocull" pos="0.2 -0.4 0.1" density="2" strength="1" file="MOD/main/Gore Ragdolls 2/Avertnus's ragdoll pack/vox/gore/Insurgent3.vox" object="foot_R">
+						<joint tags="knee" pos="0.0 0.5 -0.1" rot="0 90" type="hinge" rotspring="0" collide="false" limits="-90 0"/>
+						<rope pos="0.0 0.7 -0.1" rot="0 0 -90" color="0.5">
+							<location pos="0.0 0.0 0.0" rot="0.0 0.0 0.0"/>
+							<location pos="0.2 0.0 0.0" rot="0.0 0.0 0.0"/>
+						</rope>
+					</vox>
+				</body>
+				<body name="Head" tags="Head bodypart" pos="0.0 1.7 0.1" dynamic="true">
+					<vox pos="0.0 -0.1 -0.1" density="8" strength="1" file="MOD/main/Gore Ragdolls 2/Avertnus's ragdoll pack/vox/gore/Insurgent3.vox" object="head">
+						<rope pos="-0.0 0.2 -0.1" color="0.5">
+							<location pos="0.0 0.0 0.0" rot="0.0 0.0 0.0"/>
+							<location pos="0.0 -0.3 0.0" rot="0.0 0.0 0.0"/>
+						</rope>
+						<voxbox tags="unbreakable" pos="0.1 0.1 0.0" collide="true" prop="true" size="1 1 1" material="heavymetal" color="0.0 0.0 0.0">
+							<joint tags="eye" pos="0.05 0.05" type="hinge" rotstrength="1"/>
+							<joint tags="eye" pos="0.05 0.05" rot="90" type="hinge" rotstrength="1"/>
+							<rope color="0.5" slack="0">
+								<location pos="0.05 0.05 0.05" rot="0.0 0.0 0.0"/>
+								<location pos="-0.05 0.05 -0.15"/>
+							</rope>
+						</voxbox>
+						<voxbox tags="unbreakable" pos="-0.1 0.1 0.0" collide="true" prop="true" size="1 1 1" material="heavymetal" color="0.0 0.0 0.0">
+							<joint tags="eye" pos="0.05 0.05" type="hinge" rotstrength="1"/>
+							<joint tags="eye" pos="0.05 0.05" rot="90" type="hinge" rotstrength="1"/>
+							<rope color="0.5" slack="0">
+								<location pos="0.05 0.05 0.05" rot="0.0 0.0 0.0"/>
+								<location pos="0.15 0.05 -0.15"/>
+							</rope>
+						</voxbox>
+						<vox tags="jaw" pos="-0.0 0.0 0.0" prop="true" file="MOD/main/Gore Ragdolls 2/Avertnus's ragdoll pack/vox/gore/Insurgent3.vox" object="jaw">
+							<joint tags="jaw" pos="0.2 0.1 -0.2" rot="0 90" type="hinge" limits="0 20"/>
+							<joint tags="jaw" pos="-0.1 0.1 -0.2" rot="0 90" type="hinge" limits="0 20"/>
+						</vox>
+					</vox>
+				</body>
+				<body name="Torso" tags="Torso bodypart" pos="0.0 1.3 -0.1" rot="0 180" dynamic="true">
+					<vox pos="0.0 -0.4 0.0" rot="0 180 " density="1" strength="1" file="MOD/main/Gore Ragdolls 2/Avertnus's ragdoll pack/vox/gore/Insurgent3.vox" object="body">
+						<joint tags="hip" pos="-0.1 0.1 -0.0" rot="0.0 90.0 0.0" type="hinge" collide="false" limits="-90 90"/>
+						<group name="skeleton" pos="0.0 0.1 -0.05" rot="0.0 0.0 0.0">
+							<voxbox tags="unbreakable" pos="0.0 0.05 0.0" texture="7" size="1 5 1" material="masonry" color="0.43 0.0 0.0"/>
+							<voxbox tags="unbreakable" pos="-0.15 0.4 0.0" texture="7" size="4 1 1" material="masonry" color="0.43 0.0 0."/>
+							<voxbox tags="unbreakable" pos="-0.15 0.2 0.0" texture="7" size="4 1 1" material="masonry" color="0.43 0.0 0."/>
+						</group>
+					</vox>
+					<joint tags="neck" pos="-0.05 0.3 -0.0" rot="90 -45" type="hinge" rotstrength="0.01" collide="false" limits="0 90"/>
+				</body>
+				<body name="UArm_L" tags="LARM bodypart" pos="0.5 1.6 -0.1" dynamic="true">
+					<vox pos="-0.1 -0.4 0.0" density="1" strength="1" file="MOD/main/Gore Ragdolls 2/Avertnus's ragdoll pack/vox/gore/Insurgent3.vox" object="Uarm_L">
+						<voxbox tags="unbreakable" pos="-0.05 0.05 -0.05" texture="7" size="1 3 1" material="masonry" color="0.43 0.0 0."/>
+					</vox>
+					<joint tags="shoulder" pos="-0.2 -0.1 0.0" rot="0 90" type="hinge" collide="false" limits="-90 0"/>
+				</body>
+				<body name="LArm_R" tags="RRARM bodypart" pos="-0.2 1.1 -0.1" dynamic="true">
+					<vox pos="-0.1 -0.3 0.0" density="1" strength="1" file="MOD/main/Gore Ragdolls 2/Avertnus's ragdoll pack/vox/gore/Insurgent3.vox" object="larm_L">
+						<joint tags="hand1" pos="0.0 0.4 0.0" rot="0 90" type="hinge" collide="false" limits="0 90"/>
+						<rope pos="0.0 0.5 0.0" rot="0 0 -90" color="0.5">
+							<location pos="0.0 0.0 0.0" rot="0.0 0.0 0.0"/>
+							<location pos="0.2 0.0 0.0" rot="0.0 0.0 0.0"/>
+						</rope>
+					</vox>
+				</body>
+				<body name="LArm_R" tags="LLARM bodypart" pos="0.5 1.1 -0.1" dynamic="true">
+					<vox pos="-0.1 -0.3 0.0" density="1" strength="1" file="MOD/main/Gore Ragdolls 2/Avertnus's ragdoll pack/vox/gore/Insurgent3.vox" object="larm_L">
+						<joint tags="hand1" pos="0.0 0.4 0.0" rot="0 90" type="hinge" collide="false" limits="-90 0"/>
+						<rope pos="0.0 0.5 0.0" rot="0 0 -90" color="0.5">
+							<location pos="0.0 0.0 0.0" rot="0.0 0.0 0.0"/>
+							<location pos="0.2 0.0 0.0" rot="0.0 0.0 0.0"/>
+						</rope>
+					</vox>
+				</body>
+				<body name="UArm_R" tags="RARM bodypart" pos="-0.2 1.6 -0.1" dynamic="true">
+					<vox pos="-0.1 -0.4 0.0" density="1" strength="1" file="MOD/main/Gore Ragdolls 2/Avertnus's ragdoll pack/vox/gore/Insurgent3.vox" object="Uarm_R">
+						<joint tags="shoulder" pos="0.1 0.3 0.0" rot="0 90" type="hinge" collide="false" limits="-90 0"/>
+						<voxbox tags="unbreakable" pos="-0.05 0.05 -0.05" texture="7" size="1 3 1" material="masonry" color="0.43 0.0 0."/>
+					</vox>
+				</body>
+				<body name="foot_L" tags="LLLEG bodypart" pos="0.0 0.5 -0.1" dynamic="true">
+					<vox tags="LLLEG nocull" pos="0.2 -0.4 0.1" density="3.5" strength="1" file="MOD/main/Gore Ragdolls 2/Avertnus's ragdoll pack/vox/gore/Insurgent3.vox" object="foot_L">
+						<joint tags="knee" pos="0.0 0.5 -0.1" rot="0 90" type="hinge" rotspring="0" limits="-90 0"/>
+						<rope pos="0.0 0.7 -0.1" rot="0 0 -90" color="0.5">
+							<location pos="0.0 0.0 0.0" rot="0.0 0.0 0.0"/>
+							<location pos="0.2 0.0 0.0" rot="0.0 0.0 0.0"/>
+						</rope>
+					</vox>
+				</body>
+				<body name="Leg_L" tags="LLEG bodypart" pos="0.0 1.0 -0.1" dynamic="true">
+					<vox pos="0.2 -0.4 0.0" density="1" strength="1" file="MOD/main/Gore Ragdolls 2/Avertnus's ragdoll pack/vox/gore/Insurgent3.vox" object="Leg_L">
+						<joint tags="hip" pos="0.0 0.4 0.0" rot="0 90" type="hinge" collide="false" limits="-90 90"/>
+					</vox>
+				</body>
+				<body name="Leg_R" tags="RLEG bodypart" pos="-0.3 1.0 -0.1" dynamic="true">
+					<vox pos="0.2 -0.4 0.0" density="1" strength="1" file="MOD/main/Gore Ragdolls 2/Avertnus's ragdoll pack/vox/gore/Insurgent3.vox" object="Leg_R"/>
+				</body>
+				<group pos="0.35 0.7 -0.2" rot="0.0 90.0 90.0">
+					<group pos="-0.5 0.3 -0.4">
+						<voxbox pos="0.0 0.0 0.4" collide="false" prop="true" size="7 1 1" color="0.35 0.35 0.35">
+							<group name="Magazine" pos="0.4 -0.3 0.0" prop1="collide=false">
+								<group pos="-0.07 0.08 0.0" rot="0 0 -30"/>
+								<group pos="0.0 0.22 0.0" rot="0 0 -10">
+									<voxbox pos="-0.05 -0.1 0.0" size="2 1 1" color="0.42 0.25 0.07">
+										<voxbox pos="0.0 0.0 0.1" rot="-45.0 0.0 0.0" size="2 1 1" color="0.42 0.25 0.07">
+											<voxbox pos="0.0 0.0 0.1" rot="-45.0 0.0 0.0" size="2 1 1" color="0.42 0.25 0.07">
+												<voxbox pos="0.0 0.0 0.1" rot="-45.0 0.0 0.0" size="2 1 1" color="0.42 0.25 0.07">
+													<voxbox pos="0.0 0.0 0.1" rot="-45.0 0.0 0.0" size="2 1 1" color="0.42 0.25 0.07">
+														<voxbox pos="0.0 0.0 0.1" rot="-45.0 0.0 0.0" size="2 1 1" color="0.42 0.25 0.07">
+															<voxbox pos="0.0 0.0 0.1" rot="-45.0 0.0 0.0" size="2 1 1" color="0.42 0.25 0.07">
+																<voxbox pos="0.0 0.0 0.1" rot="-45.0 0.0 0.0" size="2 1 1" color="0.42 0.25 0.07"/>
+															</voxbox>
+														</voxbox>
+													</voxbox>
+												</voxbox>
+											</voxbox>
+										</voxbox>
+									</voxbox>
+								</group>
+								<group pos="-0.03 0.14 0.0" rot="0 0 -20"/>
+							</group>
+							<voxbox name="Grip" tags="Grip" pos="0.65 -0.18 0.0" rot="0 0 20" texture="7" prop="false" size="1 2 1" color="0.3 0.19 0.11">
+								<joint tags="knee" pos="0.05 0.1 0.1" rot="0 90" type="hinge" rotspring="0" limits="-90 0"/>
+							</voxbox>
+							<group name="Stock" pos="0.8 -0.2 0.0">
+								<voxbox pos="-0.12 0.205 0.0" rot="0 0 -20" collide="false" size="4 1 1" color="0.3 0.19 0.11"/>
+								<voxbox pos="-0.12 0.205 0.0" rot="0 0 -5" collide="false" size="4 1 1" color="0.3 0.19 0.11"/>
+								<voxbox pos="-0.12 0.205 0.0" rot="0 0 -10" collide="false" size="4 1 1" color="0.3 0.19 0.11"/>
+							</group>
+							<group name="grip" pos="0.18 0.01 0.0">
+								<group pos="0.06 -0.02 0.0" rot="0 0 -5">
+									<voxbox tags="unbreakable" pos="-0.1 0.0 0.01" rot="0.0 0.0 0.0" collide="false" size="2 1 1" color="0.3 0.19 0.11"/>
+									<voxbox tags="unbreakable" pos="-0.1 -0.0 -0.01" rot="0.0 0.0 0.0" collide="false" size="2 1 1" color="0.3 0.19 0.11"/>
+									<voxbox tags="unbreakable" pos="-0.1 0.1 0.09" rot="160.0 0.0 0.0" collide="false" size="1 3 1" color="0.3 0.19 0.11"/>
+									<voxbox tags="unbreakable" pos="-0.1 0.1 0.09" rot="200.0 0.0 0.0" collide="false" size="1 3 1" color="0.3 0.19 0.11"/>
+									<voxbox tags="unbreakable" pos="-0.1 0.01 -0.01" rot="0.0 0.0 5.0" collide="false" size="2 1 1" color="0.3 0.19 0.11"/>
+									<voxbox tags="unbreakable" pos="-0.1 0.01 0.01" rot="0.0 0.0 5.0" collide="false" size="2 1 1" color="0.3 0.19 0.11"/>
+								</group>
+							</group>
+							<voxbox tags="barrel range=55 magsize=60 damage=0.1 firerate=0.2 gun=ak team=enemy accuracy=0.5 stationary" pos="-0.1 0.0 0.0" rot="0" density="0.1" collide="false" size="1 1 1" color="0.15 0.15 0.15" pbr="1 1 1 0"/>
+						</voxbox>
+					</group>
+				</group>
+			</script>
+		</script>
+	</group>
+</prefab>
+

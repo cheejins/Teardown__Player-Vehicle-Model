@@ -1,0 +1,32 @@
+<prefab version="0.9.3">
+	<group id_="475885952" open_="true" pos="-69.5 23.5 -107.4">
+		<vehicle id_="478114304" name="Winky" pos="0.07938 1.00001 0.09023" rot="0.0 -108.0 0.0" driven="false" sound="small1" spring="1" damping="0.9" topspeed="70" acceleration="1" strength="2" antiroll="0.2" difflock="0.4" steerassist="0.4" friction="1.5">
+			<body id_="1055587264" pos="0.00091 -0.8 -0.09765" rot="0.0 0.0 0.0" dynamic="true">
+				<vox id_="581208704" pos="0.05 -0.1 0.15" rot="0.0 90.0 0.0" density="1.2" strength="2" file="MOD/Cayo Perico Props/vehicle_winky.vox" object="body">
+					<light id_="1249192448" pos="1.6 0.7 0.2" rot="0.0 90.0 0.0" type="cone" color="1.0 0.95 0.9" scale="20" angle="90" penumbra="30" size="0.1" unshadowed="0.2" glare="0.3"/>
+					<light id_="2118318336" pos="1.6 0.7 -0.3" rot="0.0 90.0 0.0" type="cone" color="1.0 0.95 0.9" scale="20" angle="90" penumbra="30" size="0.1" unshadowed="0.2" glare="0.3"/>
+					<location id_="881775168" tags="exhaust" pos="-1.36061 0.05 -0.57887" rot="0.0 0.0 0.0"/>
+					<location id_="1647872256" tags="vital" pos="1.001 0.65 -0.06449" rot="0.0 -90.0 0.0"/>
+					<location id_="1451186688" tags="player" pos="-0.00139 1.3 -0.4011" rot="0.0 -90.0 0.0"/>
+					<light id_="1964168320" pos="-1.4 0.45 -0.45" rot="0.0 -90.0 0.0" type="area" size="0.1 0.1" unshadowed="0.3"/>
+					<light id_="227751504" pos="-1.4 0.45 0.35" rot="0.0 -90.0 0.0" type="area" size="0.1 0.1" unshadowed="0.3"/>
+					<light id_="1946996736" pos="-1.4 0.45 0.55" rot="0.0 -90.0 0.0" type="area" color="1.0 0.27 0.27" size="0.1 0.1" unshadowed="0.3"/>
+					<light id_="1251748480" pos="-1.4 0.45 -0.65" rot="0.0 -90.0 0.0" type="area" color="1.0 0.27 0.27" size="0.1 0.1" unshadowed="0.3"/>
+				</vox>
+				<wheel id_="456551648" name="bl" pos="-0.7 0.15 0.9" drive="1" travel="-0.1 0.1">
+					<vox id_="368138176" pos="0.05 -0.35 0.05" rot="0.0 90.0 0.0" file="MOD/Cayo Perico Props/vehicle_winky.vox" object="wheel_bl"/>
+				</wheel>
+				<wheel id_="1674284800" name="br" pos="0.7 0.15 0.9" drive="1" travel="-0.1 0.1">
+					<vox id_="1964496000" pos="0.05 -0.35 0.05" rot="0.0 90.0 0.0" file="MOD/Cayo Perico Props/vehicle_winky.vox" object="wheel_br"/>
+				</wheel>
+				<wheel id_="1910491008" name="fl" pos="-0.7 0.15 -1.1" drive="1" steer="1" travel="-0.1 0.1">
+					<vox id_="1173493760" pos="0.05 -0.35 0.05" rot="0.0 90.0 0.0" file="MOD/Cayo Perico Props/vehicle_winky.vox" object="wheel_fl"/>
+				</wheel>
+				<wheel id_="354833568" name="fr" pos="0.7 0.15 -1.1" drive="1" steer="1" travel="-0.1 0.1">
+					<vox id_="86512800" pos="0.05 -0.35 0.05" rot="0.0 90.0 0.0" file="MOD/Cayo Perico Props/vehicle_winky.vox" object="wheel_fr"/>
+				</wheel>
+			</body>
+		</vehicle>
+	</group>
+</prefab>
+

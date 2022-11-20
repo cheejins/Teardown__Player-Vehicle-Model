@@ -1,0 +1,26 @@
+<prefab version="0.9.5">
+	<group id_="638556224" name="instance=LEVEL/Gore Ragdolls 2/SnakeyWakey's ragdoll pack/DrunkBusinessManDRIVER.xml" pos="14.1 -0.2 5.6" rot="0.0 0.0 0.0">
+		<script id_="1862843392" pos="0.1 0.0 0.2" rot="0.0 40.0 0.0" file="MOD/main/Gore Ragdolls 2/scripts/fakegore.lua">
+			<vox id_="713206272" open_="true" tags="bodypart TORSO" pos="0.0 0.9 -0.1" rot="0.0 0.0 0.0" density="1" strength="1" file="MOD/main/Gore Ragdolls 2/SnakeyWakey's ragdoll pack/vox/gore/drunk business.vox" object="body">
+				<vox id_="2105734656" open_="true" tags="bodypart" pos="0.0 0.7 0.0" rot="0.0 0.0 0.0" density="8" strength="1" file="MOD/main/Gore Ragdolls 2/SnakeyWakey's ragdoll pack/vox/gore/drunk business.vox" object="head">
+					<voxbox id_="2045503360" tags="unbreakable" pos="0.1 0.1 0.1" collide="true" prop="false" size="1 1 1" material="heavymetal" color="0.0 0.0 0.0"/>
+					<voxbox id_="338710720" tags="unbreakable" pos="-0.1 0.1 0.1" collide="true" prop="false" size="1 1 1" material="heavymetal" color="0.0 0.0 0.0"/>
+					<vox id_="1481335040" tags="bodypart" pos="0.0 0.0 0.1" prop="false" file="MOD/main/Gore Ragdolls 2/SnakeyWakey's ragdoll pack/vox/gore/drunk business.vox" object="jaw"/>
+				</vox>
+				<vox id_="1606778624" open_="true" tags="bodypart" pos="-0.1 0.1 0.4" rot="-90.0 0.0 0.0" density="1" strength="1" file="MOD/main/Gore Ragdolls 2/SnakeyWakey's ragdoll pack/vox/gore/drunk business.vox" object="Leg_R">
+					<vox id_="33753100" tags="bodypart" pos="0.0 0.0 -0.5" rot="90.0 0.0 0.0" density="2" strength="1" file="MOD/main/Gore Ragdolls 2/SnakeyWakey's ragdoll pack/vox/gore/drunk business.vox" object="foot_R"/>
+				</vox>
+				<vox id_="1256205184" open_="true" tags="bodypart" pos="0.2 0.1 0.4" rot="-90.0 0.0 0.0" density="1" strength="1" file="MOD/main/Gore Ragdolls 2/SnakeyWakey's ragdoll pack/vox/gore/drunk business.vox" object="Leg_L">
+					<vox id_="880005568" tags="bodypart" pos="0.0 0.0 -0.5" rot="90.0 0.0 0.0" density="3.5" strength="1" file="MOD/main/Gore Ragdolls 2/SnakeyWakey's ragdoll pack/vox/gore/drunk business.vox" object="foot_L"/>
+				</vox>
+				<vox id_="556303552" open_="true" tags="bodypart" pos="0.4 0.3 0.0" rot="0.0 0.0 0.0" density="1" strength="1" file="MOD/main/Gore Ragdolls 2/SnakeyWakey's ragdoll pack/vox/gore/drunk business.vox" object="Uarm_L">
+					<vox id_="1865858304" tags="bodypart" pos="0.0 -0.4 0.0" rot="0.0 0.0 0.0" density="1" strength="1" file="MOD/main/Gore Ragdolls 2/SnakeyWakey's ragdoll pack/vox/gore/drunk business.vox" object="larm_L"/>
+				</vox>
+				<vox id_="1947062272" open_="true" tags="bodypart" pos="-0.3 0.6 0.3" rot="-90.0 0.0 0.0" density="1" strength="1" file="MOD/main/Gore Ragdolls 2/SnakeyWakey's ragdoll pack/vox/gore/drunk business.vox" object="Uarm_L">
+					<vox id_="203763856" tags="bodypart" pos="0.0 -0.4 0.0" rot="0.0 0.0 0.0" density="1" strength="1" file="MOD/main/Gore Ragdolls 2/SnakeyWakey's ragdoll pack/vox/gore/drunk business.vox" object="larm_L"/>
+				</vox>
+			</vox>
+		</script>
+	</group>
+</prefab>
+

@@ -1,0 +1,19 @@
+<prefab version="1.0.0">
+	<group name="instance=MOD/main/Gore Ragdolls 2/internals/Spine.xml" pos="10.2 0.3 0.0" rot="0.0 0.0 0.0">
+		<group pos="0.0 0.0 0.0">
+			<vox tags="bodypart gore" pos="0.1 0.0 -0.1" rot="0.0 90.0 0.0" prop="true" file="MOD/main/Gore Ragdolls 2/internals/Spine_Fragment.vox">
+				<joint pos="-0.05 0.2 -0.15"/>
+			</vox>
+			<vox tags="bodypart gore" pos="0.1 0.2 -0.1" rot="0.0 90.0 0.0" prop="true" file="MOD/main/Gore Ragdolls 2/internals/Spine_Fragment.vox">
+				<joint pos="-0.05 0.2 -0.15"/>
+			</vox>
+			<vox tags="bodypart gore" pos="0.1 0.4 -0.1" rot="0.0 90.0 0.0" prop="true" file="MOD/main/Gore Ragdolls 2/internals/Spine_Fragment.vox">
+				<joint pos="-0.05 0.2 -0.15"/>
+			</vox>
+			<vox tags="bodypart gore" pos="0.1 0.6 -0.1" rot="0.0 90.0 0.0" prop="true" file="MOD/main/Gore Ragdolls 2/internals/Spine_Fragment.vox">
+				<joint pos="-0.05 0.2 -0.15"/>
+			</vox>
+		</group>
+	</group>
+</prefab>
+

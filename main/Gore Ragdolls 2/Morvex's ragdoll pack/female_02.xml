@@ -1,0 +1,102 @@
+<prefab version="0.9.5">
+	<group id_="1424642944" open_="true" name="female_2" pos="-5.0 0.1 15.0" rot="0.0 0.0 0.0">
+		<script id_="395468352" open_="true" pos="0.1 0.0 0.2" rot="0.0 40.0 0.0" file="MOD/main/Gore Ragdolls 2/scripts/empty.lua">
+			<body id_="910809408" open_="true" name="foot_R" tags="RRLEG bodypart" pos="-0.3 0.5 -0.1" dynamic="true">
+				<vox id_="1569682944" tags="RRLEG nocull" pos="0.2 -0.4 0.1" density="2" strength="1" file="MOD/main/Gore Ragdolls 2/Morvex's ragdoll pack/vox/gore/female_2.vox" object="foot_R">
+					<joint id_="1714526464" tags="knee" pos="0.0 0.5 -0.1" rot="0 90" type="hinge" rotspring="0" collide="false" limits="-90 0"/>
+					<rope id_="1995103104" pos="0.0 0.7 -0.1" rot="0 0 -90" color="0.5">
+						<location id_="320097376" pos="0.0 0.0 0.0" rot="0.0 0.0 0.0"/>
+						<location id_="687776768" pos="0.2 0.0 0.0" rot="0.0 0.0 0.0"/>
+					</rope>
+				</vox>
+			</body>
+			<body id_="1739431552" open_="true" name="Head" tags="Head bodypart" pos="0.0 1.8 0.1" dynamic="true">
+				<vox id_="726641984" open_="true" pos="0.0 -0.4 -0.2" density="8" strength="1" file="MOD/main/Gore Ragdolls 2/Morvex's ragdoll pack/vox/gore/female_2.vox" object="head_3">
+					<rope id_="512588352" pos="0.0 0.4 0.0" color="0.5">
+						<location id_="315509568" pos="0.0 0.0 0.0" rot="0.0 0.0 0.0"/>
+						<location id_="1926089472" pos="0.0 -0.3 0.0" rot="0.0 0.0 0.0"/>
+					</rope>
+					<voxbox id_="1753063936" tags="unbreakable" pos="0.1 0.3 0.1" collide="true" prop="true" size="1 1 1" material="heavymetal" color="0.0 0.0 0.0">
+						<joint id_="581012096" tags="eye" pos="0.05 0.05" type="hinge" rotstrength="1"/>
+						<joint id_="1309030400" tags="eye" pos="0.05 0.05" rot="90" type="hinge" rotstrength="1"/>
+						<rope id_="2081419264" color="0.5" slack="0">
+							<location id_="1749524736" pos="0.05 0.05 0.05" rot="0.0 0.0 0.0"/>
+							<location id_="1809624960" pos="-0.05 0.05 -0.15"/>
+						</rope>
+					</voxbox>
+					<voxbox id_="1188371328" tags="unbreakable" pos="-0.1 0.3 0.1" collide="true" prop="true" size="1 1 1" material="heavymetal" color="0.0 0.0 0.0">
+						<joint id_="158082480" tags="eye" pos="0.05 0.05" type="hinge" rotstrength="1"/>
+						<joint id_="2030756864" tags="eye" pos="0.05 0.05" rot="90" type="hinge" rotstrength="1"/>
+						<rope id_="775272640" color="0.5" slack="0">
+							<location id_="1142755456" pos="0.05 0.05 0.05" rot="0.0 0.0 0.0"/>
+							<location id_="1574401920" pos="0.15 0.05 -0.15"/>
+						</rope>
+					</voxbox>
+					<vox id_="1263283456" tags="jaw" pos="0.0 0.2 0.1" prop="true" file="MOD/main/Gore Ragdolls 2/Morvex's ragdoll pack/vox/gore/female_2.vox" object="jaw">
+						<joint id_="741257408" tags="jaw" pos="0.2 0.1 -0.2" rot="0 90" type="hinge" limits="0 20"/>
+						<joint id_="1110444288" tags="jaw" pos="-0.1 0.1 -0.2" rot="0 90" type="hinge" limits="0 20"/>
+					</vox>
+				</vox>
+			</body>
+			<body id_="2028004224" open_="true" name="Torso" tags="Torso bodypart" pos="0.0 1.3 -0.1" rot="0 180" dynamic="true">
+				<vox id_="1117850240" open_="true" pos="0.0 -0.4 0.0" rot="0 180 " density="1" strength="1" file="MOD/main/Gore Ragdolls 2/Morvex's ragdoll pack/vox/gore/female_2.vox" object="body">
+					<joint id_="1411207296" tags="hip" pos="-0.1 0.1 -0.0" rot="0.0 90.0 0.0" type="hinge" collide="false" limits="-90 90"/>
+					<group id_="1792846720" name="skeleton" pos="0.0 0.1 -0.05" rot="0.0 0.0 0.0">
+						<voxbox id_="1052244672" tags="unbreakable" pos="0.0 0.05 0.0" texture="7" size="1 5 1" material="masonry" color="0.43 0.0 0.0"/>
+						<voxbox id_="1305294592" tags="unbreakable" pos="-0.15 0.4 0.0" texture="7" size="4 1 1" material="masonry" color="0.43 0.0 0."/>
+						<voxbox id_="1204100864" tags="unbreakable" pos="-0.15 0.2 0.0" texture="7" size="4 1 1" material="masonry" color="0.43 0.0 0."/>
+					</group>
+				</vox>
+				<joint id_="1319516800" tags="neck" pos="-0.05 0.3 -0.0" rot="90 -45" type="hinge" rotstrength="0.01" collide="false" limits="0 90"/>
+			</body>
+			<body id_="1549431168" open_="true" name="UArm_L" tags="LARM bodypart" pos="0.5 1.6 -0.1" dynamic="true">
+				<vox id_="170404000" pos="-0.1 -0.4 0.0" density="1" strength="1" file="MOD/main/Gore Ragdolls 2/Morvex's ragdoll pack/vox/gore/female_2.vox" object="Uarm_L">
+					<voxbox id_="36178080" tags="unbreakable" pos="-0.05 0.05 -0.05" texture="7" size="1 3 1" material="masonry" color="0.43 0.0 0."/>
+				</vox>
+				<joint id_="1129516416" tags="shoulder" pos="-0.2 -0.1 0.0" rot="0 90" type="hinge" collide="false" limits="-90 0"/>
+			</body>
+			<body id_="1007022080" open_="true" name="LArm_R" tags="RRARM bodypart" pos="-0.2 1.1 -0.1" dynamic="true">
+				<vox id_="910678272" open_="true" pos="-0.1 -0.3 0.0" density="1" strength="1" file="MOD/main/Gore Ragdolls 2/Morvex's ragdoll pack/vox/gore/female_2.vox" object="larm_L">
+					<joint id_="262160000" tags="hand1" pos="0.0 0.4 0.0" rot="0 90" type="hinge" collide="false" limits="0 90"/>
+					<rope id_="195833520" pos="0.0 0.5 0.0" rot="0 0 -90" color="0.5">
+						<location id_="502364096" pos="0.0 0.0 0.0" rot="0.0 0.0 0.0"/>
+						<location id_="936959872" pos="0.2 0.0 0.0" rot="0.0 0.0 0.0"/>
+					</rope>
+				</vox>
+			</body>
+			<body id_="204222640" open_="true" name="LArm_R" tags="LLARM bodypart" pos="0.5 1.1 -0.1" dynamic="true">
+				<vox id_="746762752" open_="true" pos="-0.1 -0.3 0.0" density="1" strength="1" file="MOD/main/Gore Ragdolls 2/Morvex's ragdoll pack/vox/gore/female_2.vox" object="larm_L">
+					<joint id_="691840256" tags="hand1" pos="0.0 0.4 0.0" rot="0 90" type="hinge" collide="false" limits="-90 0"/>
+					<rope id_="953082688" pos="0.0 0.5 0.0" rot="0 0 -90" color="0.5">
+						<location id_="1544187904" pos="0.0 0.0 0.0" rot="0.0 0.0 0.0"/>
+						<location id_="317803456" pos="0.2 0.0 0.0" rot="0.0 0.0 0.0"/>
+					</rope>
+				</vox>
+			</body>
+			<body id_="153298064" open_="true" name="UArm_R" tags="RARM bodypart" pos="-0.2 1.6 -0.1" dynamic="true">
+				<vox id_="532643584" open_="true" pos="-0.1 -0.4 0.0" density="1" strength="1" file="MOD/main/Gore Ragdolls 2/Morvex's ragdoll pack/vox/gore/female_2.vox" object="Uarm_L">
+					<joint id_="1384335872" tags="shoulder" pos="0.1 0.3 0.0" rot="0 90" type="hinge" collide="false" limits="-90 0"/>
+					<voxbox id_="1877196672" tags="unbreakable" pos="-0.05 0.05 -0.05" texture="7" size="1 3 1" material="masonry" color="0.43 0.0 0."/>
+				</vox>
+			</body>
+			<body id_="1786292736" open_="true" name="foot_L" tags="LLLEG bodypart" pos="0.0 0.5 -0.1" dynamic="true">
+				<vox id_="1737203200" open_="true" tags="LLLEG nocull" pos="0.2 -0.4 0.1" density="3.5" strength="1" file="MOD/main/Gore Ragdolls 2/Morvex's ragdoll pack/vox/gore/female_2.vox" object="foot_L">
+					<joint id_="990506048" tags="knee" pos="0.0 0.5 -0.1" rot="0 90" type="hinge" rotspring="0" limits="-90 0"/>
+					<rope id_="1825944448" pos="0.0 0.7 -0.1" rot="0 0 -90" color="0.5">
+						<location id_="1833940224" pos="0.0 0.0 0.0" rot="0.0 0.0 0.0"/>
+						<location id_="440232192" pos="0.2 0.0 0.0" rot="0.0 0.0 0.0"/>
+					</rope>
+				</vox>
+			</body>
+			<body id_="2022171136" open_="true" name="Leg_L" tags="LLEG bodypart" pos="0.0 1.0 -0.1" dynamic="true">
+				<vox id_="500987776" open_="true" pos="0.2 -0.4 0.0" density="1" strength="1" file="MOD/main/Gore Ragdolls 2/Morvex's ragdoll pack/vox/gore/female_2.vox" object="Leg_L">
+					<joint id_="1593539584" tags="hip" pos="0.0 0.4 0.0" rot="0 90" type="hinge" collide="false" limits="-90 90"/>
+				</vox>
+			</body>
+			<body id_="1933036800" open_="true" name="Leg_R" tags="RLEG bodypart" pos="-0.3 1.0 -0.1" dynamic="true">
+				<vox id_="787463104" pos="0.2 -0.4 0.0" density="1" strength="1" file="MOD/main/Gore Ragdolls 2/Morvex's ragdoll pack/vox/gore/female_2.vox" object="Leg_R"/>
+			</body>
+		</script>
+	</group>
+</prefab>
+

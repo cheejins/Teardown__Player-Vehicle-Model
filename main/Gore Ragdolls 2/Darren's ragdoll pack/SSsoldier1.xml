@@ -1,0 +1,102 @@
+<prefab version="0.9.5">
+	<group id_="1387219584" name="instance=LEVEL/Gore Ragdolls 2/Darren's ragdoll pack/SSsoldier1.xml" pos="-10.1 0.0 10.4" rot="0.0 0.0 0.0">
+		<script id_="964224512" open_="true" pos="0.1 0.0 0.2" rot="0.0 40.0 0.0" file="MOD/main/Gore Ragdolls 2/scripts/empty.lua">
+			<body id_="1836037504" open_="true" name="foot_R" tags="RRLEG bodypart" pos="-0.3 0.5 -0.1" dynamic="true">
+				<vox id_="2949300" open_="true" tags="RRLEG nocull" pos="0.2 -0.4 0.1" density="2" strength="1" file="MOD/main/Gore Ragdolls 2/Darren's ragdoll pack/vox/gore/SSsoldier2.vox" object="foot_R">
+					<joint id_="176040448" tags="knee" pos="0.0 0.5 -0.1" rot="0 90" type="hinge" rotspring="0" collide="false" limits="-90 0"/>
+					<rope id_="2022892160" pos="0.0 0.7 -0.1" rot="0 0 -90" color="0.5">
+						<location id_="1228088576" pos="0.0 0.0 0.0" rot="0.0 0.0 0.0"/>
+						<location id_="15926220" pos="0.2 0.0 0.0" rot="0.0 0.0 0.0"/>
+					</rope>
+				</vox>
+			</body>
+			<body id_="774944960" open_="true" name="Head" tags="Head bodypart" pos="0.0 1.7 0.1" dynamic="true">
+				<vox id_="1957548672" open_="true" pos="0.0 -0.1 -0.2" density="9" strength="1" file="MOD/main/Gore Ragdolls 2/Darren's ragdoll pack/vox/gore/SSsoldier2.vox" object="head_3">
+					<rope id_="328158784" pos="0.0 0.2 -0.0" color="0.5">
+						<location id_="151921728" pos="0.0 0.0 0.0" rot="0.0 0.0 0.0"/>
+						<location id_="1989007872" pos="0.0 -0.3 0.0" rot="0.0 0.0 0.0"/>
+					</rope>
+					<voxbox id_="919395136" open_="true" tags="unbreakable" pos="0.1 0.1 0.1" collide="true" prop="true" size="1 1 1" material="heavymetal" color="0.0 0.0 0.0">
+						<joint id_="1137905536" tags="eye" pos="0.05 0.05" type="hinge" rotstrength="1"/>
+						<joint id_="1000468096" tags="eye" pos="0.05 0.05" rot="90" type="hinge" rotstrength="1"/>
+						<rope id_="519797728" color="0.5" slack="0">
+							<location id_="1581873408" pos="0.05 0.05 0.05" rot="0.0 0.0 0.0"/>
+							<location id_="1195252992" pos="-0.05 0.05 -0.15"/>
+						</rope>
+					</voxbox>
+					<voxbox id_="788249600" open_="true" tags="unbreakable" pos="-0.1 0.1 0.1" collide="true" prop="true" size="1 1 1" material="heavymetal" color="0.0 0.0 0.0">
+						<joint id_="174008704" tags="eye" pos="0.05 0.05" type="hinge" rotstrength="1"/>
+						<joint id_="286016576" tags="eye" pos="0.05 0.05" rot="90" type="hinge" rotstrength="1"/>
+						<rope id_="6619540" color="0.5" slack="0">
+							<location id_="2121005440" pos="0.05 0.05 0.05" rot="0.0 0.0 0.0"/>
+							<location id_="1570403968" pos="0.15 0.05 -0.15"/>
+						</rope>
+					</voxbox>
+					<vox id_="1006825472" open_="true" tags="jaw" pos="0.0 0.0 0.1" prop="true" file="MOD/main/Gore Ragdolls 2/Darren's ragdoll pack/vox/gore/AKsoldier5.vox" object="jaw">
+						<joint id_="1440372608" tags="jaw" pos="0.2 0.1 -0.2" rot="0 90" type="hinge" limits="0 20"/>
+						<joint id_="777304384" tags="jaw" pos="-0.1 0.1 -0.2" rot="0 90" type="hinge" limits="0 20"/>
+					</vox>
+				</vox>
+			</body>
+			<body id_="592416064" open_="true" name="Torso" tags="Torso bodypart" pos="0.0 1.3 -0.1" rot="0 180" dynamic="true">
+				<vox id_="936042304" open_="true" pos="0.0 -0.4 0.0" rot="0 180 " density="1" strength="1" file="MOD/main/Gore Ragdolls 2/Darren's ragdoll pack/vox/gore/SSsoldier2.vox" object="body">
+					<joint id_="335826976" tags="hip" pos="-0.1 0.1 0.0" rot="0.0 90.0 0.0" type="hinge" collide="false" limits="-90 90"/>
+					<group id_="377707008" name="skeleton" pos="0.0 0.1 -0.05" rot="0.0 0.0 0.0">
+						<voxbox id_="1559065472" tags="unbreakable" pos="0.0 0.05 0.0" texture="7" size="1 5 1" material="masonry" color="0.43 0.0 0.0"/>
+						<voxbox id_="632395456" tags="unbreakable" pos="-0.15 0.4 0.0" texture="7" size="4 1 1" material="masonry" color="0.43 0.0 0."/>
+						<voxbox id_="643144000" tags="unbreakable" pos="-0.15 0.2 0.0" texture="7" size="4 1 1" material="masonry" color="0.43 0.0 0."/>
+					</group>
+				</vox>
+				<joint id_="1187126016" tags="neck" pos="-0.05 0.3 -0.0" rot="90 -45" type="hinge" rotstrength="0.01" collide="false" limits="0 90"/>
+			</body>
+			<body id_="619221952" open_="true" name="UArm_L" tags="LARM bodypart" pos="0.5 1.6 -0.1" dynamic="true">
+				<vox id_="417424256" pos="-0.1 -0.4 0.0" density="1" strength="1" file="MOD/main/Gore Ragdolls 2/Darren's ragdoll pack/vox/gore/SSsoldier2.vox" object="Uarm_L">
+					<voxbox id_="1805561472" tags="unbreakable" pos="-0.05 0.05 -0.05" texture="7" size="1 3 1" material="masonry" color="0.43 0.0 0."/>
+				</vox>
+				<joint id_="430270112" tags="shoulder" pos="-0.2 -0.1 0.0" rot="0 90" type="hinge" collide="false" limits="-90 0"/>
+			</body>
+			<body id_="1179261184" open_="true" name="LArm_R" tags="RRARM bodypart" pos="-0.2 1.1 -0.1" dynamic="true">
+				<vox id_="1607892864" open_="true" pos="-0.1 -0.3 0.0" density="1" strength="1" file="MOD/main/Gore Ragdolls 2/Darren's ragdoll pack/vox/gore/SSsoldier2.vox" object="larm_L">
+					<joint id_="699967232" tags="hand1" pos="0.0 0.4 0.0" rot="0 90" type="hinge" collide="false" limits="0 90"/>
+					<rope id_="1772988032" pos="0.0 0.5 0.0" rot="0 0 -90" color="0.5">
+						<location id_="1835775360" pos="0.0 0.0 0.0" rot="0.0 0.0 0.0"/>
+						<location id_="34605120" pos="0.2 0.0 0.0" rot="0.0 0.0 0.0"/>
+					</rope>
+				</vox>
+			</body>
+			<body id_="1685099008" open_="true" name="LArm_R" tags="LLARM bodypart" pos="0.5 1.1 -0.1" dynamic="true">
+				<vox id_="478900768" open_="true" pos="-0.1 -0.3 0.0" density="1" strength="1" file="MOD/main/Gore Ragdolls 2/Darren's ragdoll pack/vox/gore/SSsoldier2.vox" object="larm_L">
+					<joint id_="1442600960" tags="hand1" pos="0.0 0.4 0.0" rot="0 90" type="hinge" collide="false" limits="-90 0"/>
+					<rope id_="1175459968" pos="0.0 0.5 0.0" rot="0 0 -90" color="0.5">
+						<location id_="463302272" pos="0.0 0.0 0.0" rot="0.0 0.0 0.0"/>
+						<location id_="2026234624" pos="0.2 0.0 0.0" rot="0.0 0.0 0.0"/>
+					</rope>
+				</vox>
+			</body>
+			<body id_="441018656" open_="true" name="UArm_R" tags="RARM bodypart" pos="-0.2 1.6 -0.1" dynamic="true">
+				<vox id_="1400720896" open_="true" pos="-0.1 -0.4 0.0" density="1" strength="1" file="MOD/main/Gore Ragdolls 2/Darren's ragdoll pack/vox/gore/SSsoldier2.vox" object="Uarm_L">
+					<joint id_="881971776" tags="shoulder" pos="0.1 0.3 0.0" rot="0 90" type="hinge" collide="false" limits="-90 0"/>
+					<voxbox id_="2038031872" tags="unbreakable" pos="-0.05 0.05 -0.05" texture="7" size="1 3 1" material="masonry" color="0.43 0.0 0."/>
+				</vox>
+			</body>
+			<body id_="129965824" open_="true" name="foot_L" tags="LLLEG bodypart" pos="0.0 0.5 -0.1" dynamic="true">
+				<vox id_="1168447104" open_="true" tags="LLLEG nocull" pos="0.2 -0.4 0.1" density="3.5" strength="1" file="MOD/main/Gore Ragdolls 2/Darren's ragdoll pack/vox/gore/SSsoldier2.vox" object="foot_L">
+					<joint id_="313805536" tags="knee" pos="0.0 0.5 -0.1" rot="0 90" type="hinge" rotspring="0" limits="-90 0"/>
+					<rope id_="343691776" open_="true" pos="0.0 0.7 -0.1" rot="0 0 -90" color="0.5">
+						<location id_="481129152" pos="0.0 0.0 0.0" rot="0.0 0.0 0.0"/>
+						<location id_="1110182016" pos="0.2 0.0 0.0" rot="0.0 0.0 0.0"/>
+					</rope>
+				</vox>
+			</body>
+			<body id_="594251200" open_="true" name="Leg_L" tags="LLEG bodypart" pos="0.0 1.0 -0.1" dynamic="true">
+				<vox id_="649042624" open_="true" pos="0.2 -0.4 0.0" density="1" strength="1" file="MOD/main/Gore Ragdolls 2/Darren's ragdoll pack/vox/gore/SSsoldier2.vox" object="Leg_L">
+					<joint id_="323570976" tags="hip" pos="0.0 0.4 0.0" rot="0 90" type="hinge" collide="false" limits="-90 90"/>
+				</vox>
+			</body>
+			<body id_="1744805888" open_="true" name="Leg_R" tags="RLEG bodypart" pos="-0.3 1.0 -0.1" dynamic="true">
+				<vox id_="1631618304" pos="0.2 -0.4 0.0" density="1" strength="1" file="MOD/main/Gore Ragdolls 2/Darren's ragdoll pack/vox/gore/SSsoldier2.vox" object="Leg_R"/>
+			</body>
+		</script>
+	</group>
+</prefab>
+

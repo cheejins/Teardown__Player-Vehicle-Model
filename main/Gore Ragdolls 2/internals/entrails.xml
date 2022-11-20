@@ -1,0 +1,93 @@
+<prefab version="1.0.0">
+	<group name="instance=MOD/main/Gore Ragdolls 2/internals/entrails.xml" pos="9.8 0.3 0.0" rot="0.0 0.0 0.0">
+		<group pos="0.0 0.0 0.0">
+			<voxbox tags="bodypart gore" pos="0.0 0.0 0.0" rot="0.0 0.0 0.0" prop="true" size="1 1 1" color="0.47 0.21 0.21">
+				<voxbox pos="0.0 0.05 0.02" rot="0.0 0.0 0.0" prop="false" size="1 1 1" color="0.47 0.21 0.21"/>
+				<voxbox pos="0.0 0.05 -0.02" rot="0.0 0.0 0.0" prop="false" size="1 1 1" color="0.47 0.21 0.21"/>
+				<voxbox pos="0.02 0.05 0.0" rot="0.0 0.0 0.0" prop="false" size="1 1 1" color="0.47 0.21 0.21"/>
+				<voxbox pos="-0.02 0.05 0.0" rot="0.0 0.0 0.0" prop="false" size="1 1 1" color="0.47 0.21 0.21"/>
+				<joint pos="0.05 0.15 0.05" collide="true"/>
+			</voxbox>
+			<voxbox tags="bodypart gore" pos="0.0 0.15 0.0" rot="0.0 0.0 0.0" prop="true" size="1 1 1" color="0.47 0.21 0.21">
+				<voxbox pos="0.0 0.05 0.02" rot="0.0 0.0 0.0" prop="false" size="1 1 1" color="0.47 0.21 0.21"/>
+				<voxbox pos="0.0 0.05 -0.02" rot="0.0 0.0 0.0" prop="false" size="1 1 1" color="0.47 0.21 0.21"/>
+				<voxbox pos="0.02 0.05 0.0" rot="0.0 0.0 0.0" prop="false" size="1 1 1" color="0.47 0.21 0.21"/>
+				<voxbox pos="-0.02 0.05 0.0" rot="0.0 0.0 0.0" prop="false" size="1 1 1" color="0.47 0.21 0.21"/>
+				<joint pos="0.05 0.15 0.05" collide="true"/>
+			</voxbox>
+			<voxbox tags="bodypart gore" pos="0.0 0.3 0.0" rot="0.0 0.0 0.0" prop="true" size="1 1 1" color="0.47 0.21 0.21">
+				<voxbox pos="0.0 0.05 0.02" rot="0.0 0.0 0.0" prop="false" size="1 1 1" color="0.47 0.21 0.21"/>
+				<voxbox pos="0.0 0.05 -0.02" rot="0.0 0.0 0.0" prop="false" size="1 1 1" color="0.47 0.21 0.21"/>
+				<voxbox pos="0.02 0.05 0.0" rot="0.0 0.0 0.0" prop="false" size="1 1 1" color="0.47 0.21 0.21"/>
+				<voxbox pos="-0.02 0.05 0.0" rot="0.0 0.0 0.0" prop="false" size="1 1 1" color="0.47 0.21 0.21"/>
+				<joint pos="0.05 0.15 0.05" collide="true"/>
+			</voxbox>
+			<voxbox tags="bodypart gore" pos="0.0 0.45 0.0" rot="0.0 0.0 0.0" prop="true" size="1 1 1" color="0.47 0.21 0.21">
+				<voxbox pos="0.0 0.05 0.02" rot="0.0 0.0 0.0" prop="false" size="1 1 1" color="0.47 0.21 0.21"/>
+				<voxbox pos="0.0 0.05 -0.02" rot="0.0 0.0 0.0" prop="false" size="1 1 1" color="0.47 0.21 0.21"/>
+				<voxbox pos="0.02 0.05 0.0" rot="0.0 0.0 0.0" prop="false" size="1 1 1" color="0.47 0.21 0.21"/>
+				<voxbox pos="-0.02 0.05 0.0" rot="0.0 0.0 0.0" prop="false" size="1 1 1" color="0.47 0.21 0.21"/>
+				<joint pos="0.05 0.15 0.05" collide="true"/>
+			</voxbox>
+			<voxbox tags="bodypart gore" pos="0.0 0.6 0.0" rot="0.0 0.0 0.0" prop="true" size="1 1 1" color="0.47 0.21 0.21">
+				<voxbox pos="0.0 0.05 0.02" rot="0.0 0.0 0.0" prop="false" size="1 1 1" color="0.47 0.21 0.21"/>
+				<voxbox pos="0.0 0.05 -0.02" rot="0.0 0.0 0.0" prop="false" size="1 1 1" color="0.47 0.21 0.21"/>
+				<voxbox pos="0.02 0.05 0.0" rot="0.0 0.0 0.0" prop="false" size="1 1 1" color="0.47 0.21 0.21"/>
+				<voxbox pos="-0.02 0.05 0.0" rot="0.0 0.0 0.0" prop="false" size="1 1 1" color="0.47 0.21 0.21"/>
+				<joint pos="0.05 0.15 0.05" collide="true"/>
+			</voxbox>
+			<voxbox tags="bodypart gore" pos="0.0 0.75 0.0" rot="0.0 0.0 45.0" prop="true" size="1 1 1" color="0.47 0.21 0.21">
+				<voxbox pos="0.0 0.05 0.02" rot="0.0 0.0 0.0" prop="false" size="1 1 1" color="0.47 0.21 0.21"/>
+				<voxbox pos="0.0 0.05 -0.02" rot="0.0 0.0 0.0" prop="false" size="1 1 1" color="0.47 0.21 0.21"/>
+				<voxbox pos="0.02 0.05 0.0" rot="0.0 0.0 0.0" prop="false" size="1 1 1" color="0.47 0.21 0.21"/>
+				<voxbox pos="-0.02 0.05 0.0" rot="0.0 0.0 0.0" prop="false" size="1 1 1" color="0.47 0.21 0.21"/>
+				<joint pos="0.05 0.15 0.05" collide="true"/>
+			</voxbox>
+		</group>
+		<group pos="-0.1 0.9 0.0" rot="180 180">
+			<voxbox tags="bodypart gore" pos="0.0 0.0 0.0" rot="0.0 0.0 0.0" prop="true" size="1 1 1" color="0.47 0.21 0.21">
+				<voxbox pos="0.0 0.05 0.02" rot="0.0 0.0 0.0" prop="false" size="1 1 1" color="0.47 0.21 0.21"/>
+				<voxbox pos="0.0 0.05 -0.02" rot="0.0 0.0 0.0" prop="false" size="1 1 1" color="0.47 0.21 0.21"/>
+				<voxbox pos="0.02 0.05 0.0" rot="0.0 0.0 0.0" prop="false" size="1 1 1" color="0.47 0.21 0.21"/>
+				<voxbox pos="-0.02 0.05 0.0" rot="0.0 0.0 0.0" prop="false" size="1 1 1" color="0.47 0.21 0.21"/>
+				<joint pos="0.05 0.15 0.05" collide="true"/>
+			</voxbox>
+			<voxbox tags="bodypart gore" pos="0.0 0.15 0.0" rot="0.0 0.0 0.0" prop="true" size="1 1 1" color="0.47 0.21 0.21">
+				<voxbox pos="0.0 0.05 0.02" rot="0.0 0.0 0.0" prop="false" size="1 1 1" color="0.47 0.21 0.21"/>
+				<voxbox pos="0.0 0.05 -0.02" rot="0.0 0.0 0.0" prop="false" size="1 1 1" color="0.47 0.21 0.21"/>
+				<voxbox pos="0.02 0.05 0.0" rot="0.0 0.0 0.0" prop="false" size="1 1 1" color="0.47 0.21 0.21"/>
+				<voxbox pos="-0.02 0.05 0.0" rot="0.0 0.0 0.0" prop="false" size="1 1 1" color="0.47 0.21 0.21"/>
+				<joint pos="0.05 0.15 0.05" collide="true"/>
+			</voxbox>
+			<voxbox tags="bodypart gore" pos="0.0 0.3 0.0" rot="0.0 0.0 0.0" prop="true" size="1 1 1" color="0.47 0.21 0.21">
+				<voxbox pos="0.0 0.05 0.02" rot="0.0 0.0 0.0" prop="false" size="1 1 1" color="0.47 0.21 0.21"/>
+				<voxbox pos="0.0 0.05 -0.02" rot="0.0 0.0 0.0" prop="false" size="1 1 1" color="0.47 0.21 0.21"/>
+				<voxbox pos="0.02 0.05 0.0" rot="0.0 0.0 0.0" prop="false" size="1 1 1" color="0.47 0.21 0.21"/>
+				<voxbox pos="-0.02 0.05 0.0" rot="0.0 0.0 0.0" prop="false" size="1 1 1" color="0.47 0.21 0.21"/>
+				<joint pos="0.05 0.15 0.05" collide="true"/>
+			</voxbox>
+			<voxbox tags="bodypart gore" pos="0.0 0.45 0.0" rot="0.0 0.0 0.0" prop="true" size="1 1 1" color="0.47 0.21 0.21">
+				<voxbox pos="0.0 0.05 0.02" rot="0.0 0.0 0.0" prop="false" size="1 1 1" color="0.47 0.21 0.21"/>
+				<voxbox pos="0.0 0.05 -0.02" rot="0.0 0.0 0.0" prop="false" size="1 1 1" color="0.47 0.21 0.21"/>
+				<voxbox pos="0.02 0.05 0.0" rot="0.0 0.0 0.0" prop="false" size="1 1 1" color="0.47 0.21 0.21"/>
+				<voxbox pos="-0.02 0.05 0.0" rot="0.0 0.0 0.0" prop="false" size="1 1 1" color="0.47 0.21 0.21"/>
+				<joint pos="0.05 0.15 0.05" collide="true"/>
+			</voxbox>
+			<voxbox tags="bodypart gore" pos="0.0 0.6 0.0" rot="0.0 0.0 0.0" prop="true" size="1 1 1" color="0.47 0.21 0.21">
+				<voxbox pos="0.0 0.05 0.02" rot="0.0 0.0 0.0" prop="false" size="1 1 1" color="0.47 0.21 0.21"/>
+				<voxbox pos="0.0 0.05 -0.02" rot="0.0 0.0 0.0" prop="false" size="1 1 1" color="0.47 0.21 0.21"/>
+				<voxbox pos="0.02 0.05 0.0" rot="0.0 0.0 0.0" prop="false" size="1 1 1" color="0.47 0.21 0.21"/>
+				<voxbox pos="-0.02 0.05 0.0" rot="0.0 0.0 0.0" prop="false" size="1 1 1" color="0.47 0.21 0.21"/>
+				<joint pos="0.05 0.15 0.05" collide="true"/>
+			</voxbox>
+			<voxbox tags="bodypart gore" pos="0.0 0.75 0.0" rot="0.0 0.0 0.0" prop="true" size="1 1 1" color="0.47 0.21 0.21">
+				<voxbox pos="0.0 0.05 0.02" rot="0.0 0.0 0.0" prop="false" size="1 1 1" color="0.47 0.21 0.21"/>
+				<voxbox pos="0.0 0.05 -0.02" rot="0.0 0.0 0.0" prop="false" size="1 1 1" color="0.47 0.21 0.21"/>
+				<voxbox pos="0.02 0.05 0.0" rot="0.0 0.0 0.0" prop="false" size="1 1 1" color="0.47 0.21 0.21"/>
+				<voxbox pos="-0.02 0.05 0.0" rot="0.0 0.0 0.0" prop="false" size="1 1 1" color="0.47 0.21 0.21"/>
+				<joint pos="0.05 0.15 0.05" collide="true"/>
+			</voxbox>
+		</group>
+	</group>
+</prefab>
+

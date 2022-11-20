@@ -1,0 +1,102 @@
+<prefab version="0.9.5">
+	<group id_="1646102656" name="instance=MOD/main/Gore Ragdolls 2/Sitters/BusinessManSitting.xml" pos="-2.2 0.7 4.7" rot="-90.0 40.0 0.0">
+		<script id_="957146176" open_="true" pos="-0.0 -0.2 -0.9" rot="90.0 0.0 0.0" file="MOD/main/Gore Ragdolls 2/scripts/empty.lua">
+			<body id_="849201792" open_="true" name="foot_R" tags="RRLEG bodypart" pos="-0.3 0.9 0.2" dynamic="true">
+				<vox id_="1269640832" tags="RRLEG nocull" pos="0.2 -0.4 0.1" density="2" strength="1" file="MOD/main/Gore Ragdolls 2/SnakeyWakey's ragdoll pack/vox/gore/business man.vox" object="foot_R">
+					<joint id_="1651083648" tags="knee" pos="0.0 0.5 -0.1" rot="0 90" type="hinge" rotspring="0" collide="false" limits="-90 0"/>
+					<rope id_="1592818688" pos="0.0 0.7 -0.1" rot="0 0 -90" color="0.5">
+						<location id_="869846912" pos="0.0 0.0 0.0" rot="0.0 0.0 0.0"/>
+						<location id_="1871953536" pos="0.2 0.0 0.0" rot="0.0 0.0 0.0"/>
+					</rope>
+				</vox>
+			</body>
+			<body id_="2134048000" open_="true" name="Head" tags="Head bodypart" pos="0.0 1.7 0.1" dynamic="true">
+				<vox id_="1902364032" open_="true" pos="0.0 -0.1 -0.2" density="8" strength="1" file="MOD/main/Gore Ragdolls 2/SnakeyWakey's ragdoll pack/vox/gore/business man.vox" object="head">
+					<rope id_="995618112" pos="-0.0 0.2 0.0" color="0.5">
+						<location id_="818922304" pos="0.0 0.0 0.0" rot="0.0 0.0 0.0"/>
+						<location id_="2006310528" pos="0.0 -0.3 0.0" rot="0.0 0.0 0.0"/>
+					</rope>
+					<voxbox id_="170862784" open_="true" tags="unbreakable" pos="0.1 0.1 0.1" collide="true" prop="true" size="1 1 1" material="heavymetal" color="0.0 0.0 0.0">
+						<joint id_="1212948736" tags="eye" pos="0.05 0.05" type="hinge" rotstrength="1"/>
+						<joint id_="1813753984" tags="eye" pos="0.05 0.05" rot="90" type="hinge" rotstrength="1"/>
+						<rope id_="1719114240" color="0.5" slack="0">
+							<location id_="91756000" pos="0.05 0.05 0.05" rot="0.0 0.0 0.0"/>
+							<location id_="2145648512" pos="-0.05 0.05 -0.15"/>
+						</rope>
+					</voxbox>
+					<voxbox id_="1161893120" open_="true" tags="unbreakable" pos="-0.1 0.1 0.1" collide="true" prop="true" size="1 1 1" material="heavymetal" color="0.0 0.0 0.0">
+						<joint id_="1720293888" tags="eye" pos="0.05 0.05" type="hinge" rotstrength="1"/>
+						<joint id_="1090126848" tags="eye" pos="0.05 0.05" rot="90" type="hinge" rotstrength="1"/>
+						<rope id_="2138570240" color="0.5" slack="0">
+							<location id_="8258040" pos="0.05 0.05 0.05" rot="0.0 0.0 0.0"/>
+							<location id_="370956416" pos="0.15 0.05 -0.15"/>
+						</rope>
+					</voxbox>
+					<vox id_="1620017664" open_="true" tags="jaw" pos="0.0 0.0 0.1" prop="true" file="MOD/main/Gore Ragdolls 2/SnakeyWakey's ragdoll pack/vox/gore/business man.vox" object="jaw">
+						<joint id_="520453152" tags="jaw" pos="0.2 0.1 -0.2" rot="0 90" type="hinge" limits="0 20"/>
+						<joint id_="187575488" tags="jaw" pos="-0.1 0.1 -0.2" rot="0 90" type="hinge" limits="0 20"/>
+					</vox>
+				</vox>
+			</body>
+			<body id_="221787360" open_="true" name="Torso" tags="Torso bodypart" pos="0.0 1.3 -0.1" rot="0 180" dynamic="true">
+				<vox id_="1005973440" open_="true" pos="0.0 -0.4 0.0" rot="0 180 " density="1" strength="1" file="MOD/main/Gore Ragdolls 2/SnakeyWakey's ragdoll pack/vox/gore/business man.vox" object="body">
+					<joint id_="937549696" tags="hip" pos="-0.1 0.1 -0.0" rot="0.0 90.0 0.0" type="hinge" collide="false" limits="-90 90"/>
+					<group id_="2007555712" open_="true" name="skeleton" pos="0.0 0.1 -0.05" rot="0.0 0.0 0.0">
+						<voxbox id_="2045437824" tags="unbreakable" pos="0.0 0.05 0.0" texture="7" size="1 5 1" material="masonry" color="0.43 0.0 0.0"/>
+						<voxbox id_="1507157888" tags="unbreakable" pos="-0.15 0.4 0.0" texture="7" size="4 1 1" material="masonry" color="0.43 0.0 0."/>
+						<voxbox id_="1135152768" tags="unbreakable" pos="-0.15 0.2 0.0" texture="7" size="4 1 1" material="masonry" color="0.43 0.0 0."/>
+					</group>
+				</vox>
+				<joint id_="1885323648" tags="neck" pos="-0.05 0.3 -0.0" rot="90 -45" type="hinge" rotstrength="0.01" collide="false" limits="0 90"/>
+			</body>
+			<body id_="1457216384" open_="true" name="UArm_L" tags="LARM bodypart" pos="0.5 1.6 -0.1" dynamic="true">
+				<vox id_="469659648" pos="-0.1 -0.4 0.0" density="1" strength="1" file="MOD/main/Gore Ragdolls 2/SnakeyWakey's ragdoll pack/vox/gore/business man.vox" object="Uarm_L">
+					<voxbox id_="1735958016" tags="unbreakable" pos="-0.05 0.05 -0.05" texture="7" size="1 3 1" material="masonry" color="0.43 0.0 0."/>
+				</vox>
+				<joint id_="1716689280" tags="shoulder" pos="-0.2 -0.1 0.0" rot="0 90" type="hinge" collide="false" limits="-90 0"/>
+			</body>
+			<body id_="1881587840" open_="true" name="LArm_R" tags="RRARM bodypart" pos="-0.2 1.1 -0.1" dynamic="true">
+				<vox id_="15860680" open_="true" pos="-0.1 -0.3 0.0" density="1" strength="1" file="MOD/main/Gore Ragdolls 2/SnakeyWakey's ragdoll pack/vox/gore/business man.vox" object="larm_L">
+					<joint id_="1062993280" tags="hand1" pos="0.0 0.4 0.0" rot="0 90" type="hinge" collide="false" limits="0 90"/>
+					<rope id_="2124872320" pos="0.0 0.5 0.0" rot="0 0 -90" color="0.5">
+						<location id_="711567808" pos="0.0 0.0 0.0" rot="0.0 0.0 0.0"/>
+						<location id_="514161312" pos="0.2 0.0 0.0" rot="0.0 0.0 0.0"/>
+					</rope>
+				</vox>
+			</body>
+			<body id_="2114582528" open_="true" name="LArm_R" tags="LLARM bodypart" pos="0.5 1.1 -0.1" dynamic="true">
+				<vox id_="59575860" open_="true" pos="-0.1 -0.3 0.0" density="1" strength="1" file="MOD/main/Gore Ragdolls 2/SnakeyWakey's ragdoll pack/vox/gore/business man.vox" object="larm_L">
+					<joint id_="1075708032" tags="hand1" pos="0.0 0.4 0.0" rot="0 90" type="hinge" collide="false" limits="-90 0"/>
+					<rope id_="981592576" pos="0.0 0.5 0.0" rot="0 0 -90" color="0.5">
+						<location id_="885969728" pos="0.0 0.0 0.0" rot="0.0 0.0 0.0"/>
+						<location id_="1550873088" pos="0.2 0.0 0.0" rot="0.0 0.0 0.0"/>
+					</rope>
+				</vox>
+			</body>
+			<body id_="1764074624" open_="true" name="UArm_R" tags="RARM bodypart" pos="-0.2 1.6 -0.1" dynamic="true">
+				<vox id_="581798592" open_="true" pos="-0.1 -0.4 0.0" density="1" strength="1" file="MOD/main/Gore Ragdolls 2/SnakeyWakey's ragdoll pack/vox/gore/business man.vox" object="Uarm_L">
+					<joint id_="1472814848" tags="shoulder" pos="0.1 0.3 0.0" rot="0 90" type="hinge" collide="false" limits="-90 0"/>
+					<voxbox id_="1363363072" tags="unbreakable" pos="-0.05 0.05 -0.05" texture="7" size="1 3 1" material="masonry" color="0.43 0.0 0."/>
+				</vox>
+			</body>
+			<body id_="547455616" open_="true" name="foot_L" tags="LLLEG bodypart" pos="-0.0 0.9 0.2" dynamic="true">
+				<vox id_="747614784" open_="true" tags="LLLEG nocull" pos="0.2 -0.4 0.1" density="3.5" strength="1" file="MOD/main/Gore Ragdolls 2/SnakeyWakey's ragdoll pack/vox/gore/business man.vox" object="foot_L">
+					<joint id_="1381517696" tags="knee" pos="0.0 0.5 -0.1" rot="0 90" type="hinge" rotspring="0" limits="-90 0"/>
+					<rope id_="490435808" pos="0.0 0.7 -0.1" rot="0 0 -90" color="0.5">
+						<location id_="2098066432" pos="0.0 0.0 0.0" rot="0.0 0.0 0.0"/>
+						<location id_="2089874048" pos="0.2 0.0 0.0" rot="0.0 0.0 0.0"/>
+					</rope>
+				</vox>
+			</body>
+			<body id_="1070530368" open_="true" name="Leg_L" tags="LLEG bodypart" pos="0.0 1.0 -0.1" rot="-90" dynamic="true">
+				<vox id_="346575520" open_="true" pos="0.2 -0.4 0.0" density="1" strength="1" file="MOD/main/Gore Ragdolls 2/SnakeyWakey's ragdoll pack/vox/gore/business man.vox" object="Leg_L">
+					<joint id_="1317485056" tags="hip" pos="0.0 0.4 0.0" rot="0 90" type="hinge" collide="false" limits="-90 90"/>
+				</vox>
+			</body>
+			<body id_="2065689728" open_="true" name="Leg_R" tags="RLEG bodypart" pos="-0.3 1.0 -0.1" rot="-90" dynamic="true">
+				<vox id_="477065664" pos="0.2 -0.4 0.0" density="1" strength="1" file="MOD/main/Gore Ragdolls 2/SnakeyWakey's ragdoll pack/vox/gore/business man.vox" object="Leg_R"/>
+			</body>
+		</script>
+	</group>
+</prefab>
+

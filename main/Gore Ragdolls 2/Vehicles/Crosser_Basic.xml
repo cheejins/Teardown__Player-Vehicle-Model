@@ -1,0 +1,37 @@
+<prefab version="0.9.3">
+	<group id_="1930415104" open_="true" name="Crosser_Basic" pos="0.0 0.0 -16.8">
+		<vehicle id_="1563653376" name="Crosser_Basic" tags="reversebeep" pos="0.0 0.3 0.0" rot="0.0 0.0 0.0">
+			<body id_="1507420032" dynamic="true">
+				<vox id_="1741004544" open_="true" file="MOD/main/Crosser_Model/RVcrosser.vox" object="Body">
+					<location id_="298993472" tags="player" pos="-3.55 1.4 0.65" rot="0.0 90.0 0.0"/>
+					<location id_="1654884992" tags="vital" pos="4.3 0.5 0.0"/>
+					<location id_="820954048" tags="exhaust" pos="4.75 0.05 -0.6" rot="0.0 -90.0 0.0"/>
+					<light id_="65671080" pos="4.8 1.0 1.0" rot="0.0 90.0 0.0" type="area" color="1.0 0.0 0.0"/>
+					<light id_="471232608" pos="4.8 1.0 0.75" rot="0.0 90.0 -90.0" type="area" color="1.0 1.0 1.0"/>
+					<light id_="1635223040" pos="4.8 1.0 -0.75" rot="0.0 90.0 -90.0" type="area" color="1.0 1.0 1.0"/>
+					<light id_="69537936" pos="4.8 1.0 -1.0" rot="0.0 90.0 0.0" type="area" color="1.0 0.0 0.0"/>
+					<light id_="340414752" pos="2.4 2.2 -0.4" rot="90.0 90.0 0.0" type="area" color="1.0 0.92 0.68"/>
+					<light id_="488535168" pos="2.55 2.2 0.55" rot="90.0 0.0 0.0" type="area" color="1.0 1.0 1.0"/>
+					<light id_="686334848" pos="0.3 2.2 0.0" rot="90.0 90.0 0.0" type="area" color="1.0 0.92 0.68"/>
+					<light id_="682533568" pos="-1.2 2.2 0.0" rot="90.0 90.0 0.0" type="area" color="1.0 0.92 0.68"/>
+					<light id_="186199136" pos="-2.8 2.2 0.0" rot="90.0 90.0 0.0" type="area" color="1.0 0.92 0.68"/>
+					<light id_="1172903808" pos="-4.45 0.7 0.95" rot="180.0 90.0 0.0" type="cone" color="1.0 1.0 1.0" scale="2"/>
+					<light id_="178662048" pos="-4.45 0.7 -0.95" rot="180.0 90.0 0.0" type="cone" color="1.0 1.0 1.0" scale="2"/>
+				</vox>
+				<wheel id_="793230592" open_="true" pos="3.95 0.15 1.1" rot="0.0 90.0 0.0" drive="1">
+					<vox id_="403464256" pos="0.0 -0.45 -0.05" rot="0.0 -90.0 0.0" file="MOD/main/Crosser_Model/RVcrosser.vox" object="wheel BL"/>
+				</wheel>
+				<wheel id_="2040784512" open_="true" pos="3.95 0.15 -1.1" rot="0.0 90.0 0.0" drive="1">
+					<vox id_="2077028096" pos="0.0 -0.45 -0.05" rot="0.0 -90.0 0.0" file="MOD/main/Crosser_Model/RVcrosser.vox" object="wheel BR"/>
+				</wheel>
+				<wheel id_="1025307776" open_="true" pos="-2.15 0.15 1.1" rot="0.0 90.0 0.0" drive="1" steer="1">
+					<vox id_="863161792" pos="0.0 -0.45 -0.05" rot="0.0 -90.0 0.0" file="MOD/main/Crosser_Model/RVcrosser.vox" object="wheel FL"/>
+				</wheel>
+				<wheel id_="1840494336" open_="true" pos="-2.15 0.15 -1.1" rot="0.0 90.0 0.0" drive="1" steer="1">
+					<vox id_="512916032" pos="0.0 -0.45 -0.05" rot="0.0 -90.0 0.0" file="MOD/main/Crosser_Model/RVcrosser.vox" object="wheel FR"/>
+				</wheel>
+			</body>
+		</vehicle>
+	</group>
+</prefab>
+
