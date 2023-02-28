@@ -1,6 +1,6 @@
 --================================================================
 --This script positions the ragdoll body parts relative to the
--- xml extracted from the preconfigured base npc.
+--Thethe transform data is then extracted from the posed npc.
 --================================================================
 
 
