@@ -11,11 +11,13 @@
 CFG = {
     RUN_POSING = true,
     RUN_PRINTER = false,
-    SPAWN_ALL_PREFABS = false,
+    SPAWN_ALL_PREFABS = true,
 }
 
 
 Prefab_Positions = {}
+
+CurrentPrefabPath = "-"
 
 
 
@@ -64,6 +66,8 @@ end
 
 function draw()
 
+    draw_current_prefab_path()
+
     CheckRespawnCount()
 
     if CFG.SPAWN_ALL_PREFABS then
@@ -75,7 +79,7 @@ end
 
 
 -- Spawn a body, find its parts and store them in RagdollParts as the current driver.
-function InstantiateRagdoll()
+function InstantiateRagdoll(path_xml)
 
     if CFG.RUN_PRINTER then
         local entities = Spawn("MOD/sit.xml", Transform(Vec(0, 0, 0)), true)
@@ -83,12 +87,11 @@ function InstantiateRagdoll()
         return
     end
 
-    local xml = GetRandomPrefab()
+    local xml = path_xml or GetRandomPrefab()
 
-    print(xml)
+    CurrentPrefabPath = xml
 
-
-    local entities = Spawn(xml, Transform(Vec(0, 0, 0)), true)
+    local entities = Spawn(xml, Transform(Vec(0,1000,0)), true)
 
     local otherBodies = {}
 
@@ -190,8 +193,8 @@ function SetRandomRagdoll()
 end
 
 function GetRandomPrefab()
-    local random_category = GetRandomKey(Prefabs)
-    local random_prefab = Prefabs[random_category][GetRandomKey(Prefabs[random_category])]
+    local random_category  = GetRandomKey(Prefabs)
+    local random_prefab    = Prefabs[random_category][GetRandomKey(Prefabs[random_category])]
     return Path .. random_category .. "/" .. random_prefab
 end
 
@@ -233,10 +236,13 @@ function SpawnAllPrefabs()
 end
 
 
+
 function CheckRespawnCount()
     if RespawnCount > RespawnCountWarning then
     end
 end
+
+
 
 function draw_prefab_positions()
 
@@ -269,4 +275,16 @@ function draw_prefab_positions()
 
     end
 
+end
+
+function draw_current_prefab_path()
+    UiPush()
+
+        uiSetFont(32)
+        UiTranslate(UiCenter(), UiHeight() - 300)
+        UiAlign("center middle")
+
+        UiText(CurrentPrefabPath)
+
+    UiPop()
 end
