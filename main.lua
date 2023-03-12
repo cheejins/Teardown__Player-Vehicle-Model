@@ -28,15 +28,18 @@ function init()
     RespawnCount = 0
     RespawnCountWarning = 10
 
+
     init_prefab_tags()
     init_prefab_objects()
     init_prefab_database()
+
 
     if CFG.SPAWN_ALL_PREFABS then
         SpawnAllPrefabs()
     end
 
 end
+
 
 function tick()
 
@@ -73,8 +76,7 @@ function draw()
 
     uiSetFont(24)
 
-    draw_selection_ui()
-
+    -- draw_selection_ui()
 
     draw_current_prefab_path()
 
@@ -203,21 +205,20 @@ function SetRandomRagdoll()
 end
 
 function GetRandomPrefab()
-    local random_category  = GetRandomKey(PrefabObjects)
-    local random_prefab    = GetRandomIndexValue(PrefabObjects[random_category]).path
-    return RootPath .. random_category .. "/" .. random_prefab
+    local random_prefab_path = GetRandomIndexValue(GetRandomPairsValue(PrefabObjects)).path
+    return random_prefab_path
 end
 
 function SpawnAllPrefabs()
 
     local spacing = 5
-    local offset = 20
+    local offset = 10
     local i, j = 1, 1
-    for path, prefab_category in pairs(PrefabObjects) do
+    for _, prefab_category in pairs(PrefabObjects) do
 
-        for xml, prefab in pairs(prefab_category) do
+        for _, prefab in ipairs(prefab_category) do
 
-            local spawn_xml = RootPath .. path .. "/" .. prefab
+            local spawn_xml = prefab.path
             local tr = Transform(Vec((i-offset)*spacing, 0, j*spacing))
 
             table.insert(Prefab_Positions, { pos = tr.pos, title = prefab})

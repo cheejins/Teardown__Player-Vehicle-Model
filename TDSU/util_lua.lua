@@ -49,6 +49,10 @@ do
 
     end
 
+    function GetRandomPairsValue(tb)
+        return tb[GetRandomKey(tb)]
+    end
+
     ---Get the next index of a table (not the value). Loop to first index if on the last index.
     function GetTableNextIndex(tb, i)
         if i + 1 > #tb then

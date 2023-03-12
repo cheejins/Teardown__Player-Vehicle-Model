@@ -8,6 +8,7 @@ end
 
 function prefab_create(folder, file, title, tags)
     return {
+        path    = RootPath .. folder .. file,
         folder  = folder,
         file    = file,
         title   = title,
