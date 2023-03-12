@@ -1,8 +1,9 @@
 #include "../TDSU/tdsu.lua"
 
---================================================================
--- This script prints the transform values of a ragdoll prefab.
---================================================================
+--====================================================================================================
+-- This script prints the transform values of a ragdoll prefab to the external console (Thomasims).
+-- Console: https://github.com/Thomasims/tdconsole
+--====================================================================================================
 
 
 local part_tags = {
@@ -17,6 +18,7 @@ local part_tags = {
     "RRARM",
     "RRLEG",
 }
+
 
 function init()
 

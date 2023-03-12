@@ -1,5 +1,6 @@
 #include "TDSU/tdsu.lua"
-#include "scripts/prefab_paths.lua"
+#include "scripts/prefab_data.lua"
+#include "scripts/prefab_tags.lua"
 #include "scripts/ragdoll_poser.lua"
 
 --================================================================
@@ -26,6 +27,10 @@ function init()
     Spawned = false
     RespawnCount = 0
     RespawnCountWarning = 10
+
+    init_prefab_tags()
+    init_prefab_objects()
+    init_prefab_database()
 
     if CFG.SPAWN_ALL_PREFABS then
         SpawnAllPrefabs()
@@ -65,6 +70,11 @@ function update()
 end
 
 function draw()
+
+    uiSetFont(24)
+
+    draw_selection_ui()
+
 
     draw_current_prefab_path()
 
@@ -193,9 +203,9 @@ function SetRandomRagdoll()
 end
 
 function GetRandomPrefab()
-    local random_category  = GetRandomKey(Prefabs)
-    local random_prefab    = Prefabs[random_category][GetRandomKey(Prefabs[random_category])]
-    return Path .. random_category .. "/" .. random_prefab
+    local random_category  = GetRandomKey(PrefabObjects)
+    local random_prefab    = GetRandomIndexValue(PrefabObjects[random_category]).path
+    return RootPath .. random_category .. "/" .. random_prefab
 end
 
 function SpawnAllPrefabs()
@@ -203,11 +213,11 @@ function SpawnAllPrefabs()
     local spacing = 5
     local offset = 20
     local i, j = 1, 1
-    for path, prefab_category in pairs(Prefabs) do
+    for path, prefab_category in pairs(PrefabObjects) do
 
         for xml, prefab in pairs(prefab_category) do
 
-            local spawn_xml = Path .. path .. "/" .. prefab
+            local spawn_xml = RootPath .. path .. "/" .. prefab
             local tr = Transform(Vec((i-offset)*spacing, 0, j*spacing))
 
             table.insert(Prefab_Positions, { pos = tr.pos, title = prefab})
@@ -234,8 +244,6 @@ function SpawnAllPrefabs()
     end
 
 end
-
-
 
 function CheckRespawnCount()
     if RespawnCount > RespawnCountWarning then

@@ -1,21 +1,118 @@
-Path = "MOD/main/Gore Ragdolls 2/"
+function tag_create(key, title)
+    return {
+        key   = key,
+        title = title,
+    }
+end
 
-Prefabs = {}
+
+function prefab_create(folder, file, title, tags)
+    return {
+        folder  = folder,
+        file    = file,
+        title   = title,
+        tags    = tags,
+    }
+end
 
 
-Folders = {
-    Agro            = "Agro pack/",
-    Avertnus        = "Avertnus's ragdoll pack/",
-    Darren          = "Darren's ragdoll pack/",
-    FoxyPlayzYT     = "FoxyPlayzYT's ragdoll pack/",
-    idixticlol      = "idixticlol's ragdoll pack/",
-    Jacob           = "Jacob's ragdoll pack/",
-    Morvex          = "Morvex's ragdoll pack/",
-    OffensivePDF    = "OffensivePDF's ragdoll pack/",
-    Sitters         = "Sitters/",
-    SnakeyWakey     = "SnakeyWakey's ragdoll pack/",
-    Squareblock     = "Squareblock's ragdoll pack/",
-}
+function init_prefab_objects()
+
+    --- Holds all raw prefab objects.
+    PrefabObjects = {}
+
+
+    PrefabObjects[Folders.Snakey] = {
+        prefab_create(Folders.Snakey,    "106.xml",                     "106",                    {Tags.Common.creature}),
+        prefab_create(Folders.Snakey,    "3008-1.xml",                  "3008-1",                 {Tags.Common.creature}),
+        prefab_create(Folders.Snakey,    "3008-2.xml",                  "3008-2",                 {Tags.Common.creature}),
+        prefab_create(Folders.Snakey,    "49.xml",                      "49",                     {Tags.Common.creature}),
+        prefab_create(Folders.Snakey,    "662.xml",                     "662",                    {Tags.Common.business}),
+        prefab_create(Folders.Snakey,    "96.xml",                      "96",                     {Tags.Common.creature}),
+        prefab_create(Folders.Snakey,    "Alien.xml",                   "Alien",                  {Tags.Common.creature}),
+        prefab_create(Folders.Snakey,    "Bandi.xml",                   "Bandi",                  {Tags.Common.youtuber}),
+        prefab_create(Folders.Snakey,    "BusinessMan.xml",             "BusinessMan",            {Tags.Common.business}),
+        prefab_create(Folders.Snakey,    "Cartel.xml",                  "Cartel",                 {Tags.Common.militia}),
+        prefab_create(Folders.Snakey,    "CI.xml",                      "CI",                     {Tags.Common.military}),
+        prefab_create(Folders.Snakey,    "Clown.xml",                   "Clown",                  {Tags.Common.civilian}),
+        prefab_create(Folders.Snakey,    "ConstructionWorker.xml",      "ConstructionWorker",     {Tags.Common.civilian}),
+        prefab_create(Folders.Snakey,    "DClass1.xml",                 "DClass1",                {Tags.Common.civilian}),
+        prefab_create(Folders.Snakey,    "DClass2.xml",                 "DClass2",                {Tags.Common.civilian}),
+        prefab_create(Folders.Snakey,    "DClass3.xml",                 "DClass3",                {Tags.Common.civilian}),
+        prefab_create(Folders.Snakey,    "DClass4.xml",                 "DClass4",                {Tags.Common.civilian}),
+        prefab_create(Folders.Snakey,    "DClass5.xml",                 "DClass5",                {Tags.Common.civilian}),
+        prefab_create(Folders.Snakey,    "DClass6.xml",                 "DClass6",                {Tags.Common.civilian}),
+        prefab_create(Folders.Snakey,    "Denis.xml",                   "Denis",                  {Tags.Common.teardown}),
+        prefab_create(Folders.Snakey,    "Drae.xml",                    "Drae" ,                  {Tags.Common.youtuber}),
+        prefab_create(Folders.Snakey,    "DrunkBusinessMan.xml",        "DrunkBusinessMan" ,      {Tags.Common.business}),
+        prefab_create(Folders.Snakey,    "DrunkBusinessManDRIVER.xml",  "DrunkBusinessManDRIVER", {Tags.Common.business}),
+        prefab_create(Folders.Snakey,    "Emil.xml",                    "Emil" ,                  {Tags.Common.teardown}),
+        prefab_create(Folders.Snakey,    "FGuard.xml",                  "FGuard",                 {Tags.Common.police}),
+        prefab_create(Folders.Snakey,    "FireFighter.xml",             "FireFighter",            {Tags.Common.emt}),
+        prefab_create(Folders.Snakey,    "Fynnpire.xml",                "Fynnpire" ,              {Tags.Common.youtuber}),
+        prefab_create(Folders.Snakey,    "GGPro.xml",                   "GGPro",                  {Tags.Common.modder}),
+        prefab_create(Folders.Snakey,    "GMan.xml",                    "GMan" ,                  {Tags.Games.halfLife}),
+        prefab_create(Folders.Snakey,    "Gus Fring.xml",               "Gus Fring",              {Tags.TV.breakingBad}),
+        prefab_create(Folders.Snakey,    "Hank Schrader.xml",           "Hank Schrader",          {Tags.TV.breakingBad}),
+        prefab_create(Folders.Snakey,    "Hazmat.xml",                  "Hazmat",                 {Tags.Common.emt}),
+        prefab_create(Folders.Snakey,    "Hector Salamanca.xml",        "Hector Salamanca" ,      {Tags.TV.breakingBad}),
+        prefab_create(Folders.Snakey,    "Heisenberg.xml",              "Heisenberg",             {Tags.TV.breakingBad}),
+        prefab_create(Folders.Snakey,    "Human.xml",                   "Human",                  {Tags.Common.civilian}),
+        prefab_create(Folders.Snakey,    "Human2.xml",                  "Human2",                 {Tags.Common.civilian}),
+        prefab_create(Folders.Snakey,    "IWillSunder.xml",             "IWillSunder",            {Tags.Common.civilian}),
+        prefab_create(Folders.Snakey,    "JacobMario.xml",              "JacobMario",             {Tags.Common.modder}),
+        prefab_create(Folders.Snakey,    "jesse Pinkman.xml",           "jesse Pinkman",          {Tags.TV.breakingBad}),
+        prefab_create(Folders.Snakey,    "Marina.xml",                  "Marina",                 {Tags.Common.military}),
+        prefab_create(Folders.Snakey,    "MI7.xml",                     "MI7",                    {Tags.Common.military}),
+        prefab_create(Folders.Snakey,    "Mike Ehrmantraut.xml",        "Mike Ehrmantraut",       {Tags.TV.breakingBad}),
+        prefab_create(Folders.Snakey,    "morvex.xml",                  "morvex",                 {Tags.Common.modder}),
+        prefab_create(Folders.Snakey,    "MTF.xml",                     "MTF",                    {Tags.Common.military}),
+        prefab_create(Folders.Snakey,    "OffensivePDF.xml",            "OffensivePDF",           {Tags.Common.modder}),
+        prefab_create(Folders.Snakey,    "ONSVRG.xml",                  "ONSVRG",                 {Tags.Common.teardown}),
+        prefab_create(Folders.Snakey,    "ParkingMeter.xml",            "ParkingMeter",           {Tags.Common.modder}),
+        prefab_create(Folders.Snakey,    "Pilot.xml",                   "Pilot",                  {Tags.Common.pilot}),
+        prefab_create(Folders.Snakey,    "PropGuy.xml",                 "PropGuy",                {Tags.Common.modder}),
+        prefab_create(Folders.Snakey,    "Riot.xml",                    "Riot",                   {Tags.Common.police}),
+        prefab_create(Folders.Snakey,    "RUSoldier1.xml",              "RUSoldier1",             {Tags.Common.military}),
+        prefab_create(Folders.Snakey,    "RUSoldier2.xml",              "RUSoldier2",             {Tags.Common.military}),
+        prefab_create(Folders.Snakey,    "RUSoldier3.xml",              "RUSoldier3",             {Tags.Common.military}),
+        prefab_create(Folders.Snakey,    "Saul Goodman.xml",            "Saul Goodman",           {Tags.TV.breakingBad}),
+        prefab_create(Folders.Snakey,    "Scientist.xml",               "Scientist",              {Tags.Common.civilian}),
+        prefab_create(Folders.Snakey,    "ScientistHAZARD.xml",         "ScientistHAZARD",        {Tags.Common.emt}),
+        prefab_create(Folders.Snakey,    "ScientistHEV.xml",            "ScientistHEV",           {Tags.Common.emt}),
+        prefab_create(Folders.Snakey,    "SnakeyWakey.xml",             "SnakeyWakey",            {Tags.Common.modder}),
+        prefab_create(Folders.Snakey,    "Soldier1.xml",                "Soldier1",               {Tags.Common.military}),
+        prefab_create(Folders.Snakey,    "Soldier2.xml",                "Soldier2",               {Tags.Common.military}),
+        prefab_create(Folders.Snakey,    "Soldier3.xml",                "Soldier3",               {Tags.Common.military}),
+        prefab_create(Folders.Snakey,    "Soldier4.xml",                "Soldier4",               {Tags.Common.military}),
+        prefab_create(Folders.Snakey,    "SoldierNVGoff.xml",           "SoldierNVGoff",          {Tags.Common.military}),
+        prefab_create(Folders.Snakey,    "SoldierNVGoff2.xml",          "SoldierNVGoff2",         {Tags.Common.military}),
+        prefab_create(Folders.Snakey,    "SoldierNVGon.xml",            "SoldierNVGon",           {Tags.Common.military}),
+        prefab_create(Folders.Snakey,    "SoymilkPapi.xml",             "SoymilkPapi",            {Tags.Common.modder}),
+        prefab_create(Folders.Snakey,    "StrainZex.xml",               "StrainZex",              {Tags.Common.modder}),
+        prefab_create(Folders.Snakey,    "SWAT.xml",                    "SWAT",                   {Tags.Common.police}),
+        prefab_create(Folders.Snakey,    "Therapist.xml",               "Therapist",              {Tags.Common.civilian}),
+        prefab_create(Folders.Snakey,    "UsernameTaken.xml",           "UsernameTaken",          {Tags.Common.modder}),
+        prefab_create(Folders.Snakey,    "Walter White Bald.xml",       "Walter White Bald",      {Tags.TV.breakingBad}),
+        prefab_create(Folders.Snakey,    "Walter White Cook.xml",       "Walter White Cook",      {Tags.TV.breakingBad}),
+        prefab_create(Folders.Snakey,    "Walter White Hazmat.xml",     "Walter White Hazmat",    {Tags.TV.breakingBad}),
+        prefab_create(Folders.Snakey,    "Walter White.xml",            "Walter White",           {Tags.TV.breakingBad}),
+        prefab_create(Folders.Snakey,    "Walter White2 Bald.xml",      "Walter White2 Bald",     {Tags.TV.breakingBad}),
+        prefab_create(Folders.Snakey,    "Walter White2.xml",           "Walter White2",          {Tags.TV.breakingBad}),
+        prefab_create(Folders.Snakey,    "WW2American.xml",             "WW2American",            {Tags.Common.military}),
+        prefab_create(Folders.Snakey,    "WW2American2.xml",            "WW2American2",           {Tags.Common.military}),
+        prefab_create(Folders.Snakey,    "WW2AmericanTanker.xml",       "WW2AmericanTanker",      {Tags.Common.military}),
+        prefab_create(Folders.Snakey,    "WW2German.xml",               "WW2German",              {Tags.Common.military}),
+        prefab_create(Folders.Snakey,    "WW2German2.xml",              "WW2German2",             {Tags.Common.military}),
+
+        -- ["Soldier5.xml"]               = "Soldier5.xml", --> Amogus
+        -- ["Adrian Shephard.xml"]        = "Adrian Shephard.xml", --> Glitched
+        -- ["Hector Salamanca.xml"]       = "Hector Salamanca.xml", --> Extra shapes
+
+    }
+
+end
+
 
 
 -- Prefabs[Folders.Agro] = {

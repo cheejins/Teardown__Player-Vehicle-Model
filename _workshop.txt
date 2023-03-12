@@ -1,12 +1,13 @@
 [h1] About [/h1]
-Who's driving that empty car? You will (almost) never have to ask that again!
+    Who's driving that car? You will (almost) never have to ask that again! Easily
 
 
-[h1] Future Updates [/h1]
+[h1] Future Update Ideas [/h1]
+    Ragdoll player (will allow you to place additional ragdolls to fill more seats in a vehicle.)
 
 
 [h1] Submit Your Models! [/h1]
-
+    Would you like to see your ragdolls in this mod?
 
 
 Thanks to SnakeyWakey and the Teardown modding community for all of the different ragdoll models.
