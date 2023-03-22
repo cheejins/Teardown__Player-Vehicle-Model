@@ -5,7 +5,7 @@ function tag_create(key, title)
     }
 end
 
-
+--- Creates a prefab object.
 function prefab_create(folder, file, title, tags)
     return {
         path    = RootPath .. folder .. file,
@@ -15,7 +15,6 @@ function prefab_create(folder, file, title, tags)
         tags    = tags,
     }
 end
-
 
 function init_prefab_objects()
 
@@ -112,164 +111,108 @@ function init_prefab_objects()
 
     }
 
+    PrefabObjects[Folders.Agro] = {
+        prefab_create(Folders.Agro, "ClassicEnemy1.xml",           "ClassicEnemy1",           {Tags.military}),
+        prefab_create(Folders.Agro, "ClassicEnemy2.xml",           "ClassicEnemy2",           {Tags.military}),
+        prefab_create(Folders.Agro, "ClassicEnemy3.xml",           "ClassicEnemy3",           {Tags.military}),
+        prefab_create(Folders.Agro, "ClassicEnemy4.xml",           "ClassicEnemy4",           {Tags.military}),
+        prefab_create(Folders.Agro, "ClassicFriend1.xml",          "ClassicFriend1",          {Tags.military}),
+        prefab_create(Folders.Agro, "ClassicFriend2.xml",          "ClassicFriend2",          {Tags.military}),
+        prefab_create(Folders.Agro, "ClassicFriend3.xml",          "ClassicFriend3",          {Tags.military}),
+        prefab_create(Folders.Agro, "ClassicFriend4.xml",          "ClassicFriend4",          {Tags.military}),
+        prefab_create(Folders.Agro, "ClassicFriendDefender.xml",   "ClassicFriendDefender",   {Tags.military}),
+        prefab_create(Folders.Agro, "Friend2.xml",                 "Friend2",                 {Tags.military}),
+        prefab_create(Folders.Agro, "Friend3.xml",                 "Friend3",                 {Tags.military}),
+        -- prefab_create(Folders.Agro, "ClassicFriendlySpawner.xml",  "ClassicFriendlySpawner",  {Tags.military}), --> non-ragdoll
+    }
+
+    PrefabObjects[Folders.Avertnus] = {
+
+        prefab_create(Folders.Avertnus,     "Avertnus.xml",     "Avertnus",     {Tags.militia}),
+        prefab_create(Folders.Avertnus,     "Cayo1.xml",        "Cayo1",        {Tags.militia}),
+        prefab_create(Folders.Avertnus,     "Cayo1Gear.xml",    "Cayo1Gear",    {Tags.militia}),
+        prefab_create(Folders.Avertnus,     "Cayo2.xml",        "Cayo2",        {Tags.militia}),
+        prefab_create(Folders.Avertnus,     "Cayo2Gear.xml",    "Cayo2Gear",    {Tags.militia}),
+        prefab_create(Folders.Avertnus,     "Cayo3.xml",        "Cayo3",        {Tags.militia}),
+        prefab_create(Folders.Avertnus,     "Cayo3Gear.xml",    "Cayo3Gear",    {Tags.militia}),
+        prefab_create(Folders.Avertnus,     "Cayo4.xml",        "Cayo4",        {Tags.militia}),
+        prefab_create(Folders.Avertnus,     "Cayo4Gear.xml",    "Cayo4Gear",    {Tags.militia}),
+        prefab_create(Folders.Avertnus,     "Cayo5.xml",        "Cayo5",        {Tags.militia}),
+        prefab_create(Folders.Avertnus,     "Cayo5Gear.xml",    "Cayo5Gear",    {Tags.militia}),
+        prefab_create(Folders.Avertnus,     "Cayo6.xml",        "Cayo6",        {Tags.militia}),
+        prefab_create(Folders.Avertnus,     "Cayo6Gear.xml",    "Cayo6Gear",    {Tags.militia}),
+        prefab_create(Folders.Avertnus,     "Cayo7.xml",        "Cayo7",        {Tags.militia}),
+        prefab_create(Folders.Avertnus,     "Cayo7Gear.xml",    "Cayo7Gear",    {Tags.militia}),
+        prefab_create(Folders.Avertnus,     "ElRubio.xml",      "ElRubio",      {Tags.militia}),
+        -- ["CayoJeep.xml"]       = "CayoJeep.xml", --> non-ragdoll
+        -- ["CayoTruck.xml"]      = "CayoTruck.xml", --> non-ragdoll
+
+
+        prefab_create(Folders.Avertnus,     "HL2Cargo.xml",           "HL2Cargo",           {Tags.Games.halfLife}),
+        prefab_create(Folders.Avertnus,     "HL2Rebel1Gear1.xml",     "HL2Rebel1Gear1",     {Tags.Games.halfLife}),
+        prefab_create(Folders.Avertnus,     "HL2Rebel1Gear2.xml",     "HL2Rebel1Gear2",     {Tags.Games.halfLife}),
+        prefab_create(Folders.Avertnus,     "HL2Rebel2Gear1.xml",     "HL2Rebel2Gear1",     {Tags.Games.halfLife}),
+        prefab_create(Folders.Avertnus,     "HL2Rebel2Gear2.xml",     "HL2Rebel2Gear2",     {Tags.Games.halfLife}),
+        prefab_create(Folders.Avertnus,     "HL2Rebel3Gear1.xml",     "HL2Rebel3Gear1",     {Tags.Games.halfLife}),
+        prefab_create(Folders.Avertnus,     "HL2Rebel3Gear2.xml",     "HL2Rebel3Gear2",     {Tags.Games.halfLife}),
+        prefab_create(Folders.Avertnus,     "HL2Rebel4Gear1.xml",     "HL2Rebel4Gear1",     {Tags.Games.halfLife}),
+        prefab_create(Folders.Avertnus,     "HL2Rebel4Gear2.xml",     "HL2Rebel4Gear2",     {Tags.Games.halfLife}),
+        prefab_create(Folders.Avertnus,     "OTA1.xml",        "OTA1",        {Tags.Games.halfLife}),
+        prefab_create(Folders.Avertnus,     "OTA1Gear.xml",    "OTA1Gear",    {Tags.Games.halfLife}),
+        prefab_create(Folders.Avertnus,     "OTA2.xml",        "OTA2",        {Tags.Games.halfLife}),
+        prefab_create(Folders.Avertnus,     "OTA2Gear.xml",    "OTA2Gear",    {Tags.Games.halfLife}),
+        prefab_create(Folders.Avertnus,     "OTA3.xml",        "OTA3",        {Tags.Games.halfLife}),
+        prefab_create(Folders.Avertnus,     "OTA3Gear.xml",    "OTA3Gear",    {Tags.Games.halfLife}),
+        prefab_create(Folders.Avertnus,     "Rebel1.xml",      "Rebel1",      {Tags.Games.halfLife}),
+        prefab_create(Folders.Avertnus,     "Rebel2.xml",      "Rebel2",      {Tags.Games.halfLife}),
+        prefab_create(Folders.Avertnus,     "Rebel3.xml",      "Rebel3",      {Tags.Games.halfLife}),
+        prefab_create(Folders.Avertnus,     "Rebel4.xml",      "Rebel4",      {Tags.Games.halfLife}),
+        -- ["HL2Truck.xml"]       = "HL2Truck.xml", --> non-ragdoll
+        -- ["TruckHL2.xml"]       = "TruckHL2.xml", --> non-ragdoll
+        -- ["USNam2Gear1.xml"]    = "USNam2Gear1.xml", --> non-ragdoll
+
+
+        prefab_create(Folders.Avertnus,     "Insurgent1.xml",           "Insurgent1",           {Tags.militia}),
+        prefab_create(Folders.Avertnus,     "Insurgent2.xml",           "Insurgent2",           {Tags.militia}),
+        prefab_create(Folders.Avertnus,     "Insurgent3.xml",           "Insurgent3",           {Tags.militia}),
+        prefab_create(Folders.Avertnus,     "Insurgent4.xml",           "Insurgent4",           {Tags.militia}),
+        prefab_create(Folders.Avertnus,     "Insurgent5.xml",           "Insurgent5",           {Tags.militia}),
+        prefab_create(Folders.Avertnus,     "Insurgent6.xml",           "Insurgent6",           {Tags.militia}),
+        prefab_create(Folders.Avertnus,     "Insurgent7.xml",           "Insurgent7",           {Tags.militia}),
+
+
+        prefab_create(Folders.Avertnus,     "US1.xml",              "US1",           {Tags.military}),
+        prefab_create(Folders.Avertnus,     "US2.xml",              "US2",           {Tags.military}),
+        prefab_create(Folders.Avertnus,     "US3.xml",              "US3",           {Tags.military}),
+        prefab_create(Folders.Avertnus,     "US4.xml",              "US4",           {Tags.military}),
+        prefab_create(Folders.Avertnus,     "US5.xml",              "US5",           {Tags.military}),
+        prefab_create(Folders.Avertnus,     "USNam1.xml",           "USNam1",        {Tags.military}),
+        prefab_create(Folders.Avertnus,     "USNam1Gear1.xml",      "USNam1Gear1",   {Tags.military}),
+        prefab_create(Folders.Avertnus,     "USNam1Gear2.xml",      "USNam1Gear2",   {Tags.military}),
+        prefab_create(Folders.Avertnus,     "USNam2.xml",           "USNam2",        {Tags.military}),
+        prefab_create(Folders.Avertnus,     "USNam2Gear2.xml",      "USNam2Gear2",   {Tags.military}),
+        prefab_create(Folders.Avertnus,     "USNam3.xml",           "USNam3",        {Tags.military}),
+        prefab_create(Folders.Avertnus,     "USNam3Gear1.xml",      "USNam3Gear1",   {Tags.military}),
+        prefab_create(Folders.Avertnus,     "USNam3Gear2.xml",      "USNam3Gear2",   {Tags.military}),
+        prefab_create(Folders.Avertnus,     "USNamEngie.xml",       "USNamEngie",    {Tags.military}),
+        prefab_create(Folders.Avertnus,     "USNamOfficer1.xml",    "USNamOfficer1", {Tags.military}),
+        prefab_create(Folders.Avertnus,     "USNamOfficer2.xml",    "USNamOfficer2", {Tags.military}),
+
+        -- ["M16A2.xml"]          = "M16A2.xml", --> non-ragdoll
+        -- ["USNamJeep.xml"]      = "USNamJeep.xml",    --> non-ragdoll
+        -- ["USNamTruck.xml"]     = "USNamTruck.xml",   --> non-ragdoll
+        -- ["vox/truck.xml"]      = "vox/truck.xml",    --> non-ragdoll
+        -- ["vox/vetir.xml"]      = "vox/vetir.xml",    --> non-ragdoll
+        -- ["vox/winky.xml"]      = "vox/winky.xml",    --> non-ragdoll
+    }
+
 end
 
 
 
--- Prefabs[Folders.Agro] = {
---     prefab_create(Folders.Agro, "ClassicEnemy1.xml",           "ClassicEnemy1",           {Tags.military}),
---     prefab_create(Folders.Agro, "ClassicEnemy2.xml",           "ClassicEnemy2",           {Tags.military}),
---     prefab_create(Folders.Agro, "ClassicEnemy3.xml",           "ClassicEnemy3",           {Tags.military}),
---     prefab_create(Folders.Agro, "ClassicEnemy4.xml",           "ClassicEnemy4",           {Tags.military}),
---     prefab_create(Folders.Agro, "ClassicFriend1.xml",          "ClassicFriend1",          {Tags.military}),
---     prefab_create(Folders.Agro, "ClassicFriend2.xml",          "ClassicFriend2",          {Tags.military}),
---     prefab_create(Folders.Agro, "ClassicFriend3.xml",          "ClassicFriend3",          {Tags.military}),
---     prefab_create(Folders.Agro, "ClassicFriend4.xml",          "ClassicFriend4",          {Tags.military}),
---     prefab_create(Folders.Agro, "ClassicFriendDefender.xml",   "ClassicFriendDefender",   {Tags.military}),
---     prefab_create(Folders.Agro, "ClassicFriendlySpawner.xml",  "ClassicFriendlySpawner",  {Tags.military}),
---     prefab_create(Folders.Agro, "Friend2.xml",                 "Friend2",                 {Tags.military}),
---     prefab_create(Folders.Agro, "Friend3.xml",                 "Friend3",                 {Tags.military}),
--- }
-
--- Prefabs[Folders.Avertnus] = {
-
---     -- prefab_create(Folders.Avertnus,     "Avertnus.xml",     "Avertnus",     {Tags.militia}),
---     -- prefab_create(Folders.Avertnus,     "Cayo1.xml",        "Cayo1",        {Tags.militia}),
---     -- prefab_create(Folders.Avertnus,     "Cayo1Gear.xml",    "Cayo1Gear",    {Tags.militia}),
---     -- prefab_create(Folders.Avertnus,     "Cayo2.xml",        "Cayo2",        {Tags.militia}),
---     -- prefab_create(Folders.Avertnus,     "Cayo2Gear.xml",    "Cayo2Gear",    {Tags.militia}),
---     -- prefab_create(Folders.Avertnus,     "Cayo3.xml",        "Cayo3",        {Tags.militia}),
---     -- prefab_create(Folders.Avertnus,     "Cayo3Gear.xml",    "Cayo3Gear",    {Tags.militia}),
---     -- prefab_create(Folders.Avertnus,     "Cayo4.xml",        "Cayo4",        {Tags.militia}),
---     -- prefab_create(Folders.Avertnus,     "Cayo4Gear.xml",    "Cayo4Gear",    {Tags.militia}),
---     -- prefab_create(Folders.Avertnus,     "Cayo5.xml",        "Cayo5",        {Tags.militia}),
---     -- prefab_create(Folders.Avertnus,     "Cayo5Gear.xml",    "Cayo5Gear",    {Tags.militia}),
---     -- prefab_create(Folders.Avertnus,     "Cayo6.xml",        "Cayo6",        {Tags.militia}),
---     -- prefab_create(Folders.Avertnus,     "Cayo6Gear.xml",    "Cayo6Gear",    {Tags.militia}),
---     -- prefab_create(Folders.Avertnus,     "Cayo7.xml",        "Cayo7",        {Tags.militia}),
---     -- prefab_create(Folders.Avertnus,     "Cayo7Gear.xml",    "Cayo7Gear",    {Tags.militia}),
---     -- prefab_create(Folders.Avertnus,     "ElRubio.xml",      "ElRubio",      {Tags.militia}),
---     -- ["Avertnus.xml"]       = "Avertnus.xml",
---     -- ["Cayo1.xml"]          = "Cayo1.xml",
---     -- ["Cayo1Gear.xml"]      = "Cayo1Gear.xml",
---     -- ["Cayo2.xml"]          = "Cayo2.xml",
---     -- ["Cayo2Gear.xml"]      = "Cayo2Gear.xml",
---     -- ["Cayo3.xml"]          = "Cayo3.xml",
---     -- ["Cayo3Gear.xml"]      = "Cayo3Gear.xml",
---     -- ["Cayo4.xml"]          = "Cayo4.xml",
---     -- ["Cayo4Gear.xml"]      = "Cayo4Gear.xml",
---     -- ["Cayo5.xml"]          = "Cayo5.xml",
---     -- ["Cayo5Gear.xml"]      = "Cayo5Gear.xml",
---     -- ["Cayo6.xml"]          = "Cayo6.xml",
---     -- ["Cayo6Gear.xml"]      = "Cayo6Gear.xml",
---     -- ["Cayo7.xml"]          = "Cayo7.xml",
---     -- ["Cayo7Gear.xml"]      = "Cayo7Gear.xml",
---     -- ["CayoJeep.xml"]       = "CayoJeep.xml", --> non-ragdoll
---     -- ["CayoTruck.xml"]      = "CayoTruck.xml", --> non-ragdoll
---     -- ["ElRubio.xml"]        = "ElRubio.xml",
 
 
-
---     -- prefab_create(Folders.Avertnus,     "HL2Cargo.xml",           "HL2Cargo",           {Tags.games}),
---     -- prefab_create(Folders.Avertnus,     "HL2Rebel1Gear1.xml",     "HL2Rebel1Gear1",     {Tags.games}),
---     -- prefab_create(Folders.Avertnus,     "HL2Rebel1Gear2.xml",     "HL2Rebel1Gear2",     {Tags.games}),
---     -- prefab_create(Folders.Avertnus,     "HL2Rebel2Gear1.xml",     "HL2Rebel2Gear1",     {Tags.games}),
---     -- prefab_create(Folders.Avertnus,     "HL2Rebel2Gear2.xml",     "HL2Rebel2Gear2",     {Tags.games}),
---     -- prefab_create(Folders.Avertnus,     "HL2Rebel3Gear1.xml",     "HL2Rebel3Gear1",     {Tags.games}),
---     -- prefab_create(Folders.Avertnus,     "HL2Rebel3Gear2.xml",     "HL2Rebel3Gear2",     {Tags.games}),
---     -- prefab_create(Folders.Avertnus,     "HL2Rebel4Gear1.xml",     "HL2Rebel4Gear1",     {Tags.games}),
---     -- prefab_create(Folders.Avertnus,     "HL2Rebel4Gear2.xml",     "HL2Rebel4Gear2",     {Tags.games}),
---     -- prefab_create(Folders.Avertnus,     "OTA1.xml",        "OTA1",        {Tags.games}),
---     -- prefab_create(Folders.Avertnus,     "OTA1Gear.xml",    "OTA1Gear",    {Tags.games}),
---     -- prefab_create(Folders.Avertnus,     "OTA2.xml",        "OTA2",        {Tags.games}),
---     -- prefab_create(Folders.Avertnus,     "OTA2Gear.xml",    "OTA2Gear",    {Tags.games}),
---     -- prefab_create(Folders.Avertnus,     "OTA3.xml",        "OTA3",        {Tags.games}),
---     -- prefab_create(Folders.Avertnus,     "OTA3Gear.xml",    "OTA3Gear",    {Tags.games}),
---     -- prefab_create(Folders.Avertnus,     "Rebel1.xml",      "Rebel1",      {Tags.games}),
---     -- prefab_create(Folders.Avertnus,     "Rebel2.xml",      "Rebel2",      {Tags.games}),
---     -- prefab_create(Folders.Avertnus,     "Rebel3.xml",      "Rebel3",      {Tags.games}),
---     -- prefab_create(Folders.Avertnus,     "Rebel4.xml",      "Rebel4",      {Tags.games}),
---     -- ["HL2Cargo.xml"]       = "HL2Cargo.xml",
---     -- ["HL2Rebel1Gear1.xml"] = "HL2Rebel1Gear1.xml",
---     -- ["HL2Rebel1Gear2.xml"] = "HL2Rebel1Gear2.xml",
---     -- ["HL2Rebel2Gear1.xml"] = "HL2Rebel2Gear1.xml",
---     -- ["HL2Rebel2Gear2.xml"] = "HL2Rebel2Gear2.xml",
---     -- ["HL2Rebel3Gear1.xml"] = "HL2Rebel3Gear1.xml",
---     -- ["HL2Rebel3Gear2.xml"] = "HL2Rebel3Gear2.xml",
---     -- ["HL2Rebel4Gear1.xml"] = "HL2Rebel4Gear1.xml",
---     -- ["HL2Rebel4Gear2.xml"] = "HL2Rebel4Gear2.xml",
---     -- ["OTA1.xml"]           = "OTA1.xml",
---     -- ["OTA1Gear.xml"]       = "OTA1Gear.xml",
---     -- ["OTA2.xml"]           = "OTA2.xml",
---     -- ["OTA2Gear.xml"]       = "OTA2Gear.xml",
---     -- ["OTA3.xml"]           = "OTA3.xml",
---     -- ["OTA3Gear.xml"]       = "OTA3Gear.xml",
---     -- ["Rebel1.xml"]         = "Rebel1.xml",
---     -- ["Rebel2.xml"]         = "Rebel2.xml",
---     -- ["Rebel3.xml"]         = "Rebel3.xml",
---     -- ["Rebel4.xml"]         = "Rebel4.xml",
---     -- ["HL2Truck.xml"]       = "HL2Truck.xml", --> non-ragdoll
---     -- ["TruckHL2.xml"]       = "TruckHL2.xml", --> non-ragdoll
---     -- ["USNam2Gear1.xml"]    = "USNam2Gear1.xml", --> non-ragdoll
-
-
---     -- prefab_create(Folders.Avertnus,     "Insurgent1.xml",           "Insurgent1",           {Tags.games}),
---     -- prefab_create(Folders.Avertnus,     "Insurgent2.xml",           "Insurgent2",           {Tags.games}),
---     -- prefab_create(Folders.Avertnus,     "Insurgent3.xml",           "Insurgent3",           {Tags.games}),
---     -- prefab_create(Folders.Avertnus,     "Insurgent4.xml",           "Insurgent4",           {Tags.games}),
---     -- prefab_create(Folders.Avertnus,     "Insurgent5.xml",           "Insurgent5",           {Tags.games}),
---     -- prefab_create(Folders.Avertnus,     "Insurgent6.xml",           "Insurgent6",           {Tags.games}),
---     -- prefab_create(Folders.Avertnus,     "Insurgent7.xml",           "Insurgent7",           {Tags.games}),
---     -- ["Insurgent1.xml"]     = "Insurgent1.xml",
---     -- ["Insurgent2.xml"]     = "Insurgent2.xml",
---     -- ["Insurgent3.xml"]     = "Insurgent3.xml",
---     -- ["Insurgent4.xml"]     = "Insurgent4.xml",
---     -- ["Insurgent5.xml"]     = "Insurgent5.xml",
---     -- ["Insurgent6.xml"]     = "Insurgent6.xml",
---     -- ["Insurgent7.xml"]     = "Insurgent7.xml",
-
-
---     -- prefab_create(Folders.Avertnus,     "US1.xml",              "US1",           {Tags.military}),
---     -- prefab_create(Folders.Avertnus,     "US2.xml",              "US2",           {Tags.military}),
---     -- prefab_create(Folders.Avertnus,     "US3.xml",              "US3",           {Tags.military}),
---     -- prefab_create(Folders.Avertnus,     "US4.xml",              "US4",           {Tags.military}),
---     -- prefab_create(Folders.Avertnus,     "US5.xml",              "US5",           {Tags.military}),
---     -- prefab_create(Folders.Avertnus,     "USNam1.xml",           "USNam1",        {Tags.military}),
---     -- prefab_create(Folders.Avertnus,     "USNam1Gear1.xml",      "USNam1Gear1",   {Tags.military}),
---     -- prefab_create(Folders.Avertnus,     "USNam1Gear2.xml",      "USNam1Gear2",   {Tags.military}),
---     -- prefab_create(Folders.Avertnus,     "USNam2.xml",           "USNam2",        {Tags.military}),
---     -- prefab_create(Folders.Avertnus,     "USNam2Gear2.xml",      "USNam2Gear2",   {Tags.military}),
---     -- prefab_create(Folders.Avertnus,     "USNam3.xml",           "USNam3",        {Tags.military}),
---     -- prefab_create(Folders.Avertnus,     "USNam3Gear1.xml",      "USNam3Gear1",   {Tags.military}),
---     -- prefab_create(Folders.Avertnus,     "USNam3Gear2.xml",      "USNam3Gear2",   {Tags.military}),
---     -- prefab_create(Folders.Avertnus,     "USNamEngie.xml",       "USNamEngie",    {Tags.military}),
---     -- prefab_create(Folders.Avertnus,     "USNamOfficer1.xml",    "USNamOfficer1", {Tags.military}),
---     -- prefab_create(Folders.Avertnus,     "USNamOfficer2.xml",    "USNamOfficer2", {Tags.military}),
---     -- ["US1.xml"]            = "US1.xml",
---     -- ["US2.xml"]            = "US2.xml",
---     -- ["US3.xml"]            = "US3.xml",
---     -- ["US4.xml"]            = "US4.xml",
---     -- ["US5.xml"]            = "US5.xml",
---     -- ["USNam1.xml"]         = "USNam1.xml",
---     -- ["USNam1Gear1.xml"]    = "USNam1Gear1.xml",
---     -- ["USNam1Gear2.xml"]    = "USNam1Gear2.xml",
---     -- ["USNam2.xml"]         = "USNam2.xml",
---     -- ["USNam2Gear2.xml"]    = "USNam2Gear2.xml",
---     -- ["USNam3.xml"]         = "USNam3.xml",
---     -- ["USNam3Gear1.xml"]    = "USNam3Gear1.xml",
---     -- ["USNam3Gear2.xml"]    = "USNam3Gear2.xml",
---     -- ["USNamEngie.xml"]     = "USNamEngie.xml",
---     -- ["USNamOfficer1.xml"]  = "USNamOfficer1.xml",
---     -- ["USNamOfficer2.xml"]  = "USNamOfficer2.xml",
---     -- ["M16A2.xml"]          = "M16A2.xml", --> non-ragdoll
---     -- ["USNamJeep.xml"]      = "USNamJeep.xml",    --> non-ragdoll
---     -- ["USNamTruck.xml"]     = "USNamTruck.xml",   --> non-ragdoll
---     -- ["vox/truck.xml"]      = "vox/truck.xml",    --> non-ragdoll
---     -- ["vox/vetir.xml"]      = "vox/vetir.xml",    --> non-ragdoll
---     -- ["vox/winky.xml"]      = "vox/winky.xml",    --> non-ragdoll
--- }
-
--- Prefabs[Folders.Darren] = {
+-- PrefabObjects[Folders.Darren] = {
 --     prefab_create(Folders.Darren,   "AKsoldier1.xml",     "AKsoldier1",     {Tags.military}),
 --     prefab_create(Folders.Darren,   "AKsoldier2.xml",     "AKsoldier2",     {Tags.military}),
 --     prefab_create(Folders.Darren,   "AKsoldier3.xml",     "AKsoldier3",     {Tags.military}),
@@ -304,7 +247,7 @@ end
 --     prefab_create(Folders.Darren,   "SSsoldier2.xml",     "SSsoldier2",     {Tags.military})
 -- }
 
--- Prefabs["EVGSTORE's ragdoll pack"] = {
+-- PrefabObjects["EVGSTORE's ragdoll pack"] = {
 --     -- prefab_create(Folders.Agro, "Blindnerd.xml",        "Blindnerd",      {Tags.civilian}),
 --     -- prefab_create(Folders.Agro, "Construction.xml",     "Construction",   {Tags.civilian}),
 --     -- prefab_create(Folders.Agro, "EVGSTORE.xml",         "EVGSTORE",       {Tags.civilian}),
@@ -324,7 +267,7 @@ end
 --     -- ["gaymanlol.xml"]    = "gaymanlol.xml", --> wtf lol
 -- }
 
--- Prefabs[Folders.FoxyPlayzYT] = {
+-- PrefabObjects[Folders.FoxyPlayzYT] = {
 --     -- prefab_create(Folders.Agro, "Chris Redfield.xml",          "Chris Redfield",         {Tags.civilian}),
 --     -- prefab_create(Folders.Agro, "Ethan Winters.xml",           "Ethan Winters",          {Tags.civilian}),
 --     -- prefab_create(Folders.Agro, "FoxyPlayzYT.xml",             "FoxyPlayzYT",            {Tags.youtuber}),
@@ -337,7 +280,7 @@ end
 --     -- ["umbrella corporation2.xml"] = "umbrella corporation2.xml",
 -- }
 
--- Prefabs[Folders.idixticlol] = {
+-- PrefabObjects[Folders.idixticlol] = {
 --     -- prefab_create(Folders.idixticlol, "gordon.xml",        "gordon",       {Tags.teardown}),
 --     -- prefab_create(Folders.idixticlol, "idixticlol.xml",    "idixticlol",   {Tags.military}),
 --     -- prefab_create(Folders.idixticlol, "lee.xml",           "lee",          {Tags.teardown}),
@@ -350,14 +293,14 @@ end
 --     -- ["parisa.xml"]     = "parisa.xml",
 -- }
 
--- Prefabs[Folders.Jacob] = {
+-- PrefabObjects[Folders.Jacob] = {
 --     -- prefab_create(Folders.Jacob,    "WW2SovietSoldier.xml",    "WW2SovietSoldier",      {Tags.military}),
 --     -- prefab_create(Folders.Jacob,    "WW2SovietTanker.xml",     "WW2SovietTanker",       {Tags.military}),
 --     -- ["WW2SovietSoldier.xml"] = "WW2SovietSoldier.xml",
 --     -- ["WW2SovietTanker.xml"]  = "WW2SovietTanker.xml",
 -- }
 
--- Prefabs[Folders.Morvex] = {
+-- PrefabObjects[Folders.Morvex] = {
 --     -- prefab_create(Folders.Morvex,    "female_01.xml",    "female_01",      {Tags.civilian}),
 --     -- prefab_create(Folders.Morvex,    "female_02.xml",    "female_02",      {Tags.civilian}),
 --     -- prefab_create(Folders.Morvex,    "female_03.xml",    "female_03",      {Tags.civilian}),
@@ -392,7 +335,7 @@ end
 --     -- ["male_08.xml"]    = "male_08.xml",
 -- }
 
--- Prefabs[Folders.OffensivePDF] = {
+-- PrefabObjects[Folders.OffensivePDF] = {
 --     -- prefab_create(Folders.OffensivePDF,    "AmbulancePilot.xml",   "AmbulancePilot",   {Tags.emt, Tags.pilot}),
 --     -- prefab_create(Folders.OffensivePDF,    "Human3.xml",           "Human3",           {Tags.civilian}),
 --     -- prefab_create(Folders.OffensivePDF,    "Human4.xml",           "Human4",           {Tags.civilian}),
@@ -414,7 +357,7 @@ end
 -- }
 
 --> fix
--- Prefabs[Folders.Sitters] = {
+-- PrefabObjects[Folders.Sitters] = {
 --     ["AOAOAOAOAO.xml"]               = "AOAOAOAOAO.xml",
 --     ["BusinessManSitting.xml"]       = "BusinessManSitting.xml",
 --     ["DrunkBusinessManOuterCar.xml"] = "DrunkBusinessManOuterCar.xml",
@@ -442,7 +385,7 @@ end
 --     ["WW2AmericanTanker.xml"]        = "WW2AmericanTanker.xml",
 -- }
 
--- Prefabs[Folders.SnakeyWakey] = {
+-- PrefabObjects[Folders.SnakeyWakey] = {
 
 --     -- prefab_create(Folders.SnakeyWakey,    "106.xml",        "106",       {Tags.creature}),
 --     -- prefab_create(Folders.SnakeyWakey,    "3008-1.xml",     "3008-1",    {Tags.creature}),
@@ -616,7 +559,7 @@ end
 --     -- ["WW2German2.xml"]             = "WW2German2.xml",
 -- }
 
--- Prefabs[Folders.Squareblock] = {
+-- PrefabObjects[Folders.Squareblock] = {
 --     -- prefab_create(Folders.Squareblock,    "Astronaut.xml",          "Astronaut",        {Tags.civilian}),
 --     -- prefab_create(Folders.Squareblock,    "BlueWhiteShirt.xml",     "BlueWhiteShirt",   {Tags.civilian}),
 --     -- prefab_create(Folders.Squareblock,    "Fancy.xml",              "Fancy",            {Tags.civilian}),

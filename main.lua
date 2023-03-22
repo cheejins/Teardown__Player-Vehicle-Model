@@ -1,12 +1,14 @@
 #include "TDSU/tdsu.lua"
+#include "scripts/ui.lua"
 #include "scripts/prefab_data.lua"
 #include "scripts/prefab_tags.lua"
 #include "scripts/ragdoll_poser.lua"
 
---================================================================
+----------------------------------------------------------------
 -- Vehicle Player Model
 -- By: Cheejins
---================================================================
+----------------------------------------------------------------
+
 
 
 CFG = {
@@ -15,9 +17,7 @@ CFG = {
     SPAWN_ALL_PREFABS = true,
 }
 
-
 Prefab_Positions = {}
-
 CurrentPrefabPath = "-"
 
 
@@ -39,7 +39,6 @@ function init()
     end
 
 end
-
 
 function tick()
 
@@ -74,9 +73,7 @@ end
 
 function draw()
 
-    uiSetFont(24)
-
-    -- draw_selection_ui()
+    draw_ui()
 
     draw_current_prefab_path()
 
@@ -211,7 +208,7 @@ end
 
 function SpawnAllPrefabs()
 
-    local spacing = 5
+    local spacing = 10
     local offset = 10
     local i, j = 1, 1
     for _, prefab_category in pairs(PrefabObjects) do
@@ -221,7 +218,7 @@ function SpawnAllPrefabs()
             local spawn_xml = prefab.path
             local tr = Transform(Vec((i-offset)*spacing, 0, j*spacing))
 
-            table.insert(Prefab_Positions, { pos = tr.pos, title = prefab})
+            table.insert(Prefab_Positions, { pos = tr.pos, title = prefab.title})
 
             Spawn(spawn_xml, tr)
 
@@ -261,25 +258,19 @@ function draw_prefab_positions()
 
         local isInfront = TransformToLocalPoint(camTr, pos.pos)[3] < 0
         local angle = QuatAngle(camTr.rot, QuatLookAt(camTr.pos, pos.pos)) < 10
-        local dist = VecDist(camTr.pos, pos.pos)
+        -- local dist = VecDist(camTr.pos, pos.pos)
 
         if isInfront and angle then
-
             UiPush()
                 local x,y = UiWorldToPixel(pos.pos)
                 UiTranslate(x,y)
-                uiSetFont(20)
+                uiSetFont(24)
                 UiColor(1,1,1, 1)
-                UiAlign("center middle")
+                UiAlign("left middle")
                 UiText(pos.title)
-
-                local s = 2000/VecDist(camTr.pos, pos.pos)
-                UiImageBox("ui/common/box-outline-6.png", s, s, 6, 6)
-
+                UiText(pos.title)
+                UiText(pos.title)
             UiPop()
-
-            break
-
         end
 
     end
@@ -297,3 +288,4 @@ function draw_current_prefab_path()
 
     UiPop()
 end
+

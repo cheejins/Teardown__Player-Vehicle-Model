@@ -47,6 +47,7 @@ function init_prefab_tags()
     }
 
 
+    --- Make sure there are no duplicate tag names.
     Tags = {
 
         --- Loose tags that can be applied to any prefab.
@@ -65,13 +66,13 @@ function init_prefab_tags()
             youtuber        = tag_create("youtuber",        "Youtubers"),
         },
 
-        -- Game specific tags.
+        --- Game specific tags.
         Games = {
             halfLife        = tag_create("halfLife",        "Half Life"),
             tombRaider      = tag_create("tombRaider",      "Tomb Raider"),
         },
 
-        -- TV and Movies specific tags.
+        --- TV and Movies specific tags.
         TV = {
             breakingBad     = tag_create("breakingBad",     "Breaking Bad"),
         },
@@ -79,7 +80,7 @@ function init_prefab_tags()
     }
 
 
-    --- Tags with a common parent. Used for querying only.
+    --- Tags with a common parent. Used for querying/filtering only.
     TagGroups = {
         creators   = { Tags.Common.dev, Tags.Common.modder, Tags.Common.youtuber },
         combatives = { Tags.Common.military, Tags.Common.militia, Tags.Common.police },
@@ -94,28 +95,45 @@ function init_prefab_database()
     Prefabs = {}
 
 
-    -- Simple list of all prefab objects.
+    -- Simple array of all prefab objects.
     Prefabs.all = {}
-    for key, prefabObject in pairs(PrefabObjects) do
-        table.insert(Prefabs.all, prefabObject)
+    for index, value in pairs(PrefabObjects) do
+        for key, prefabObject in pairs(value) do
+            table.insert(Prefabs.all, prefabObject)
+        end
     end
 
 
     -- A table for each tag which holds all relevant prefabObjects.
     Prefabs.tags = {}
-    for _, prefabObject in ipairs(PrefabObjects) do -- Objects returned by prefab_create()
-        for _, tag in ipairs(prefabObject.tags) do
+    for _, prefabFolder in pairs(PrefabObjects) do -- Root tables are associated with prefab folders.
+        for _, prefabObject in ipairs(prefabFolder) do -- Objects returned by prefab_create()
+            for _, tag in ipairs(prefabObject.tags) do
 
-            table.insert(Prefabs.tags, tag, prefabObject)
+                if not Prefabs.tags[tag.key] then Prefabs.tags[tag.key] = {} end
+                table.insert(Prefabs.tags[tag.key], prefabObject)
 
+            end
         end
     end
 
 
-    -- Prefabs.groups = {}
-    -- for key, tags in pairs(TagGroups) do
-    -- end
+    -- Corresponds to TagGroups table. I know this is kind of all slow method but the data set is small.
+    Prefabs.groups = {}
+    for groupKey, groupTags in pairs(TagGroups) do
 
-    PrintTable(Prefabs.tags, 2)
+        Prefabs.groups[groupKey] = {}
+
+        for tagKey, tagPrefabs in pairs(Prefabs.tags) do
+            -- Insert all prefabs of a tag into group
+            for _, prefab in ipairs(tagPrefabs) do
+                table.insert(Prefabs.groups[groupKey], prefab)
+            end
+        end
+
+    end
+
+
+    -- PrintTable(Prefabs.all, 1)
 
 end
