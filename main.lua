@@ -1,20 +1,24 @@
 #include "TDSU/tdsu.lua"
-#include "scripts/ui.lua"
+#include "scripts/ui/ui.lua"
+#include "scripts/ui/ui_debug.lua"
 #include "scripts/prefab_data.lua"
 #include "scripts/prefab_tags.lua"
 #include "scripts/ragdoll_poser.lua"
 
-----------------------------------------------------------------
+------------------------------------------------------------------------------------------------
 -- Vehicle Player Model
 -- By: Cheejins
-----------------------------------------------------------------
-
+------------------------------------------------------------------------------------------------
 
 
 CFG = {
-    RUN_POSING = true,
-    RUN_PRINTER = false,
-    SPAWN_ALL_PREFABS = true,
+    RUN_POSING = true, -- Pose the current ragdoll.
+    RUN_PRINTER = false, -- Prints the transform values for a manually posed ragdoll.
+    SPAWN_ALL_PREFABS = true, -- Spawn all ragdoll entities.
+}
+
+Ui = {
+    interact = true,
 }
 
 Prefab_Positions = {}
@@ -69,19 +73,17 @@ function update()
 
     update_DriverPosing()
 
+    CheckRespawnCount()
+
+
 end
 
 function draw()
 
+    uiSetFont(24)
+    UiAlign("top left")
+
     draw_ui()
-
-    draw_current_prefab_path()
-
-    CheckRespawnCount()
-
-    if CFG.SPAWN_ALL_PREFABS then
-        draw_prefab_positions()
-    end
 
 end
 
@@ -276,16 +278,3 @@ function draw_prefab_positions()
     end
 
 end
-
-function draw_current_prefab_path()
-    UiPush()
-
-        uiSetFont(32)
-        UiTranslate(UiCenter(), UiHeight() - 300)
-        UiAlign("center middle")
-
-        UiText(CurrentPrefabPath)
-
-    UiPop()
-end
-
