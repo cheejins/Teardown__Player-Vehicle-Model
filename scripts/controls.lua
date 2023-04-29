@@ -3,7 +3,7 @@ function init_controls()
     Controls = {}
 
     Controls.toggles = {
-        showui = { key = "f1", toggled = false }
+        showui = { key = "f1", toggled = true }
     }
 
 end

@@ -17,7 +17,7 @@
 CFG = {
     RUN_POSING = true, -- Pose the current ragdoll.
     RUN_PRINTER = false, -- Prints the transform values for a manually posed ragdoll.
-    SPAWN_ALL_PREFABS = true, -- Spawn all ragdoll entities.
+    SPAWN_ALL_PREFABS = false, -- Spawn all ragdoll entities.
 }
 
 Ui = {
@@ -35,6 +35,7 @@ function init()
     RespawnCount = 0
     RespawnCountWarning = 10
 
+    init_draw()
     init_controls()
 
     init_prefab_tags()
@@ -99,7 +100,7 @@ end
 function InstantiateRagdoll(path_xml)
 
     if CFG.RUN_PRINTER then
-        local entities = Spawn("MOD/sit.xml", Transform(Vec(0, 0, 0)), true)
+        local entities = Spawn("MOD/prefabs/sit.xml", Transform(Vec(0, 0, 0)), true)
         print("Running printer. Regular spawn cancelled.")
         return
     end

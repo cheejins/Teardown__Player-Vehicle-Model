@@ -9,7 +9,7 @@ RagdollBodies = {}
 RagdollOtherBodies = {}
 
 
--- From sit.xml using MOD/ragdoll_xml_extractor.lua to extract and print the lua data to Thomasim's extrenal console.
+-- From MOD/prefabs/sit.xml using MOD/ragdoll_xml_extractor.lua to extract and print the lua data to Thomasim's extrenal console.
 BodyRelTransforms = {
     RRLEG = Transform(Vec(-0.30000004172325, -0.70000004768372, 0.099999971687794), Quat(-0.25881904363632, 0, 0, 0.96592581272125)),
     Head  = Transform(Vec(0, 0, 0), Quat(0, 0, 0, 1)),
