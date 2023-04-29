@@ -1,9 +1,12 @@
 #include "TDSU/tdsu.lua"
-#include "scripts/ui/ui.lua"
-#include "scripts/ui/ui_debug.lua"
+#include "scripts/controls.lua"
 #include "scripts/prefab_data.lua"
+#include "scripts/prefab_filtering.lua"
 #include "scripts/prefab_tags.lua"
 #include "scripts/ragdoll_poser.lua"
+#include "scripts/ui/ui.lua"
+#include "scripts/ui/ui_debug.lua"
+
 
 ------------------------------------------------------------------------------------------------
 -- Vehicle Player Model
@@ -32,6 +35,7 @@ function init()
     RespawnCount = 0
     RespawnCountWarning = 10
 
+    init_controls()
 
     init_prefab_tags()
     init_prefab_objects()
@@ -46,7 +50,7 @@ end
 
 function tick()
 
-    -- DebugLine(Vec(0,0,0), Vec(0,2,0), 1,1,0, 1)
+    tick_controls()
 
     -- Initial body spawn.
     if not Spawned then
@@ -83,7 +87,9 @@ function draw()
     uiSetFont(24)
     UiAlign("top left")
 
-    draw_ui()
+    if Controls.toggles.showui.toggled then
+        draw_ui()
+    end
 
 end
 

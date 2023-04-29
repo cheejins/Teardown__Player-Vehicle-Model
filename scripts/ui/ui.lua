@@ -1,3 +1,7 @@
+function init_draw()
+
+end
+
 function draw_ui()
     UiPush()
 
@@ -12,14 +16,14 @@ function draw_ui()
 
     UiPop()
 
-    UiPush()
-        draw_debug_prefab_info()
-        draw_debug_current_prefab_path()
+    -- UiPush()
+    --     draw_debug_prefab_info()
+    --     draw_debug_current_prefab_path()
 
-        if CFG.SPAWN_ALL_PREFABS then
-            draw_prefab_positions()
-        end
-    UiPop()
+    --     if CFG.SPAWN_ALL_PREFABS then
+    --         draw_prefab_positions()
+    --     end
+    -- UiPop()
 
 end
 
@@ -31,6 +35,7 @@ function draw_container(w, h, a)
 
         UiColor(0, 0, 0, a or 0.8)
         UiRect(w, h)
+
 
     UiPop()
 end
