@@ -4,9 +4,9 @@ ImageBoxOutline = 'ui/common/box-outline-6.png'
 function init_draw()
 
     FontSizes = {
-        title   = 48,
-        header  = 32,
-        text    = 20,
+        title   = 50,
+        header  = 36,
+        text    = 24,
     }
 
     Pad = 10
@@ -79,6 +79,8 @@ function draw_container_title(w, h)
         UiImageBox(ImageBoxOutline, w, h, 6, 6)
 
         UiTranslate(Pad, Pad)
+        UiWindow(w - Pad*2, h, true)
+
         uiSetFont(FontSizes.title)
         UiText("Vehicle Player Model")
 
@@ -95,6 +97,45 @@ function draw_container_filter(w, h)
         UiColor(1,1,1, 0.5)
         UiImageBox(ImageBoxOutline, w, h, 6, 6)
 
+        UiTranslate(Pad, Pad)
+        UiWindow(w - Pad*2, h, true)
+
+        UiPush()
+            uiSetFont(FontSizes.header)
+            UiText("Tag Selection")
+
+            UiAlign("right top")
+            UiTranslate(w-(Pad*2), 0)
+
+            UiButtonImageBox(ImageBoxSolid, 6, 6, 0.2,0.2,0.8, 0.8)
+            if UiTextButton("Clear Filters", 200, FontSizes.header) then
+                beep()
+            end
+        UiPop()
+
+        UiTranslate(0, FontSizes.header)
+        UiTranslate(0, FontSizes.header)
+
+
+        uiSetFont(FontSizes.text)
+        UiAlign("left middle")
+
+        local keys = GetTableKeys(Prefabs.tags)
+        table.sort(keys)
+        for index, prefab in ipairs(keys) do
+
+            UiButtonImageBox(ImageBoxSolid, 6, 6, 0.2,0.2,0.2, 0.8)
+            if UiTextButton(" ", w/2, FontSizes.header) then
+                beep()
+            end
+
+            UiColor(1,1,1,1)
+            UiText(prefab)
+
+            UiTranslate(0, FontSizes.header + Pad)
+
+        end
+
     UiPop()
 end
 
@@ -103,6 +144,9 @@ function draw_container_previews(w, h)
 
         UiColor(1,1,1, 0.5)
         UiImageBox(ImageBoxOutline, w, h, 6, 6)
+
+        UiTranslate(Pad, Pad)
+        UiWindow(w - Pad*2, h, true)
 
     UiPop()
 end

@@ -25,6 +25,14 @@ do
         return keys_count
     end
 
+    function GetTableKeys(tb)
+        local keys = {}
+        for key, value in pairs(tb) do
+            table.insert(keys, key)
+        end
+        return keys
+    end
+
     ---Get a random index of a table (not the value).
     function GetRandomIndex(tb)
         local i = math.random(1, #tb)
