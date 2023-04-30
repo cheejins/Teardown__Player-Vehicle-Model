@@ -30,7 +30,7 @@ function draw_ui()
 
     UiPush()
     --     draw_debug_prefab_info()
-        draw_debug_current_prefab_path()
+        -- draw_debug_current_prefab_path()
 
         if CFG.SPAWN_ALL_PREFABS then
             draw_prefab_positions()
@@ -100,27 +100,29 @@ function draw_container_filter(w, h)
         UiTranslate(Pad, Pad)
         UiWindow(w - Pad*2, h, true)
 
-        -- Header
+        --> Header
         UiPush()
             uiSetFont(FontSizes.header)
             UiText("Tag Selection")
 
-            UiAlign("right top")
-            UiTranslate(w-(Pad*2), 0)
+            -- UiAlign("right top")
+            -- UiTranslate(w-(Pad*2), 0)
+            UiTranslate(0, FontSizes.header)
 
-            UiButtonImageBox(ImageBoxSolid, 6, 6, 0.8,0.2,0.2, 0.8)
-            if UiTextButton("Clear All", 120, FontSizes.header) then
-                FilterTags = {}
-            end
-
-            UiTranslate(-120 - Pad, 0)
             UiButtonImageBox(ImageBoxSolid, 6, 6, 0.2,0.2,0.8, 0.8)
             if UiTextButton("Select All", 120, FontSizes.header) then
                 FilterTags = GetTableKeys(Prefabs.tags)
             end
 
+            UiTranslate(120 + Pad, 0)
+            UiButtonImageBox(ImageBoxSolid, 6, 6, 0.8,0.2,0.2, 0.8)
+            if UiTextButton("Clear All", 120, FontSizes.header) then
+                FilterTags = {}
+            end
+
         UiPop()
 
+        UiTranslate(0, FontSizes.header)
         UiTranslate(0, FontSizes.header)
         UiTranslate(0, FontSizes.header)
         UiTranslate(0, FontSizes.header)
@@ -129,7 +131,7 @@ function draw_container_filter(w, h)
         uiSetFont(FontSizes.text)
         UiAlign("left middle")
 
-        -- List
+        --> Button-list of filter tags
         local keys = GetTableKeys(Prefabs.tags)
         table.sort(keys)
         for index, prefab in ipairs(keys) do
@@ -170,19 +172,37 @@ function draw_container_previews(w, h)
         UiWindow(w - Pad*2, h, true)
         w, h = UiWidth(), UiHeight()
 
-        local cellsCountHorizontal = 4
+        local cellsCountHorizontal = 5
+        local cellsCountVertical = 6
         local cellW = w/cellsCountHorizontal
+        local yUsed = 0
+
+
+        -- local queryIndex = 1
+        -- local queryLastIndex = #Prefabs.all
 
         UiColor(1,1,1, 1)
-        for y = 1, cellsCountHorizontal do
-            UiPush()
-                for x = 1, cellsCountHorizontal do
-                    UiImageBox(ImageBoxOutline, cellW - Pad/2, cellW - Pad/2, 6, 6)
-                    UiTranslate(cellW, 0)
-                end
-            UiPop()
-            UiTranslate(0, cellW)
-        end
+        UiPush()
+            for y = 1, cellsCountVertical do
+                UiPush()
+                    for x = 1, cellsCountHorizontal do
+                        UiImageBox(ImageBoxOutline, cellW - Pad/2, cellW - Pad/2, 6, 6)
+                        UiWordWrap(cellsCountHorizontal)
+                        UiTranslate(cellW, 0)
+                    end
+                UiPop()
+                UiTranslate(0, cellW)
+                yUsed = yUsed + cellW
+            end
+        UiPop()
+
+
+        local yRemaining = h - yUsed + Pad
+        UiTranslate(0, yUsed)
+        uiDrawSquare()
+
+        yRemaining = yRemaining - Pad*4
+        UiRect(2, yRemaining)
 
     UiPop()
 end
