@@ -33,6 +33,30 @@ do
         return keys
     end
 
+    function TableContainsValue(tb, val)
+        for index, value in ipairs(tb) do
+            if value == val then
+                return index, value
+            end
+        end
+    end
+
+    ---comment
+    ---@param tb table table to check
+    ---@param value any Check if value is in tb.
+    function TableInsertUnique(tb, value)
+        if not TableContainsValue(tb, value) then
+            table.insert(tb, value)
+        end
+    end
+
+    function TableRemoveUnique(tb, value)
+        local i, v = TableContainsValue(tb, value)
+        if v then
+            table.remove(tb, i)
+        end
+    end
+
     ---Get a random index of a table (not the value).
     function GetRandomIndex(tb)
         local i = math.random(1, #tb)

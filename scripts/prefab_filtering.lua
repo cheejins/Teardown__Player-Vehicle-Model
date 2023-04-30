@@ -1,4 +1,4 @@
-Query = {}
+FilterTags = {}
 
 function filter_update()
 

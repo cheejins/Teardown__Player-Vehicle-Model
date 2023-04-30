@@ -51,39 +51,35 @@ function init_prefab_tags()
     Tags = {
 
         --- Loose tags that can be applied to any prefab.
-        Common = {
-            business        = tag_create("business",        "Business"),
-            civilian        = tag_create("civilian",        "Civilian"),
-            creature        = tag_create("creature",        "Creatures"),
-            emt             = tag_create("emt",             "EMT"),
-            military        = tag_create("military",        "Military"),
-            militia         = tag_create("militia",         "Militia"),
-            dev             = tag_create("dev",             "Dev"),
-            modder          = tag_create("modder",          "Modders"),
-            pilot           = tag_create("pilot",           "Pilots"),
-            police          = tag_create("police",          "Police"),
-            teardown        = tag_create("teardown",        "Teardown"),
-            youtuber        = tag_create("youtuber",        "Youtubers"),
-        },
+        business        = tag_create("business",        "Business"),
+        civilian        = tag_create("civilian",        "Civilian"),
+        creature        = tag_create("creature",        "Creatures"),
+        emt             = tag_create("emt",             "EMT"),
+        military        = tag_create("military",        "Military"),
+        militia         = tag_create("militia",         "Militia"),
+        dev             = tag_create("dev",             "Dev"),
+        modder          = tag_create("modder",          "Modders"),
+        pilot           = tag_create("pilot",           "Pilots"),
+        police          = tag_create("police",          "Police"),
+        teardown        = tag_create("teardown",        "Teardown"),
+        youtuber        = tag_create("youtuber",        "Youtubers"),
+
 
         --- Game specific tags.
-        Games = {
-            halfLife        = tag_create("halfLife",        "Half Life"),
-            tombRaider      = tag_create("tombRaider",      "Tomb Raider"),
-        },
+        halfLife        = tag_create("halfLife",        "Half Life"),
+        tombRaider      = tag_create("tombRaider",      "Tomb Raider"),
+
 
         --- TV and Movies specific tags.
-        TV = {
-            breakingBad     = tag_create("breakingBad",     "Breaking Bad"),
-        },
+        breakingBad     = tag_create("breakingBad",     "Breaking Bad"),
 
     }
 
 
     --- Tags with a common parent. Used for querying/filtering only.
     TagGroups = {
-        creators   = { Tags.Common.dev, Tags.Common.modder, Tags.Common.youtuber },
-        combatives = { Tags.Common.military, Tags.Common.militia, Tags.Common.police },
+        creators   = { Tags.dev, Tags.modder, Tags.youtuber },
+        combatives = { Tags.military, Tags.militia, Tags.police },
     }
 
 end
