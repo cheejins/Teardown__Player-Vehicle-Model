@@ -165,56 +165,97 @@ end
 function draw_container_previews(w, h)
     UiPush()
 
+        -- Background
         UiColor(0,0,0, BgAlpha)
         UiImageBox(ImageBoxSolid, w, h, 6, 6)
 
+        -- Create window
         UiTranslate(Pad, Pad)
         UiWindow(w - Pad*2, h, true)
         w, h = UiWidth(), UiHeight()
 
-        local cellsCountHorizontal = 5
-        local cellsCountVertical = 6
-        local cellW = w/cellsCountHorizontal
+
+        local cellsCountHorizontal = 4
+        local cellsCountVertical = 5
+        local cellSize = w/cellsCountHorizontal
         local yUsed = 0
 
 
         local queryIndex = 1
         local queryLastIndex = #Prefabs.all
+        local queryMouseHover = 1
 
-        UiColor(1,1,1, 1)
+
         uiSetFont(FontSizes.text)
         UiPush()
-        for y = 1, cellsCountVertical do
+            local gridH = cellsCountVertical * cellSize
+            UiWindow(w, gridH, true)
 
-            UiPush()
-                for x = 1, cellsCountHorizontal do
+            --> Scroll
+            Scroll_Previews_Amount = Scroll_Previews_Amount or 0
+            local scroll_dx = InputValue("mousewheel")
+            if UiIsMouseInRect(w,h) and scroll_dx ~= 0 then
+                Scroll_Previews_Amount = Scroll_Previews_Amount + scroll_dx * cellSize/3
+                Scroll_Previews_Amount = clamp(Scroll_Previews_Amount, -math.huge, 0)
+            end
+            UiTranslate(0, Scroll_Previews_Amount)
 
-                    UiImageBox(ImageBoxOutline, cellW - Pad/2, cellW - Pad/2, 6, 6)
-                    UiWordWrap(FontSizes.text * cellsCountHorizontal)
-                    UiText(x .. ", " .. y)
-                    UiTranslate(cellW, 0)
+            for y = 1, cellsCountVertical do
 
-                    queryIndex = queryIndex + 1
-                    if queryIndex >= queryLastIndex then break end
+                UiPush()
+                    for x = 1, cellsCountHorizontal do
 
-                end
-            UiPop()
+                        local prefab = Prefabs.all[queryIndex]
 
-            UiTranslate(0, cellW)
-            yUsed = yUsed + cellW
 
-            if queryIndex >= queryLastIndex then break end
+                        local color = {1,1,1, 1}
+                        if prefab == SelectedPrefab then
+                            color = { 1/2,1,1/2, 1 }
+                        elseif not UiIsMouseInRect(cellSize - Pad, cellSize - Pad) then
+                            color = { 1/2,1/2,1/2, 1 }
+                        end
+                        UiColor(unpack(color))
 
-        end
+
+                        UiButtonImageBox(ImageBoxOutline, 6,6, unpack(color))
+                        if UiTextButton(" ", cellSize - Pad/2, cellSize - Pad/2) then
+                            SelectedPrefab = prefab
+                        end
+                        UiWordWrap((FontSizes.text * cellsCountHorizontal) - Pad)
+                        UiText(prefab.title)
+
+                        UiTranslate(cellSize, 0)
+
+
+                        queryIndex = queryIndex + 1
+                        if queryIndex >= queryLastIndex then break end
+
+                    end
+                UiPop()
+
+                UiTranslate(0, cellSize)
+                yUsed = yUsed + cellSize
+
+                if queryIndex >= queryLastIndex then break end
+
+            end
         UiPop()
 
 
         local yRemaining = h - yUsed + Pad
         UiTranslate(0, yUsed)
-        uiDrawSquare()
 
         yRemaining = yRemaining - Pad*4
-        UiImageBox(ImageBoxOutline, w - Pad/2, yRemaining+Pad, 6,6)
+        UiImageBox(ImageBoxOutline, w - Pad/2, yRemaining+Pad, 6, 6)
+
+
+        if SelectedPrefab then
+            UiText(SelectedPrefab.title)
+        end
+
+
+        DebugWatch("#Prefabs.all", #Prefabs.all)
+        DebugWatch("Scroll_Previews_Amount", Scroll_Previews_Amount)
 
     UiPop()
 end
