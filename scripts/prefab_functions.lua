@@ -11,3 +11,7 @@
 
 ]]
 
+function SetRagdoll(prefab)
+    DeleteRagdoll()
+    InstantiateRagdoll(prefab.path)
+end

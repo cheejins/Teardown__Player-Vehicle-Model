@@ -2,6 +2,7 @@
 #include "scripts/controls.lua"
 #include "scripts/prefab_data.lua"
 #include "scripts/prefab_filtering.lua"
+#include "scripts/prefab_functions.lua"
 #include "scripts/prefab_tags.lua"
 #include "scripts/ragdoll_poser.lua"
 #include "scripts/ui/ui.lua"

@@ -7,17 +7,9 @@ function filter_update()
 
     QueryResults = {}
 
-
-    local keys = GetTableKeys(Prefabs.tags)
-    table.sort(keys)
-
-    for key, tag in ipairs(keys) do
-        if QueryTags[key] then -- Checks if query contains specific tag
-
-            for index, prefab in ipairs(Prefabs.tags[tag]) do -- Adds all tags to the result.
-                TableInsertUnique(QueryResults, prefab)
-            end
-
+    for key, tag in pairs(QueryTags) do
+        for index, prefab in pairs(Prefabs.tags[tag]) do -- Adds all tags to the result.
+            TableInsertUnique(QueryResults, prefab)
         end
     end
 

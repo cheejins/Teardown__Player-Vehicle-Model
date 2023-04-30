@@ -103,6 +103,8 @@ function draw_container_filter(w, h)
         UiTranslate(Pad, Pad)
         UiWindow(w - Pad*2, h, true)
 
+        local updateFilter = false
+
         --> Header
         UiPush()
             uiSetFont(FontSizes.header)
@@ -115,12 +117,14 @@ function draw_container_filter(w, h)
             UiButtonImageBox(ImageBoxSolid, 6, 6, 0.2,0.2,0.8, 0.8)
             if UiTextButton("Select All", 120, FontSizes.header) then
                 QueryTags = GetTableKeys(Prefabs.tags)
+                updateFilter = true
             end
 
             UiTranslate(120 + Pad, 0)
             UiButtonImageBox(ImageBoxSolid, 6, 6, 0.8,0.2,0.2, 0.8)
             if UiTextButton("Clear All", 120, FontSizes.header) then
                 QueryTags = {}
+                updateFilter = true
             end
         UiPop()
 
@@ -136,9 +140,9 @@ function draw_container_filter(w, h)
         UiAlign("left middle")
         local keys = GetTableKeys(Prefabs.tags)
         table.sort(keys)
-        for index, prefab in ipairs(keys) do
+        for index, tag_id in ipairs(keys) do
 
-            local selected = TableContainsValue(QueryTags, prefab)
+            local selected = TableContainsValue(QueryTags, tag_id)
 
             if selected then
                 UiButtonImageBox(ImageBoxSolid, 6, 6, 0.2,0.5,0.2, 0.8)
@@ -148,19 +152,23 @@ function draw_container_filter(w, h)
 
             if UiTextButton(" ", w, FontSizes.header) then
                 if selected then
-                    TableRemoveUnique(QueryTags, prefab)
+                    TableRemoveUnique(QueryTags, tag_id)
                 else
-                    TableInsertUnique(QueryTags, prefab)
+                    TableInsertUnique(QueryTags, tag_id)
                 end
-
-                filter_update()
+                updateFilter = true
             end
 
             UiColor(1,1,1,1)
-            UiText(Tags[prefab].title)
+            UiText(Tags[tag_id].title)
 
             UiTranslate(0, FontSizes.header + Pad)
 
+        end
+
+        if updateFilter then
+            filter_update()
+            beep()
         end
 
     UiPop()
@@ -226,6 +234,7 @@ function draw_container_previews(w, h)
                         UiButtonImageBox(ImageBoxOutline, 6, 6, unpack(color))
                         if UiTextButton(" ", cellSize - Pad/2, cellSize - Pad/2) then
                             SelectedPrefab = prefab
+                            SetRagdoll(SelectedPrefab)
                         end
                         UiWordWrap((FontSizes.text * cellsCountHorizontal) - Pad)
                         UiText(prefab.title)
