@@ -115,19 +115,19 @@ function init_prefab_database()
 
 
     -- Corresponds to TagGroups table. I know this is kind of all slow method but the data set is small.
-    Prefabs.groups = {}
-    for groupKey, groupTags in pairs(TagGroups) do
+    -- Prefabs.groups = {}
+    -- for groupKey, groupTags in pairs(TagGroups) do
 
-        Prefabs.groups[groupKey] = {}
+    --     Prefabs.groups[groupKey] = {}
 
-        for tagKey, tagPrefabs in pairs(Prefabs.tags) do
-            -- Insert all prefabs of a tag into group
-            for _, prefab in ipairs(tagPrefabs) do
-                table.insert(Prefabs.groups[groupKey], prefab)
-            end
-        end
+    --     for tagKey, tagPrefabs in pairs(Prefabs.tags) do
+    --         -- Insert all prefabs of a tag into group
+    --         for _, prefab in ipairs(tagPrefabs) do
+    --             table.insert(Prefabs.groups[groupKey], prefab)
+    --         end
+    --     end
 
-    end
+    -- end
 
 
     -- PrintTable(Prefabs.all, 1)

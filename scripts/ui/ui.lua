@@ -1,6 +1,9 @@
 ImageBoxSolid = 'ui/common/box-solid-6.png'
 ImageBoxOutline = 'ui/common/box-outline-6.png'
 
+SelectedPrefab = nil
+
+
 function init_draw()
 
     FontSizes = {
@@ -29,7 +32,7 @@ function draw_ui()
     UiPop()
 
     UiPush()
-    --     draw_debug_prefab_info()
+        -- draw_debug_prefab_info()
         -- draw_debug_current_prefab_path()
 
         if CFG.SPAWN_ALL_PREFABS then
@@ -111,32 +114,31 @@ function draw_container_filter(w, h)
 
             UiButtonImageBox(ImageBoxSolid, 6, 6, 0.2,0.2,0.8, 0.8)
             if UiTextButton("Select All", 120, FontSizes.header) then
-                FilterTags = GetTableKeys(Prefabs.tags)
+                QueryTags = GetTableKeys(Prefabs.tags)
             end
 
             UiTranslate(120 + Pad, 0)
             UiButtonImageBox(ImageBoxSolid, 6, 6, 0.8,0.2,0.2, 0.8)
             if UiTextButton("Clear All", 120, FontSizes.header) then
-                FilterTags = {}
+                QueryTags = {}
             end
-
         UiPop()
 
+
         UiTranslate(0, FontSizes.header)
         UiTranslate(0, FontSizes.header)
         UiTranslate(0, FontSizes.header)
         UiTranslate(0, FontSizes.header)
 
-
-        uiSetFont(FontSizes.text)
-        UiAlign("left middle")
 
         --> Button-list of filter tags
+        uiSetFont(FontSizes.text)
+        UiAlign("left middle")
         local keys = GetTableKeys(Prefabs.tags)
         table.sort(keys)
         for index, prefab in ipairs(keys) do
 
-            local selected = TableContainsValue(FilterTags, prefab)
+            local selected = TableContainsValue(QueryTags, prefab)
 
             if selected then
                 UiButtonImageBox(ImageBoxSolid, 6, 6, 0.2,0.5,0.2, 0.8)
@@ -146,10 +148,12 @@ function draw_container_filter(w, h)
 
             if UiTextButton(" ", w, FontSizes.header) then
                 if selected then
-                    TableRemoveUnique(FilterTags, prefab)
+                    TableRemoveUnique(QueryTags, prefab)
                 else
-                    TableInsertUnique(FilterTags, prefab)
+                    TableInsertUnique(QueryTags, prefab)
                 end
+
+                filter_update()
             end
 
             UiColor(1,1,1,1)
@@ -179,16 +183,18 @@ function draw_container_previews(w, h)
         local cellsCountVertical = 5
         local cellSize = w/cellsCountHorizontal
         local yUsed = 0
+        local gridH = cellsCountVertical * cellSize
 
 
+        local dataSet = QueryResults
         local queryIndex = 1
-        local queryLastIndex = #Prefabs.all
-        local queryMouseHover = 1
+        local queryLastIndex = #dataSet
+        local rows = math.ceil(#dataSet / cellsCountHorizontal)
+        --todo Add tooltip details for icon hover
 
 
         uiSetFont(FontSizes.text)
         UiPush()
-            local gridH = cellsCountVertical * cellSize
             UiWindow(w, gridH, true)
 
             --> Scroll
@@ -196,16 +202,16 @@ function draw_container_previews(w, h)
             local scroll_dx = InputValue("mousewheel")
             if UiIsMouseInRect(w,h) and scroll_dx ~= 0 then
                 Scroll_Previews_Amount = Scroll_Previews_Amount + scroll_dx * cellSize/3
-                Scroll_Previews_Amount = clamp(Scroll_Previews_Amount, -math.huge, 0)
+                Scroll_Previews_Amount = clamp(Scroll_Previews_Amount, (-rows+cellsCountVertical/2) * cellSize, 0)
             end
             UiTranslate(0, Scroll_Previews_Amount)
 
-            for y = 1, cellsCountVertical do
-
+            --> Previews grid
+            for y = 1, rows do
                 UiPush()
                     for x = 1, cellsCountHorizontal do
 
-                        local prefab = Prefabs.all[queryIndex]
+                        local prefab = dataSet[queryIndex]
 
 
                         local color = {1,1,1, 1}
@@ -217,12 +223,18 @@ function draw_container_previews(w, h)
                         UiColor(unpack(color))
 
 
-                        UiButtonImageBox(ImageBoxOutline, 6,6, unpack(color))
+                        UiButtonImageBox(ImageBoxOutline, 6, 6, unpack(color))
                         if UiTextButton(" ", cellSize - Pad/2, cellSize - Pad/2) then
                             SelectedPrefab = prefab
                         end
                         UiWordWrap((FontSizes.text * cellsCountHorizontal) - Pad)
                         UiText(prefab.title)
+
+
+                        -- if UiIsMouseInRect(w, gridH) then --! Bleeds into details panel.
+                        --     DebugWatch("ingrid", GetTime())
+                        -- end
+
 
                         UiTranslate(cellSize, 0)
 
@@ -233,20 +245,22 @@ function draw_container_previews(w, h)
                     end
                 UiPop()
 
-                UiTranslate(0, cellSize)
-                yUsed = yUsed + cellSize
-
                 if queryIndex >= queryLastIndex then break end
+
+                UiTranslate(0, cellSize) -- Moves to next row
+                yUsed = yUsed + cellSize
 
             end
         UiPop()
 
 
-        local yRemaining = h - yUsed + Pad
-        UiTranslate(0, yUsed)
+        UiTranslate(0, cellsCountVertical * cellSize)
 
-        yRemaining = yRemaining - Pad*4
-        UiImageBox(ImageBoxOutline, w - Pad/2, yRemaining+Pad, 6, 6)
+
+        -- Draw details container.
+        local detailsW = w - Pad/2
+        local detailsH = h - (cellsCountVertical * cellSize) - (Pad*2)
+        UiImageBox(ImageBoxOutline, detailsW, detailsH, 6, 6)
 
 
         if SelectedPrefab then
@@ -254,7 +268,7 @@ function draw_container_previews(w, h)
         end
 
 
-        DebugWatch("#Prefabs.all", #Prefabs.all)
+        DebugWatch("#dataSet", #dataSet)
         DebugWatch("Scroll_Previews_Amount", Scroll_Previews_Amount)
 
     UiPop()
