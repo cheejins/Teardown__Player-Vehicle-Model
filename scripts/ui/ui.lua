@@ -46,7 +46,7 @@ function draw_container(w, h, a)
         local marginY = 0
         local marginX = 0
 
-        if Ui.interact then UiMakeInteractive() end
+        if Ui.interact and not Controls.holds.disableInteractive.held then UiMakeInteractive() end
 
 
         UiColor(0, 0, 0, a or 0.8)
@@ -178,22 +178,34 @@ function draw_container_previews(w, h)
         local yUsed = 0
 
 
-        -- local queryIndex = 1
-        -- local queryLastIndex = #Prefabs.all
+        local queryIndex = 1
+        local queryLastIndex = #Prefabs.all
 
         UiColor(1,1,1, 1)
+        uiSetFont(FontSizes.text)
         UiPush()
-            for y = 1, cellsCountVertical do
-                UiPush()
-                    for x = 1, cellsCountHorizontal do
-                        UiImageBox(ImageBoxOutline, cellW - Pad/2, cellW - Pad/2, 6, 6)
-                        UiWordWrap(cellsCountHorizontal)
-                        UiTranslate(cellW, 0)
-                    end
-                UiPop()
-                UiTranslate(0, cellW)
-                yUsed = yUsed + cellW
-            end
+        for y = 1, cellsCountVertical do
+
+            UiPush()
+                for x = 1, cellsCountHorizontal do
+
+                    UiImageBox(ImageBoxOutline, cellW - Pad/2, cellW - Pad/2, 6, 6)
+                    UiWordWrap(FontSizes.text * cellsCountHorizontal)
+                    UiText(x .. ", " .. y)
+                    UiTranslate(cellW, 0)
+
+                    queryIndex = queryIndex + 1
+                    if queryIndex >= queryLastIndex then break end
+
+                end
+            UiPop()
+
+            UiTranslate(0, cellW)
+            yUsed = yUsed + cellW
+
+            if queryIndex >= queryLastIndex then break end
+
+        end
         UiPop()
 
 
@@ -202,7 +214,7 @@ function draw_container_previews(w, h)
         uiDrawSquare()
 
         yRemaining = yRemaining - Pad*4
-        UiRect(2, yRemaining)
+        UiImageBox(ImageBoxOutline, w - Pad/2, yRemaining+Pad, 6,6)
 
     UiPop()
 end
