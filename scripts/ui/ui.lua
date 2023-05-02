@@ -30,16 +30,6 @@ function draw_ui()
         UiPop()
 
     UiPop()
-
-    UiPush()
-        -- draw_debug_prefab_info()
-        -- draw_debug_current_prefab_path()
-
-        if CFG.SPAWN_ALL_PREFABS then
-            draw_prefab_positions()
-        end
-    UiPop()
-
 end
 
 
@@ -49,7 +39,7 @@ function draw_container(w, h, a)
         local marginY = 0
         local marginX = 0
 
-        if Ui.interact and not Controls.holds.disableInteractive.held then UiMakeInteractive() end
+        if Ui.interact and not Controls.down.disableInteractive.held then UiMakeInteractive() end
 
 
         UiColor(0, 0, 0, a or 0.8)

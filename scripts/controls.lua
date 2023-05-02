@@ -3,10 +3,15 @@ function init_controls()
     Controls = {}
 
     Controls.toggles = {
-        showui = { key = "f1", toggled = true }
+        showui = { key = "f1", toggled = false },
+        viewer_focus = { key = "f2", toggled = false },
     }
 
-    Controls.holds = {
+    Controls.down = {
+        disableInteractive = { key = "rmb", held = false }
+    }
+
+    Controls.pressed = {
         disableInteractive = { key = "rmb", held = false }
     }
 
@@ -20,7 +25,7 @@ function tick_controls()
         end
     end
 
-    for _, value in pairs(Controls.holds) do
+    for _, value in pairs(Controls.down) do
         value.held = InputDown(value.key)
     end
 

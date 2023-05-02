@@ -1,3 +1,22 @@
+_Entity_Transform_Functions_Get = {
+    ["shape"]     = _G["GetShapeWorldTransform"],
+    ["body"]      = _G["GetBodyTransform"],
+    ["light"]     = _G["GetLightTransform"],
+    ["vehicle"]   = _G["GetVehicleTransform"],
+    ["location"]  = _G["GetLocationTransform"],
+    ["trigger"]   = _G["GetTriggerTransform"],
+}
+
+_Entity_Transform_Functions_Set = {
+    ["shape"]     = _G["SetShapeWorldTransform"],
+    ["body"]      = _G["SetBodyTransform"],
+    ["light"]     = _G["SetLightTransform"],
+    ["vehicle"]   = _G["SetVehicleTransform"],
+    ["location"]  = _G["SetLocationTransform"],
+    ["trigger"]   = _G["SetTriggerTransform"],
+}
+
+
 --[[TIMERS]]
 do
 
@@ -174,5 +193,35 @@ function ExtractEntityByTag(entities, tag)
     end
 
     print("Entity: " .. tag .. " not found.")
+
+end
+
+---Automatically matches the entity type and returns
+---@param entity any
+---@return table transform
+---@return string entity_type
+function GetEntityTransform(entity)
+
+    local entity_type = GetEntityType(entity)
+
+    if _Entity_Transform_Functions_Get[entity_type] then
+        return _Entity_Transform_Functions_Get[entity_type](entity), entity_type
+    else
+        print("ERROR: GetEntityTransform()", "No entity type match found: " .. entity_type)
+    end
+
+end
+
+---Automatically matches the entity type and sets the transform
+---@param entity any
+function SetEntityTransform(entity, tr)
+
+    local entity_type = GetEntityType(entity)
+
+    if _Entity_Transform_Functions_Set[entity_type] then
+        _Entity_Transform_Functions_Set[entity_type](entity, tr)
+    else
+        print("ERROR: SetEntityTransform()", "No entity type match found: " .. entity_type)
+    end
 
 end
