@@ -222,10 +222,10 @@ function draw_container_previews(w, h)
                         local prefab = dataSet[queryIndex]
 
 
-                        local color = {1,1,1, 1}
+                        local color = { 1/2,1/2,1/2, 1 }
                         if prefab == SelectedPrefab then
                             color = { 1/2,1,1/2, 1 }
-                        elseif not UiIsMouseInRect(cellSize - Pad, cellSize - Pad) then
+                        elseif UiIsMouseInRect(cellSize - Pad, cellSize - Pad) then
                             color = { 1/2,1/2,1/2, 1 }
                         end
                         UiColor(unpack(color))

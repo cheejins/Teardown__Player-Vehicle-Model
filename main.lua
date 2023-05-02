@@ -1,7 +1,7 @@
 #include "TDSU/tdsu.lua"
 #include "scripts/controls.lua"
 #include "scripts/prefab_data.lua"
-#include "scripts/prefab_filtering.lua"
+#include "scripts/prefab_filter.lua"
 #include "scripts/prefab_functions.lua"
 #include "scripts/prefab_tags.lua"
 #include "scripts/ragdoll_poser.lua"
@@ -18,8 +18,10 @@
 CFG = {
     RUN_POSING = true, -- Pose the current ragdoll.
     RUN_PRINTER = false, -- Prints the transform values for a manually posed ragdoll.
-    SPAWN_ALL_PREFABS = false, -- Spawn all ragdoll entities.
+    SPAWN_ALL_PREFABS = true, -- Spawn all ragdoll entities.
 }
+
+SpawnedPrefabs = {}
 
 Ui = {
     interact = true,
@@ -216,6 +218,8 @@ function GetRandomPrefab()
 end
 
 function SpawnAllPrefabs()
+
+    SpawnedPrefabs = {}
 
     local spacing = 10
     local offset = 10
