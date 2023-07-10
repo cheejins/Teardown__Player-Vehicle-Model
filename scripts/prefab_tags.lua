@@ -1,32 +1,9 @@
-RootPath = "MOD/main/Gore Ragdolls 2/" --- Path to the root ragdoll prefabs folder.
-
-
-
---[[
-
-    > Database
-        > Parses date from all prefab objects and creates a global database that is used for querying.
-        - databse
-            - tags
-
-    > Prefab
-        - path: full path
-        - data: query data
-            - pack
-            - tags
-                - all
-                - groups
-
-    > Common
-        - tags
-            all
-            groups
-
-    > Requirements
-        - Sorting
-
-]]
-
+function tag_create(key, title)
+    return {
+        key   = key,
+        title = title,
+    }
+end
 
 
 function init_prefab_tags()
@@ -36,6 +13,7 @@ function init_prefab_tags()
         Agro            = "Agro pack/",
         Avertnus        = "Avertnus's ragdoll pack/",
         Darren          = "Darren's ragdoll pack/",
+        EVGSTORE        = "EVGSTORE's ragdoll pack/",
         FoxyPlayzYT     = "FoxyPlayzYT's ragdoll pack/",
         idixticlol      = "idixticlol's ragdoll pack/",
         Jacob           = "Jacob's ragdoll pack/",
@@ -62,6 +40,7 @@ function init_prefab_tags()
         pilot           = tag_create("pilot",           "Pilots"),
         police          = tag_create("police",          "Police"),
         teardown        = tag_create("teardown",        "Teardown"),
+        tvShows         = tag_create("tvShows",         "TV Shows"),
         youtuber        = tag_create("youtuber",        "Youtubers"),
 
 

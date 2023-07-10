@@ -1,0 +1,6 @@
+Set windows custom res to 1024x1024
+Settings:
+    100% render scale
+    High settings
+    90 FOV
+    All effects off.

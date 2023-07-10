@@ -23,10 +23,10 @@ function tick_viewer()
     --     return
     -- end
 
-    if InputPressed("f3") then
+    if InputPressed("f4") then
         ViewerIndex = GetTablePreviousIndex(ViewerPrefabs, ViewerIndex)
         beep()
-    elseif InputPressed("f4") then
+    elseif InputPressed("f3") then
         ViewerIndex = GetTableNextIndex(ViewerPrefabs, ViewerIndex)
         beep()
     end
@@ -44,6 +44,11 @@ function tick_viewer()
     if Controls.toggles.viewer_focus.toggled then
         -- viewer_focus(focusPrefab)
         viewer_view(focusPrefab)
+
+        if InputPressed("space") then
+            print(focusPrefab.path)
+        end
+
     end
 
 

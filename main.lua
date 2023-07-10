@@ -15,6 +15,7 @@
 -- By: Cheejins
 ------------------------------------------------------------------------------------------------
 
+RootPath = "MOD/main/Gore Ragdolls 2/" --- Path to the root ragdoll prefabs folder.
 
 SpawnedPrefabs = {}
 CurrentPrefabPath = "-"
