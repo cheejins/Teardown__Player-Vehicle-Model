@@ -224,6 +224,11 @@ function IsStringInteger(data)
     return true
 end
 
+function string_pad(str1, pad)
+    local format = "%-" .. (pad or 20) .. "s"
+    return string.format(format, str1)
+end
+
 
 -- function CallOnce()
 -- end

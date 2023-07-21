@@ -1,6 +1,7 @@
 QueryTags = {} --- Pairs table. Each key corresponds to a tag string.
 QueryResults = {} --- ipairs table of all relevant prefabs.
 
+DidFilter = false
 
 -- Creates a new table of results based on the search.
 function filter_update()
@@ -12,5 +13,7 @@ function filter_update()
             TableInsertUnique(QueryResults, prefab)
         end
     end
+
+    DidFilter = true
 
 end

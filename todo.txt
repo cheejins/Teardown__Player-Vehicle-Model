@@ -1,2 +1,8 @@
-Head turning
-Live preview
+Features
+    Head turning
+    Arm animations
+    Live selection preview (hover over thumbnail)
+
+
+Options
+    Mors Longa Override

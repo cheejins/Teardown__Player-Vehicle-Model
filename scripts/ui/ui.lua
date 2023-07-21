@@ -13,6 +13,7 @@ function init_draw()
     }
 
     Pad = 10
+    Pad2 = Pad*2
     BgAlpha = 0.9
 
 end
@@ -174,35 +175,37 @@ function draw_container_previews(w, h)
         -- Create window
         UiTranslate(Pad, Pad)
         UiWindow(w - Pad*2, h, true)
-        w, h = UiWidth(), UiHeight()
-
+        w, h = UiWidth(), UiHeight() - Pad2
 
         local cellsCountHorizontal = 4
         local cellsCountVertical = 5
-        local cellSize = w/cellsCountHorizontal
+        local cellW = w/(cellsCountHorizontal)
+        local cellH = h/(cellsCountVertical)
         local yUsed = 0
-        local gridH = cellsCountVertical * cellSize
-
+        local gridH = ((cellsCountVertical - 1) * cellH)
 
         local dataSet = QueryResults
         local queryIndex = 1
         local queryLastIndex = #dataSet
-        local rows = math.ceil(#dataSet / cellsCountHorizontal)
+        local rows = math.ceil(#dataSet / cellsCountVertical)
         --todo Add tooltip details for icon hover
 
-
+        -- Grid container
+        UiColor(1,1,1, BgAlpha)
+        UiImageBox(ImageBoxOutline, w, gridH, 6, 6)
         uiSetFont(FontSizes.text)
         UiPush()
             UiWindow(w, gridH, true)
 
             --> Scroll
             Scroll_Previews_Amount = Scroll_Previews_Amount or 0
+            if DidFilter then Scroll_Previews_Amount = 0 end
             local scroll_dx = InputValue("mousewheel")
             if UiIsMouseInRect(w,h) and scroll_dx ~= 0 then
-                Scroll_Previews_Amount = Scroll_Previews_Amount + scroll_dx * cellSize/3
-                Scroll_Previews_Amount = clamp(Scroll_Previews_Amount, (-rows+cellsCountVertical/2) * cellSize, 0)
+                Scroll_Previews_Amount = Scroll_Previews_Amount + scroll_dx * cellW/3
+                Scroll_Previews_Amount = clamp(Scroll_Previews_Amount, (-rows+cellsCountVertical/2) * cellW, 0)
             end
-            UiTranslate(0, Scroll_Previews_Amount)
+            UiTranslate(2, Scroll_Previews_Amount)
 
             --> Previews grid
             for y = 1, rows do
@@ -215,14 +218,14 @@ function draw_container_previews(w, h)
                         local color = { 1/2,1/2,1/2, 1 }
                         if prefab == SelectedPrefab then
                             color = { 1/2,1,1/2, 1 }
-                        elseif UiIsMouseInRect(cellSize - Pad, cellSize - Pad) then
+                        elseif UiIsMouseInRect(cellW - Pad, cellW - Pad) then
                             color = { 1/2,1/2,1/2, 1 }
                         end
                         UiColor(unpack(color))
 
 
                         UiButtonImageBox(ImageBoxOutline, 6, 6, unpack(color))
-                        if UiTextButton(" ", cellSize - Pad/2, cellSize - Pad/2) then
+                        if UiTextButton(" ", cellW - Pad/2, cellW - Pad/2) then
                             SelectedPrefab = prefab
                             SetRagdoll(SelectedPrefab)
                         end
@@ -235,7 +238,7 @@ function draw_container_previews(w, h)
                         -- end
 
 
-                        UiTranslate(cellSize, 0)
+                        UiTranslate(cellW, 0)
 
 
                         queryIndex = queryIndex + 1
@@ -246,26 +249,36 @@ function draw_container_previews(w, h)
 
                 if queryIndex >= queryLastIndex then break end
 
-                UiTranslate(0, cellSize) -- Moves to next row
-                yUsed = yUsed + cellSize
+                UiTranslate(0, cellW) -- Moves to next row
+                yUsed = yUsed + cellW
 
             end
         UiPop()
 
-
-        UiTranslate(0, cellsCountVertical * cellSize)
-
+        UiTranslate(0, gridH)
 
         -- Draw details container.
-        local detailsW = w - Pad/2
-        local detailsH = h - (cellsCountVertical * cellSize) - (Pad*2)
+        local detailsW = w
+        local detailsH = cellH
         UiImageBox(ImageBoxOutline, detailsW, detailsH, 6, 6)
 
-
         if SelectedPrefab then
-            UiText(SelectedPrefab.title)
-        end
 
+            UiPush()
+                UiText("Name:")
+                UiTranslate(FontSizes.text * 5)
+                UiText(SelectedPrefab.title)
+            UiPop()
+
+            UiTranslate(0, FontSizes.text)
+
+            UiPush()
+                UiText("Author:")
+                UiTranslate(FontSizes.text * 5)
+                UiText(SelectedPrefab.folder)
+            UiPop()
+
+        end
 
         DebugWatch("#dataSet", #dataSet)
         DebugWatch("Scroll_Previews_Amount", Scroll_Previews_Amount)

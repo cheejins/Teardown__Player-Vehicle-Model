@@ -25,9 +25,7 @@ function init_prefab_tags()
     }
 
 
-    --- Make sure there are no duplicate tag names.
-    Tags = {
-
+    Tags = { --- Make sure there are no duplicate tag names.
         --- Loose tags that can be applied to any prefab.
         business        = tag_create("business",        "Business"),
         civilian        = tag_create("civilian",        "Civilian"),

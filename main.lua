@@ -14,6 +14,9 @@
 -- Vehicle Player Model
 -- By: Cheejins
 ------------------------------------------------------------------------------------------------
+-- Please do not reupload this mod without permission. If you would like to submit ragdolls
+-- to be part of this mod, you can contact me on discord @Cheejins
+------------------------------------------------------------------------------------------------
 
 RootPath = "MOD/main/Gore Ragdolls 2/" --- Path to the root ragdoll prefabs folder.
 
@@ -71,6 +74,8 @@ function tick()
 
     DebugWatch("#RagdollBodies", GetTableSize(RagdollBodies))
     DebugWatch("#RagdollOtherBodies", #RagdollOtherBodies)
+
+    DidFilter = false
 
 end
 

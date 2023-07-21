@@ -1,13 +1,12 @@
 [h1] About [/h1]
     Who's driving that car? You will (almost) never have to ask that again! Easily
-
     Over 200 ragdoll models to choose from!
-
 
 [h1] Future Update Ideas [/h1]
     Ragdoll player (will allow you to place additional ragdolls to fill more seats in a vehicle.)
     Save ragdolls for specific vehicles (create a pseudo hash using all of the vehicle's entities for the script to identify unique vehicles regardless of how they're spawned) 
     Ragdoll animations like turning the wheel and rotating head towards where the camera is looking.
+    Sub-tags for tags like military that have many sub categories and eras.
 
 
 [h1] Submit Your Models! [/h1]

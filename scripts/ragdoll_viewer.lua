@@ -19,14 +19,14 @@ end
 
 function tick_viewer()
 
-    -- if not CFG.SPAWN_ALL_PREFABS then
-    --     return
-    -- end
+    if not CFG.SPAWN_ALL_PREFABS then
+        return
+    end
 
-    if InputPressed("f4") then
+    if InputPressed("f3") then
         ViewerIndex = GetTablePreviousIndex(ViewerPrefabs, ViewerIndex)
         beep()
-    elseif InputPressed("f3") then
+    elseif InputPressed("f4") then
         ViewerIndex = GetTableNextIndex(ViewerPrefabs, ViewerIndex)
         beep()
     end
