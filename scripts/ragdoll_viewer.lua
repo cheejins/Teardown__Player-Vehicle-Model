@@ -17,6 +17,7 @@ function init_viewer()
 
 end
 
+-- Sets camera to selected ragdoll for preview screenshots.
 function tick_viewer()
 
     if not CFG.SPAWN_ALL_PREFABS then
@@ -52,8 +53,8 @@ function tick_viewer()
     end
 
 
-    DebugWatch("ViewerIndex", ViewerIndex)
-    DebugWatch("Viewer selectedRagdoll", focusPrefab)
+    -- DebugWatch("ViewerIndex", ViewerIndex)
+    -- DebugWatch("Viewer selectedRagdoll", focusPrefab)
 
 end
 

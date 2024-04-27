@@ -23,10 +23,62 @@ BodyRelTransforms = {
     RLEG  = Transform(Vec(-0.30000001192093, -0.70000004768372, -0.20000001788139), Quat(0.81915205717087, 5.014364745648e-08, 7.1612547003497e-08, -0.5735764503479)),
 }
 
+RagdollPreviewRot = Quat()
+RagdollPreviewPosDist = { val = 2, min = 1.5, max = 4, scale = 0.01 }
+RagdollPreviewZoomFOV = { val = 100, min = 30, max = 140, scale = 5 }
+
 
 function update_DriverPosing()
 
-    if GetPlayerVehicle() ~= 0 then -- Move player body to driving position.
+    if GetPlayerVehicle() == 0 then -- Store the player body somewhere in another freaking universe.
+
+        if Controls.toggles.showui.toggled then -- Position the ragdoll in the center of the UI
+
+            for key, body in pairs(RagdollBodies) do
+
+                local bodyTr   = GetBodyTransform(body)
+                local infrontOfCamPos = TransformToParentPoint(GetCameraTransform(), Vec(0, 0.25, -RagdollPreviewPosDist.val))
+                -- local infrontOfCamRot = TransformToParentPoint(GetCameraTransform(), Transform(Vec(), RagdollPreviewRot))
+                local driverTr = TransformToParentTransform(Transform(infrontOfCamPos, QuatRotateQuat(GetCameraTransform().rot, RagdollPreviewRot)), BodyRelTransforms[key])
+
+                ConstrainPosition(body, GetWorldBody(), bodyTr.pos, driverTr.pos)
+                ConstrainOrientation(body, GetWorldBody(), bodyTr.rot, driverTr.rot)
+
+                -- Position all other ragdoll bodies relative to head.
+                for index, rs in ipairs(RagdollOtherBodies) do
+
+                    local body_other = rs.body
+                    local headRelTr = rs.headRelTr
+
+                    local bodyTr_other = GetBodyTransform(body_other)
+                    local tr = TransformToParentTransform(GetBodyTransform(RagdollBodies["Head"]), headRelTr)
+
+                    if CFG.DEBUG then
+                        DebugCross(tr.pos, 1,1,0, 1)
+                    end
+
+                    ConstrainPosition(body_other, GetWorldBody(), bodyTr_other.pos, tr.pos)
+                    ConstrainOrientation(body_other, GetWorldBody(), bodyTr_other.rot, tr.rot)
+
+                end
+
+            end
+
+        else -- Store the ragdoll off screen
+
+            for key, body in pairs(RagdollBodies) do
+                SetBodyTransform(body, TransformToParentTransform(GetCameraTransform(), Transform(Vec(0,1000,0))))
+                SetBodyVelocity(body, Vec(0,0,0))
+            end
+
+            for key, body in pairs(RagdollOtherBodies) do
+                SetBodyTransform(body, TransformToParentTransform(GetCameraTransform(), Transform(Vec(0,1000,0))))
+                SetBodyVelocity(body, Vec(0,0,0))
+            end
+
+        end
+
+    else -- Move player body to driving position.
 
         -- Vehicle.
         local vBody = GetVehicleBody(GetPlayerVehicle())
@@ -38,7 +90,8 @@ function update_DriverPosing()
         driverPos = VecAdd(driverPos, vehicleVel)
 
         -- Make model face forward.
-        vehicleTr.rot = QuatLookAt(vehicleTr.pos, TransformToParentPoint(vehicleTr, Vec(0,0,1)))
+        -- vehicleTr.rot = QuatLookAt(vehicleTr.pos, TransformToParentPoint(vehicleTr, Vec(0,0,1)))
+        vehicleTr.rot = QuatRotateQuat(vehicleTr.rot, QuatEuler(0, -180, 0))
 
         -- Position the ragdoll
         for key, body in pairs(RagdollBodies) do
@@ -49,7 +102,9 @@ function update_DriverPosing()
             ConstrainPosition(body, GetWorldBody(), bodyTr.pos, driverTr.pos)
             ConstrainOrientation(body, GetWorldBody(), bodyTr.rot, driverTr.rot)
 
-            DebugCross(bodyTr.pos, 1,0,0, 1)
+            if CFG.DEBUG then
+                DebugCross(bodyTr.pos, 1,0,0, 1)
+            end
 
         end
 
@@ -63,20 +118,13 @@ function update_DriverPosing()
             local tr = TransformToParentTransform(GetBodyTransform(RagdollBodies["Head"]), headRelTr)
             tr.pos = VecAdd(tr.pos, vehicleVel)
 
-            DebugCross(tr.pos, 1,1,0, 1)
+            if CFG.DEBUG then
+                DebugCross(tr.pos, 1,1,0, 1)
+            end
 
             ConstrainPosition(body, GetWorldBody(), bodyTr.pos, tr.pos)
             ConstrainOrientation(body, GetWorldBody(), bodyTr.rot, tr.rot)
 
-        end
-
-
-    else -- Store the player body somewhere in another freaking universe.
-
-        -- Position the ragdoll
-        for key, body in pairs(RagdollBodies) do
-            SetBodyTransform(body, Transform(Vec(0,1000,0)))
-            SetBodyVelocity(body, Vec(0,0,0))
         end
 
     end

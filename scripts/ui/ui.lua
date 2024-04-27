@@ -58,6 +58,12 @@ function draw_container(w, h, a)
         marginX = marginX + w/3
         draw_container_filter(marginX, h - marginY)
 
+        -- Ragdoll preview section
+        UiTranslate(marginX, 0)
+        draw_container_ragdoll_preview(marginX, h - marginY)
+        UiTranslate(-marginX, 0)
+
+
         -- Previews section
         marginX = marginX + w/3
         UiTranslate(marginX, 0)
@@ -81,6 +87,62 @@ function draw_container_title(w, h)
         UiTranslate(0, FontSizes.title)
         uiSetFont(FontSizes.header)
         UiText("By: Cheejins")
+
+    UiPop()
+end
+
+function draw_container_ragdoll_preview(w, h)
+    UiPush()
+
+        UiColor(0,0,0, BgAlpha)
+        -- UiImageBox(ImageBoxOutline, w, h, 6, 6)
+
+        local scroll = InputValue("mousewheel")
+
+        if UiIsMouseInRect(w, h) then
+
+            for key, body in pairs(RagdollBodies) do DrawBodyOutline(body, 1, 1, 1, 0.5) end
+            for key, body in pairs(RagdollOtherBodies) do DrawBodyOutline(body, 1, 1, 1, 0.5) end
+
+            if GetPlayerVehicle() == 0 then
+
+                if Controls.toggles.showui.toggled then
+
+                    if scroll ~= 0 then
+                        RagdollPreviewPosDist.val = clamp(RagdollPreviewPosDist.val + (scroll * RagdollPreviewPosDist.scale * 10), RagdollPreviewPosDist.min, RagdollPreviewPosDist.max)
+                    end
+
+                    if InputDown("lmb") or InputDown("shoot") then
+                        RagdollPreviewRot = QuatRotateQuat(RagdollPreviewRot, QuatEuler(
+                            0,
+                            InputValue("mousedx"),
+                            -- InputValue("mousedy"),
+                            0
+                        ))
+                        -- RagdollPreviewPosDist.val = clamp(RagdollPreviewPosDist.val + (-InputValue("mousedy") * RagdollPreviewPosDist.scale), RagdollPreviewPosDist.min, RagdollPreviewPosDist.max)
+                    end
+
+                end
+
+            else
+
+                if scroll ~= 0 then
+                    RagdollPreviewZoomFOV.val = clamp(RagdollPreviewZoomFOV.val + (-scroll * RagdollPreviewZoomFOV.scale), RagdollPreviewZoomFOV.min, RagdollPreviewZoomFOV.max)
+                end
+
+            end
+
+        end
+
+        if Controls.toggles.showui.toggled and GetPlayerVehicle() ~= 0 then
+            SetCameraFov(RagdollPreviewZoomFOV.val)
+        end
+
+        local ragdollPreviewDir = QuatToDir(RagdollPreviewRot)
+        RagdollPreviewRot = DirToQuat(ragdollPreviewDir)
+
+        UiTranslate(Pad, Pad)
+        UiWindow(w - Pad*2, h, true)
 
     UiPop()
 end
@@ -230,7 +292,11 @@ function draw_container_previews(w, h)
                             SetRagdoll(SelectedPrefab)
                         end
                         UiWordWrap((FontSizes.text * cellsCountHorizontal) - Pad)
-                        UiText(prefab.title)
+
+                        UiPush()
+                            UiTranslate(4,4)
+                            UiText(prefab.title)
+                        UiPop()
 
 
                         -- if UiIsMouseInRect(w, gridH) then --! Bleeds into details panel.
@@ -280,8 +346,8 @@ function draw_container_previews(w, h)
 
         end
 
-        DebugWatch("#dataSet", #dataSet)
-        DebugWatch("Scroll_Previews_Amount", Scroll_Previews_Amount)
+        -- DebugWatch("#dataSet", #dataSet)
+        -- DebugWatch("Scroll_Previews_Amount", Scroll_Previews_Amount)
 
     UiPop()
 end

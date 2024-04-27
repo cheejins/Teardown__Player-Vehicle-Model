@@ -1,16 +1,18 @@
-[h1] About [/h1]
-    Who's driving that car? You will (almost) never have to ask that again! Easily
-    Over 200 ragdoll models to choose from!
+This mod dynamically works with any Gore Ragdoll model.
+Over 200 ragdoll models to choose from!
+
+[h1] Notice [/h1]
+Mod is still WIP.
 
 [h1] Future Update Ideas [/h1]
     Ragdoll player (will allow you to place additional ragdolls to fill more seats in a vehicle.)
-    Save ragdolls for specific vehicles (create a pseudo hash using all of the vehicle's entities for the script to identify unique vehicles regardless of how they're spawned) 
+    Save ragdoll positioning presets for specific vehicles.
     Ragdoll animations like turning the wheel and rotating head towards where the camera is looking.
     Sub-tags for tags like military that have many sub categories and eras.
-
 
 [h1] Submit Your Models! [/h1]
     Would you like to see your ragdolls in this mod? Feel free to message me on discord at @Cheejins
 
 
 Thanks to SnakeyWakey, Offensive PDF and the rest of the Teardown modding community for all of the different ragdoll models.
+Thanks to SnakeyWakey, Offensive PDF and the rest of the Teardown modding community for creating all of the different ragdoll models.

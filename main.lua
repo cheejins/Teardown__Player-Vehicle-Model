@@ -28,10 +28,15 @@ CFG = {
     RUN_POSING = true, -- Pose the current ragdoll.
     RUN_PRINTER = false, -- Prints the transform values for a manually posed ragdoll.
     SPAWN_ALL_PREFABS = true, -- Spawn all ragdoll entities.
+    DEBUG = true,
 }
 
 Ui = {
     interact = true,
+}
+
+REG = {
+    string_QueryTags = "savegame.mod.QueryTags"
 }
 
 
@@ -52,8 +57,14 @@ function init()
         SpawnAllPrefabs()
     end
 
-    init_viewer()
+    local savedQueryTags = util.unserialize(REG.string_QueryTags)
+    print(savedQueryTags)
+    -- for index, value in ipairs(savedQueryTags) do
+    --     print(value)
+    -- end
+    -- QueryTags = 
 
+    init_viewer()
 
 end
 
@@ -68,12 +79,13 @@ function tick()
         Spawned = true
     end
 
-    if InputPressed("mmb") then
-        SetRandomRagdoll()
-    end
+    -- if InputPressed("mmb") then
+    --     SetRandomRagdoll()
+    -- end
 
-    DebugWatch("#RagdollBodies", GetTableSize(RagdollBodies))
-    DebugWatch("#RagdollOtherBodies", #RagdollOtherBodies)
+    -- DebugWatch("#RagdollBodies", GetTableSize(RagdollBodies))
+    -- DebugWatch("#RagdollOtherBodies", #RagdollOtherBodies)
+    -- DebugWatch("QueryTags", table.concat(QueryTags))
 
     DidFilter = false
 
@@ -90,7 +102,6 @@ function update()
     update_DriverPosing()
 
     CheckRespawnCount()
-
 
 end
 
