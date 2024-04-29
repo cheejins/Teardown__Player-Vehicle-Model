@@ -8,8 +8,8 @@
 #include "scripts/ragdoll_viewer.lua"
 #include "scripts/ui/ui.lua"
 #include "scripts/ui/ui_debug.lua"
-]]
 #include "TDSU/tdsu.lua"
+]]
 
 
 ------------------------------------------------------------------------------------------------

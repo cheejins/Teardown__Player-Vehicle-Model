@@ -21,20 +21,16 @@ function InstantiateRagdoll(path_xml)
         return
     end
 
-    local xml = path_xml or GetRandomPrefab()
+    local xml = SelectedPrefab.path
 
     CurrentPrefabPath = xml
 
     local entities = Spawn(xml, Transform(Vec(0,1000,0)), true)
-
     local otherBodies = {}
-
     for _, ent in ipairs(entities) do -- Check all entities.
-
         if GetEntityType(ent) == "body" and ent ~= GetWorldBody() then
 
             for tag, _ in pairs(BodyRelTransforms) do -- Check if body has a relevant tag.
-
                 if HasTag(ent, tag) then
                     RagdollBodies[tag] = ent
                 end
@@ -42,7 +38,6 @@ function InstantiateRagdoll(path_xml)
             end
 
         end
-
     end
 
 
@@ -122,6 +117,7 @@ end
 
 function SetRandomRagdoll()
     DeleteRagdoll()
+    SelectedPrefab = GetRandomPrefab()
     InstantiateRagdoll()
     beep()
 end
@@ -132,7 +128,7 @@ function SetRagdoll(prefab)
 end
 
 function GetRandomPrefab()
-    local random_prefab_path = GetRandomIndexValue(GetRandomPairsValue(PrefabObjects)).path
+    local random_prefab_path = GetRandomIndexValue(GetRandomPairsValue(PrefabObjects))
     return random_prefab_path
 end
 
@@ -187,4 +183,16 @@ end
 function CheckRespawnCount()
     if RespawnCount > RespawnCountWarning then
     end
+end
+
+function SetFavorite(path)
+    SetBool("savegame.mod.favorites." .. path, true)
+end
+
+function RemoveFavorite(path)
+    SetBool("savegame.mod.favorites." .. path, false)
+end
+
+function IsFavorite(path)
+    return GetBool("savegame.mod.favorites." .. path)
 end

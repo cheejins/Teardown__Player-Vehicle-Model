@@ -6,6 +6,7 @@ function prefab_create(folder, file, title, tags)
         file    = file,
         title   = title,
         tags    = tags,
+        isFav   = false,
     }
 end
 
@@ -288,11 +289,12 @@ function init_prefab_objects()
 
 end
 
-function findPrefabObject(path)
-    for index, prefab in ipairs(PrefabObjects) do
-        DebugWatch("index" .. index, prefab.path)
-        -- if prefab.path == path then
-        --     return PrefabObjects[index]
-        -- end
+function SetPrefabObject(path)
+    for key, folder in pairs(PrefabObjects) do
+        for index, value in ipairs(folder) do
+            if value.path == path then
+                return PrefabObjects[index]
+            end
+        end
     end
 end

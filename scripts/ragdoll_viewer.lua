@@ -24,13 +24,13 @@ function tick_viewer()
         return
     end
 
-    if InputPressed("f3") then
-        ViewerIndex = GetTablePreviousIndex(ViewerPrefabs, ViewerIndex)
-        beep()
-    elseif InputPressed("f4") then
-        ViewerIndex = GetTableNextIndex(ViewerPrefabs, ViewerIndex)
-        beep()
-    end
+    -- if InputPressed("f3") then
+    --     ViewerIndex = GetTablePreviousIndex(ViewerPrefabs, ViewerIndex)
+    --     beep()
+    -- elseif InputPressed("f4") then
+    --     ViewerIndex = GetTableNextIndex(ViewerPrefabs, ViewerIndex)
+    --     beep()
+    -- end
 
 
     local focusPrefab = ViewerPrefabs[ViewerIndex]

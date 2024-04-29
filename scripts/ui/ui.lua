@@ -1,5 +1,7 @@
-ImageBoxSolid = 'ui/common/box-solid-6.png'
+ImageBoxSolid   = 'ui/common/box-solid-6.png'
 ImageBoxOutline = 'ui/common/box-outline-6.png'
+ImageFavOutline = 'MOD/img/fav_outline.png'
+ImageFavSolid   = 'MOD/img/fav_solid.png'
 
 SelectedPrefab = nil
 
@@ -109,6 +111,24 @@ function draw_container_ragdoll_preview(w, h)
 
         local scroll = InputValue("mousewheel")
 
+        UiPush()
+            UiTranslate(w/2, 2)
+            UiAlign("center top")
+            UiButtonImageBox(ImageBoxSolid, 6, 6, 0.8,0.8,0.8, 0.8)
+            if UiTextButton("Random Ragdoll", 180, FontSizes.header) then
+                SetRandomRagdoll()
+            end
+        UiPop()
+
+        -- UiPush()
+        --     UiTranslate(w/2, h)
+        --     UiAlign("center bottom")
+        --     UiButtonImageBox(ImageBoxSolid, 6, 6, 0.8,0.8,0.8, 0.8)
+        --     if UiTextButton("Close UI", 180, FontSizes.header) then
+        --         Controls.toggles.showui.toggled = false
+        --     end
+        -- UiPop()
+
         if UiIsMouseInRect(w, h) then
 
             for key, body in pairs(RagdollBodies) do
@@ -195,12 +215,6 @@ function draw_container_filter(w, h)
                 updateFilter = true
             end
 
-            UiTranslate(160 + Pad, 0)
-            UiButtonImageBox(ImageBoxSolid, 6, 6, 0.8,0.8,0.8, 0.8)
-            if UiTextButton("Random Ragdoll", 160, FontSizes.header) then
-                SetRandomRagdoll()
-            end
-
         UiPop()
 
 
@@ -246,6 +260,20 @@ function draw_container_filter(w, h)
             beep()
         end
 
+    UiPop()
+
+    UiPush()
+        UiTranslate(w/2, h-Pad)
+        UiAlign("center bottom")
+        UiFont("bold.ttf", 35)
+        if IsFavoritesSelected then
+            UiButtonImageBox(ImageBoxSolid, 6, 6, 0.8,0.7,0.2, 1)
+        else
+            UiButtonImageBox(ImageBoxSolid, 6, 6, 0.2,0.2,0.2, 1)
+        end
+        if UiTextButton("Favorites", w - (Pad*2), 40) then
+            SelectFavorites()
+        end
     UiPop()
 end
 
@@ -299,7 +327,6 @@ function draw_container_previews(w, h)
 
                         local prefab = dataSet[queryIndex]
 
-
                         local color = { 1/2,1/2,1/2, 1 }
                         if prefab == SelectedPrefab then
                             color = { 1/2,1,1/2, 1 }
@@ -308,22 +335,38 @@ function draw_container_previews(w, h)
                         end
                         UiColor(unpack(color))
 
-
                         UiButtonImageBox(ImageBoxOutline, 6, 6, unpack(color))
                         if UiTextButton(" ", cellW - Pad/2, cellW - Pad/2) then
                             SelectedPrefab = prefab
                             SetRagdoll(SelectedPrefab)
                         end
-                        UiWordWrap((FontSizes.text * cellsCountHorizontal) - Pad)
 
                         UiPush()
+                            UiWordWrap((FontSizes.text * cellsCountHorizontal) - Pad)
                             UiTranslate(4,4)
                             UiText(prefab.title)
                         UiPop()
 
-                        -- if UiIsMouseInRect(w, gridH) then --! Bleeds into details panel.
-                        --     DebugWatch("ingrid", GetTime())
-                        -- end
+                        UiPush()
+                            UiTranslate(cellW-25,cellH-40)
+                            UiAlign("center bottom")
+                            local isFav = IsFavorite(prefab.path)
+                            if isFav then
+                                UiButtonImageBox(ImageFavSolid, 0,0, 0.8,0.6,0.2, 1)
+                            else
+                                UiButtonImageBox(ImageFavOutline, 0,0, 0.5,0.5,0.5, 1)
+                            end
+                            if UiTextButton(" ", 40, 40) then
+                                if isFav then
+                                    RemoveFavorite(prefab.path)
+                                else
+                                    SetFavorite(prefab.path)
+                                end
+                                if IsFavoritesSelected then
+                                    SelectFavorites()
+                                end
+                            end
+                        UiPop()
 
                         UiTranslate(cellW, 0)
 
@@ -349,7 +392,6 @@ function draw_container_previews(w, h)
         UiImageBox(ImageBoxOutline, detailsW, detailsH, 6, 6)
 
         if SelectedPrefab then
-
             UiPush()
                 UiText("Name:")
                 UiTranslate(FontSizes.text * 5)
@@ -367,15 +409,12 @@ function draw_container_previews(w, h)
             UiPush()
                 UiText("Tags:")
                 UiTranslate(FontSizes.text * 5)
-                UiText(table.concat(SelectedPrefab.tags, ", "))
+                local tags = {}
+                for _, tag in ipairs(SelectedPrefab.tags) do
+                    table.insert(tags, tag.title)
+                end
+                UiText(table.concat(tags, ", "))
             UiPop()
-
-        else
-
-            UiText("no prefab")
-
-            SelectedPrefab = findPrefabObject(CurrentPrefabPath)
-
         end
 
     UiPop()
