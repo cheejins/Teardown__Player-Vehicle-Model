@@ -1,4 +1,4 @@
-#include "TDSU/tdsu.lua"
+--[[
 #include "scripts/controls.lua"
 #include "scripts/prefab_data.lua"
 #include "scripts/prefab_filter.lua"
@@ -8,27 +8,27 @@
 #include "scripts/ragdoll_viewer.lua"
 #include "scripts/ui/ui.lua"
 #include "scripts/ui/ui_debug.lua"
+]]
+#include "TDSU/tdsu.lua"
 
 
 ------------------------------------------------------------------------------------------------
 -- Vehicle Player Model
 -- By: Cheejins
 ------------------------------------------------------------------------------------------------
--- Please do not reupload this mod without permission. If you would like to submit ragdolls
--- to be part of this mod, you can contact me on discord @Cheejins
+-- Do not reupload this mod without permission.
 ------------------------------------------------------------------------------------------------
 
-RootPath = "MOD/main/Gore Ragdolls 2/" --- Path to the root ragdoll prefabs folder.
 
+RootPath = "MOD/main/Gore Ragdolls 2/" --- Path to the root ragdoll prefabs folder.
 SpawnedPrefabs = {}
 CurrentPrefabPath = "-"
-
 
 CFG = {
     RUN_POSING = true, -- Pose the current ragdoll.
     RUN_PRINTER = false, -- Prints the transform values for a manually posed ragdoll.
-    SPAWN_ALL_PREFABS = true, -- Spawn all ragdoll entities.
-    DEBUG = true,
+    SPAWN_ALL_PREFABS = false, -- Spawn all ragdoll entities.
+    DEBUG = false,
 }
 
 Ui = {
@@ -36,6 +36,7 @@ Ui = {
 }
 
 REG = {
+    string_SavedRagdollModel = "",
     string_QueryTags = "savegame.mod.QueryTags"
 }
 
@@ -53,12 +54,14 @@ function init()
     init_prefab_objects()
     init_prefab_database()
 
+    CFG.SPAWN_ALL_PREFABS = GetBool("level.VehiclePlayerModel.SPAWN_ALL_PREFABS")
+
     if CFG.SPAWN_ALL_PREFABS then
         SpawnAllPrefabs()
     end
 
-    local savedQueryTags = util.unserialize(REG.string_QueryTags)
-    print(savedQueryTags)
+    -- local savedQueryTags = util.unserialize(REG.string_QueryTags)
+    -- print(savedQueryTags)
     -- for index, value in ipairs(savedQueryTags) do
     --     print(value)
     -- end
@@ -79,15 +82,15 @@ function tick()
         Spawned = true
     end
 
-    -- if InputPressed("mmb") then
-    --     SetRandomRagdoll()
-    -- end
-
     -- DebugWatch("#RagdollBodies", GetTableSize(RagdollBodies))
     -- DebugWatch("#RagdollOtherBodies", #RagdollOtherBodies)
     -- DebugWatch("QueryTags", table.concat(QueryTags))
 
     DidFilter = false
+
+    if InputPressed("mmb") then
+        DebugPrint(PrefabObjects)
+    end
 
 end
 

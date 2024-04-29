@@ -15,6 +15,11 @@ function init_controls()
         disableInteractive = { key = "rmb", held = false }
     }
 
+    if GetString("savegame.mod.controls.showui") == "" then
+        SetString("savegame.mod.controls.showui", "f1")
+    end
+    Controls.toggles.showui.key = GetString("savegame.mod.controls.showui")
+
 end
 
 function tick_controls()

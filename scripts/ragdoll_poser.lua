@@ -1,6 +1,7 @@
 --================================================================
 --This script positions the ragdoll body parts relative to the
---Thethe transform data is then extracted from the posed npc.
+--the posed (sitting, t pose) transform data and is then extracted
+--from the posed npc.
 --================================================================
 
 
@@ -72,8 +73,8 @@ function update_DriverPosing()
             end
 
             for key, body in pairs(RagdollOtherBodies) do
-                SetBodyTransform(body, TransformToParentTransform(GetCameraTransform(), Transform(Vec(0,1000,0))))
-                SetBodyVelocity(body, Vec(0,0,0))
+                SetBodyTransform(body.body, TransformToParentTransform(GetCameraTransform(), Transform(Vec(0,1000,0))))
+                SetBodyVelocity(body.body, Vec(0,0,0))
             end
 
         end

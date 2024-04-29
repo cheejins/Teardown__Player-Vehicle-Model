@@ -72,11 +72,21 @@ function draw_container(w, h, a)
     UiPop()
 end
 
+
 function draw_container_title(w, h)
     UiPush()
 
         UiColor(0,0,0, BgAlpha)
         UiImageBox(ImageBoxSolid, w, h, 6, 6)
+
+        UiPush()
+            UiTranslate(w, 0)
+            UiAlign("right top")
+            UiButtonImageBox("MOD/img/close.png", 0, 0, 1, 1, 1, 1)
+            if UiBlankButton(h/2, h/2) then
+                Controls.toggles.showui.toggled = false
+            end
+        UiPop()
 
         UiTranslate(Pad, Pad)
         UiWindow(w - Pad*2, h, true)
@@ -101,8 +111,12 @@ function draw_container_ragdoll_preview(w, h)
 
         if UiIsMouseInRect(w, h) then
 
-            for key, body in pairs(RagdollBodies) do DrawBodyOutline(body, 1, 1, 1, 0.5) end
-            for key, body in pairs(RagdollOtherBodies) do DrawBodyOutline(body, 1, 1, 1, 0.5) end
+            for key, body in pairs(RagdollBodies) do
+                DrawBodyOutline(body, 1, 1, 1, 0.5)
+            end
+            for key, body in ipairs(RagdollOtherBodies) do
+                DrawBodyOutline(body.body, 1, 1, 1, 0.5)
+            end
 
             if GetPlayerVehicle() == 0 then
 
@@ -160,6 +174,7 @@ function draw_container_filter(w, h)
 
         --> Header
         UiPush()
+
             uiSetFont(FontSizes.header)
             UiText("Tag Selection")
 
@@ -179,6 +194,13 @@ function draw_container_filter(w, h)
                 QueryTags = {}
                 updateFilter = true
             end
+
+            UiTranslate(160 + Pad, 0)
+            UiButtonImageBox(ImageBoxSolid, 6, 6, 0.8,0.8,0.8, 0.8)
+            if UiTextButton("Random Ragdoll", 160, FontSizes.header) then
+                SetRandomRagdoll()
+            end
+
         UiPop()
 
 
@@ -267,6 +289,7 @@ function draw_container_previews(w, h)
                 Scroll_Previews_Amount = Scroll_Previews_Amount + scroll_dx * cellW/3
                 Scroll_Previews_Amount = clamp(Scroll_Previews_Amount, (-rows+cellsCountVertical/2) * cellW, 0)
             end
+
             UiTranslate(2, Scroll_Previews_Amount)
 
             --> Previews grid
@@ -298,14 +321,11 @@ function draw_container_previews(w, h)
                             UiText(prefab.title)
                         UiPop()
 
-
                         -- if UiIsMouseInRect(w, gridH) then --! Bleeds into details panel.
                         --     DebugWatch("ingrid", GetTime())
                         -- end
 
-
                         UiTranslate(cellW, 0)
-
 
                         queryIndex = queryIndex + 1
                         if queryIndex >= queryLastIndex then break end
@@ -335,7 +355,6 @@ function draw_container_previews(w, h)
                 UiTranslate(FontSizes.text * 5)
                 UiText(SelectedPrefab.title)
             UiPop()
-
             UiTranslate(0, FontSizes.text)
 
             UiPush()
@@ -343,11 +362,21 @@ function draw_container_previews(w, h)
                 UiTranslate(FontSizes.text * 5)
                 UiText(SelectedPrefab.folder)
             UiPop()
+            UiTranslate(0, FontSizes.text)
+
+            UiPush()
+                UiText("Tags:")
+                UiTranslate(FontSizes.text * 5)
+                UiText(table.concat(SelectedPrefab.tags, ", "))
+            UiPop()
+
+        else
+
+            UiText("no prefab")
+
+            SelectedPrefab = findPrefabObject(CurrentPrefabPath)
 
         end
-
-        -- DebugWatch("#dataSet", #dataSet)
-        -- DebugWatch("Scroll_Previews_Amount", Scroll_Previews_Amount)
 
     UiPop()
 end

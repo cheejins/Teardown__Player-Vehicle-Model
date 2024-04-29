@@ -12,7 +12,6 @@ end
 -- List of all prefab objects.
 function init_prefab_objects()
 
-    --- Holds all raw prefab objects.
     PrefabObjects = {}
 
 
@@ -287,4 +286,13 @@ function init_prefab_objects()
         prefab_create(Folders.Squareblock,    "WhiteShirtTie2.xml",     "WhiteShirtTie2",   {Tags.business}),
     }
 
+end
+
+function findPrefabObject(path)
+    for index, prefab in ipairs(PrefabObjects) do
+        DebugWatch("index" .. index, prefab.path)
+        -- if prefab.path == path then
+        --     return PrefabObjects[index]
+        -- end
+    end
 end

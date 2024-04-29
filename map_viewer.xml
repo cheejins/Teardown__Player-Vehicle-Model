@@ -9,4 +9,5 @@
 		<voxbox pos="-200 0.0 -200.0" size="2000 1 2000" color="0.8 0.8 0.8"/>
 		<voxbox pos="-200 0.0 0.0" size="2000 1 2000" color="0.8 0.8 0.8"/>
 	</group>
+	<script file="MOD/scripts/map_viewer.lua"/>
 </scene>
