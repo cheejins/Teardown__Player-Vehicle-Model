@@ -1,7 +1,7 @@
 name = Vehicle Player Model
 author = Cheejins
-description = Who's driving that empty car? You will (almost) never have to ask that again! Thanks to SnakeyWakey and the community for all of the ragdoll models.
-tags=Gameplay
+description = [noupload] Spawns a gore ragdoll, poses it and places it in the seat of any vehicle.
+tags = Gameplay
 
 # If description contains [noupload] the description on Steam workshop will not be overwritten.
 # Available tags (comma-separated):

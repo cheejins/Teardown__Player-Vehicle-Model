@@ -118,12 +118,12 @@ end
 function SetRandomRagdoll()
     DeleteRagdoll()
     SelectedPrefab = GetRandomPrefab()
-    InstantiateRagdoll()
-    beep()
+    SetRagdoll(SelectedPrefab)
 end
 
 function SetRagdoll(prefab)
     DeleteRagdoll()
+    SetString(REG.string_SavedRagdollModelPath, prefab.path)
     InstantiateRagdoll(prefab.path)
 end
 
@@ -182,6 +182,16 @@ end
 
 function CheckRespawnCount()
     if RespawnCount > RespawnCountWarning then
+    end
+end
+
+function FindPrefabByPath(path)
+    for _, folder in pairs(PrefabObjects) do
+        for _, prefab in pairs(folder) do
+            if path == prefab.path then
+                return prefab
+            end
+        end
     end
 end
 

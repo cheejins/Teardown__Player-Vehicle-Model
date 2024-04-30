@@ -81,7 +81,7 @@ function init_prefab_objects()
         prefab_create(Folders.Snakey,    "SoldierNVGoff2.xml",          "SoldierNVGoff2",         {Tags.military}),
         prefab_create(Folders.Snakey,    "SoldierNVGon.xml",            "SoldierNVGon",           {Tags.military}),
         prefab_create(Folders.Snakey,    "SoymilkPapi.xml",             "SoymilkPapi",            {Tags.modder}),
-        prefab_create(Folders.Snakey,    "StrainZex.xml",               "StrainZex",              {Tags.modder}),
+        prefab_create(Folders.Snakey,    "StrainZex.xml",               "StrainZex",              {Tags.youtuber}),
         prefab_create(Folders.Snakey,    "SWAT.xml",                    "SWAT",                   {Tags.police}),
         prefab_create(Folders.Snakey,    "Therapist.xml",               "Therapist",              {Tags.civilian}),
         prefab_create(Folders.Snakey,    "UsernameTaken.xml",           "UsernameTaken",          {Tags.modder}),

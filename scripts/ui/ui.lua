@@ -85,13 +85,21 @@ function draw_container_title(w, h)
             UiTranslate(w, 0)
             UiAlign("right top")
             UiButtonImageBox("MOD/img/close.png", 0, 0, 1, 1, 1, 1)
-            if UiBlankButton(h/2, h/2) then
+            if UiBlankButton(h/1.5, h/1.5) then
                 Controls.toggles.showui.toggled = false
             end
         UiPop()
 
+        UiPush()
+            UiColor(1,1,1,1)
+            UiTranslate(h*0.05, h*0.05)
+            UiImageBox("MOD/img/Preview.png", h*0.9, h*0.9, 0, 0)
+        UiPop()
+        UiTranslate(h, 0)
+
         UiTranslate(Pad, Pad)
         UiWindow(w - Pad*2, h, true)
+        UiColor(0,0,0, BgAlpha)
 
         uiSetFont(FontSizes.title)
         UiText("Vehicle Player Model")
@@ -107,76 +115,140 @@ function draw_container_ragdoll_preview(w, h)
     UiPush()
 
         UiColor(0,0,0, BgAlpha)
-        -- UiImageBox(ImageBoxOutline, w, h, 6, 6)
+        UiImageBox(ImageBoxSolid, w, FontSizes.header*2.5 - (Pad/2) - 2, 6, 6)
 
         local scroll = InputValue("mousewheel")
 
         UiPush()
-            UiTranslate(w/2, 2)
-            UiAlign("center top")
-            UiButtonImageBox(ImageBoxSolid, 6, 6, 0.8,0.8,0.8, 0.8)
-            if UiTextButton("Random Ragdoll", 180, FontSizes.header) then
-                SetRandomRagdoll()
+
+            UiAlign("left top")
+            UiFont("regular.ttf", 30)
+            UiColor(1,1,1, 1)
+
+            -- Random ragdoll button
+            local btnW = 280
+            UiPush()
+                UiTranslate(Pad/2, Pad/2)
+                UiButtonImageBox(ImageBoxSolid, 6, 6, 0.2,0.2,0.2, 0.8)
+                if UiTextButton("Set Random Ragdoll", btnW, FontSizes.header*2) then
+                    SetRandomRagdoll()
+                end
+            UiPop()
+
+            if SelectedPrefab then
+
+                -- Ragdoll title
+                UiPush()
+                    UiAlign("center top")
+                    UiTranslate(w/2, FontSizes.header*2.5)
+                    uiSetFont(FontSizes.header * 1.25)
+                    UiText(SelectedPrefab.title)
+                UiPop()
+
+                -- Next and prev buttons
+                UiPush()
+                    local favSize = FontSizes.header*2 - (Pad/2)
+                    UiAlign("left top")
+                    UiTranslate(btnW + Pad/2, Pad)
+
+                    local isFav = IsFavorite(SelectedPrefab.path)
+                    if isFav then
+                        UiButtonImageBox(ImageFavSolid, 0,0, 0.8,0.6,0.2, 1)
+                    else
+                        UiButtonImageBox(ImageFavOutline, 0,0, 0.75,0.75,0.75, 1)
+                    end
+                    if UiTextButton(" ", favSize, favSize) then
+                        if isFav then
+                            RemoveFavorite(SelectedPrefab.path)
+                        else
+                            SetFavorite(SelectedPrefab.path)
+                        end
+                        if IsFavoritesSelected then SelectFavorites() end
+                    end
+                UiPop()
             end
+
+
         UiPop()
 
-        -- UiPush()
-        --     UiTranslate(w/2, h)
-        --     UiAlign("center bottom")
-        --     UiButtonImageBox(ImageBoxSolid, 6, 6, 0.8,0.8,0.8, 0.8)
-        --     if UiTextButton("Close UI", 180, FontSizes.header) then
-        --         Controls.toggles.showui.toggled = false
-        --     end
-        -- UiPop()
+        UiPush()
+            if UiIsMouseInRect(w, h) then
 
-        if UiIsMouseInRect(w, h) then
+                for key, body in pairs(RagdollBodies) do
+                    DrawBodyOutline(body, 1, 1, 1, 0.5)
+                end
+                for key, body in ipairs(RagdollOtherBodies) do
+                    DrawBodyOutline(body.body, 1, 1, 1, 0.5)
+                end
 
-            for key, body in pairs(RagdollBodies) do
-                DrawBodyOutline(body, 1, 1, 1, 0.5)
-            end
-            for key, body in ipairs(RagdollOtherBodies) do
-                DrawBodyOutline(body.body, 1, 1, 1, 0.5)
-            end
+                if GetPlayerVehicle() == 0 then
 
-            if GetPlayerVehicle() == 0 then
+                    if Controls.toggles.showui.toggled then
 
-                if Controls.toggles.showui.toggled then
+                        if scroll ~= 0 then
+                            RagdollPreviewPosDist.val = clamp(RagdollPreviewPosDist.val + (scroll * RagdollPreviewPosDist.scale * 10), RagdollPreviewPosDist.min, RagdollPreviewPosDist.max)
+                        end
+
+                        if InputDown("lmb") or InputDown("shoot") then
+                            RagdollPreviewRot = QuatRotateQuat(RagdollPreviewRot, QuatEuler(
+                                0,
+                                InputValue("mousedx"),
+                                -- InputValue("mousedy"),
+                                0
+                            ))
+                            -- RagdollPreviewPosDist.val = clamp(RagdollPreviewPosDist.val + (-InputValue("mousedy") * RagdollPreviewPosDist.scale), RagdollPreviewPosDist.min, RagdollPreviewPosDist.max)
+                        end
+
+                    end
+
+                else
 
                     if scroll ~= 0 then
-                        RagdollPreviewPosDist.val = clamp(RagdollPreviewPosDist.val + (scroll * RagdollPreviewPosDist.scale * 10), RagdollPreviewPosDist.min, RagdollPreviewPosDist.max)
+                        RagdollPreviewZoomFOV.val = clamp(RagdollPreviewZoomFOV.val + (-scroll * RagdollPreviewZoomFOV.scale), RagdollPreviewZoomFOV.min, RagdollPreviewZoomFOV.max)
                     end
 
-                    if InputDown("lmb") or InputDown("shoot") then
-                        RagdollPreviewRot = QuatRotateQuat(RagdollPreviewRot, QuatEuler(
-                            0,
-                            InputValue("mousedx"),
-                            -- InputValue("mousedy"),
-                            0
-                        ))
-                        -- RagdollPreviewPosDist.val = clamp(RagdollPreviewPosDist.val + (-InputValue("mousedy") * RagdollPreviewPosDist.scale), RagdollPreviewPosDist.min, RagdollPreviewPosDist.max)
-                    end
-
-                end
-
-            else
-
-                if scroll ~= 0 then
-                    RagdollPreviewZoomFOV.val = clamp(RagdollPreviewZoomFOV.val + (-scroll * RagdollPreviewZoomFOV.scale), RagdollPreviewZoomFOV.min, RagdollPreviewZoomFOV.max)
                 end
 
             end
 
+            if Controls.toggles.showui.toggled and GetPlayerVehicle() ~= 0 then
+                SetCameraFov(RagdollPreviewZoomFOV.val)
+            end
+
+            local ragdollPreviewDir = QuatToDir(RagdollPreviewRot)
+            RagdollPreviewRot = DirToQuat(ragdollPreviewDir)
+
+            UiTranslate(Pad, Pad)
+            UiWindow(w - Pad*2, h, true)
+        UiPop()
+
+        SelectedQueryResultIndex = SelectedQueryResultIndex or 0 -- Iterate through queried ragdolls.
+        if #QueryResults >= 2 then
+            UiPush()
+                local fontSize = FontSizes.header * 0.8
+                local btnW = 150
+                UiTranslate(w - 4, 4)
+                UiAlign("right top")
+                uiSetFont(fontSize)
+
+                UiButtonImageBox(ImageBoxSolid, 6, 6, 0.2,0.2,0.2, 0.8)
+                if UiTextButton("Next", btnW, fontSize * 1.25) then
+                    SelectedQueryResultIndex = GetTableNextIndex(QueryResults, SelectedQueryResultIndex)
+                    SelectedPrefab = QueryResults[SelectedQueryResultIndex]
+                    SetRagdoll(SelectedPrefab)
+                    PreviewIterated = true
+                end
+                UiTranslate(0, fontSize * 1.25)
+
+                UiButtonImageBox(ImageBoxSolid, 6, 6, 0.2,0.2,0.2, 0.8)
+                if UiTextButton("Previous", btnW, fontSize * 1.25) then
+                    SelectedQueryResultIndex = GetTablePreviousIndex(QueryResults, SelectedQueryResultIndex)
+                    SelectedPrefab = QueryResults[SelectedQueryResultIndex]
+                    SetRagdoll(SelectedPrefab)
+                    PreviewIterated = true
+                end
+            UiPop()
         end
-
-        if Controls.toggles.showui.toggled and GetPlayerVehicle() ~= 0 then
-            SetCameraFov(RagdollPreviewZoomFOV.val)
-        end
-
-        local ragdollPreviewDir = QuatToDir(RagdollPreviewRot)
-        RagdollPreviewRot = DirToQuat(ragdollPreviewDir)
-
-        UiTranslate(Pad, Pad)
-        UiWindow(w - Pad*2, h, true)
 
     UiPop()
 end
@@ -272,7 +344,12 @@ function draw_container_filter(w, h)
             UiButtonImageBox(ImageBoxSolid, 6, 6, 0.2,0.2,0.2, 1)
         end
         if UiTextButton("Favorites", w - (Pad*2), 40) then
-            SelectFavorites()
+            if IsFavoritesSelected then
+                IsFavoritesSelected = false
+                QueryResults = {}
+            else
+                SelectFavorites()
+            end
         end
     UiPop()
 end
@@ -289,18 +366,14 @@ function draw_container_previews(w, h)
         UiWindow(w - Pad*2, h, true)
         w, h = UiWidth(), UiHeight() - Pad2
 
-        local cellsCountHorizontal = 4
-        local cellsCountVertical = 5
-        local cellW = w/(cellsCountHorizontal)
-        local cellH = h/(cellsCountVertical)
-        local yUsed = 0
-        local gridH = ((cellsCountVertical - 1) * cellH)
-
         local dataSet = QueryResults
-        local queryIndex = 1
-        local queryLastIndex = #dataSet
-        local rows = math.ceil(#dataSet / cellsCountVertical)
-        --todo Add tooltip details for icon hover
+
+        local previewCellsWidthCount = 4
+        local previewCellsHeightCount = 5
+        local cellW = w/(previewCellsWidthCount) - 4
+        local cellH = h/(previewCellsHeightCount)
+        local gridH = ((previewCellsHeightCount - 1) * cellH)
+        local rows = math.ceil(#dataSet / previewCellsWidthCount)
 
         -- Grid container
         UiColor(1,1,1, BgAlpha)
@@ -309,79 +382,112 @@ function draw_container_previews(w, h)
         UiPush()
             UiWindow(w, gridH, true)
 
-            --> Scroll
+            -- Calculate scroll
             Scroll_Previews_Amount = Scroll_Previews_Amount or 0
             if DidFilter then Scroll_Previews_Amount = 0 end
-            local scroll_dx = InputValue("mousewheel")
-            if UiIsMouseInRect(w,h) and scroll_dx ~= 0 then
-                Scroll_Previews_Amount = Scroll_Previews_Amount + scroll_dx * cellW/3
-                Scroll_Previews_Amount = clamp(Scroll_Previews_Amount, (-rows+cellsCountVertical/2) * cellW, 0)
+            local scroll_dx = InputValue("mousewheel") * cellW/2
+            local scroll_h_min = (-rows + 1) * cellW
+            local scroll_h_max = 0
+            if UiIsMouseInRect(w, h) and scroll_dx ~= 0 then
+                Scroll_Previews_Amount = clamp(Scroll_Previews_Amount + scroll_dx, scroll_h_min, scroll_h_max)
             end
+
+            --todo align scroll to selected ragoll row
+            -- if PreviewIterated then
+            --     local row = #QueryResults - SelectedQueryResultIndex
+            --     (previewCellsWidthCount * previewCellsHeightCount)
+            --     PreviewIterated = false
+            -- end
+
+            -- Scroll bar ui
+            Scroll_Previews_Amount_Progress = Scroll_Previews_Amount / scroll_h_min
+            UiPush()
+                UiAlign("right top")
+
+                UiTranslate(w - 5, Pad/2)
+                UiColor(0.25, 0.25, 0.25, 1)
+                UiImageBox(ImageBoxSolid, 12, gridH - Pad, 6, 6)
+
+                if rows >= previewCellsHeightCount then
+                    UiColor(1, 1, 1, 1)
+                    UiTranslate(0, Scroll_Previews_Amount_Progress * (gridH - 30 - Pad))
+                    UiImageBox(ImageBoxSolid, 12, 30, 6, 6)
+                end
+
+                -- Scroll_Previews_Amount = UiSlider("ui/common/dot.png", "y", Scroll_Previews_Amount, scroll_h_min, 0)
+                -- Scroll_Previews_Amount = clamp(Scroll_Previews_Amount, scroll_h_min, scroll_h_max)
+            UiPop()
 
             UiTranslate(2, Scroll_Previews_Amount)
 
-            --> Previews grid
-            for y = 1, rows do
+            -- DebugWatch("Scroll_Previews_Amount", Scroll_Previews_Amount)
+            -- DebugWatch("rows", rows)
+            -- DebugWatch("cellW", cellW)
+            -- DebugWatch("scroll max", scroll_h_min)
+            -- DebugWatch("Scroll_Previews_Amount_Progress", Scroll_Previews_Amount_Progress)
+
+            -- for index, value in ipairs(dataSet) do DebugWatch("index " .. index, value.title) end
+
+            if IsFavoritesSelected and #dataSet <= 0 then
+                UiAlign("center top")
+                uiSetFont(30)
+                UiTranslate(w/2, 20)
+                UiText("No Favorites Saved Yet")
+            end
+
+            UiTranslate(0, 2)
+
+            for index, prefab in ipairs(dataSet) do
+
+                local color = { 1/2,1/2,1/2, 1 }
+                if prefab == SelectedPrefab then
+                    color = { 1/2,1,1/2, 1 }
+                elseif UiIsMouseInRect(cellW - Pad, cellW - Pad) then
+                    color = { 1/2,1/2,1/2, 1 }
+                end
+                UiColor(unpack(color))
+
+                UiButtonImageBox(ImageBoxOutline, 6, 6, unpack(color))
+                if UiTextButton(" ", cellW - Pad/2, cellW - Pad/2) then
+                    SelectedPrefab = prefab
+                    SetRagdoll(SelectedPrefab)
+                end
+
                 UiPush()
-                    for x = 1, cellsCountHorizontal do
+                    UiWordWrap((FontSizes.text * previewCellsWidthCount) - Pad)
+                    UiTranslate(4,4)
+                    UiText(prefab.title)
+                UiPop()
 
-                        local prefab = dataSet[queryIndex]
+                UiPush()
+                    local favSize = 50
+                    UiAlign("right bottom")
+                    UiTranslate(cellW - Pad/1.5, cellW - Pad/1.5)
 
-                        local color = { 1/2,1/2,1/2, 1 }
-                        if prefab == SelectedPrefab then
-                            color = { 1/2,1,1/2, 1 }
-                        elseif UiIsMouseInRect(cellW - Pad, cellW - Pad) then
-                            color = { 1/2,1/2,1/2, 1 }
+                    local isFav = IsFavorite(prefab.path)
+                    if isFav then
+                        UiButtonImageBox(ImageFavSolid, 0,0, 0.8,0.6,0.2, 1)
+                    else
+                        UiButtonImageBox(ImageFavOutline, 0,0, 0.5,0.5,0.5, 1)
+                    end
+                    if UiTextButton(" ", favSize, favSize) then
+                        if isFav then
+                            RemoveFavorite(prefab.path)
+                        else
+                            SetFavorite(prefab.path)
                         end
-                        UiColor(unpack(color))
-
-                        UiButtonImageBox(ImageBoxOutline, 6, 6, unpack(color))
-                        if UiTextButton(" ", cellW - Pad/2, cellW - Pad/2) then
-                            SelectedPrefab = prefab
-                            SetRagdoll(SelectedPrefab)
-                        end
-
-                        UiPush()
-                            UiWordWrap((FontSizes.text * cellsCountHorizontal) - Pad)
-                            UiTranslate(4,4)
-                            UiText(prefab.title)
-                        UiPop()
-
-                        UiPush()
-                            UiTranslate(cellW-25,cellH-40)
-                            UiAlign("center bottom")
-                            local isFav = IsFavorite(prefab.path)
-                            if isFav then
-                                UiButtonImageBox(ImageFavSolid, 0,0, 0.8,0.6,0.2, 1)
-                            else
-                                UiButtonImageBox(ImageFavOutline, 0,0, 0.5,0.5,0.5, 1)
-                            end
-                            if UiTextButton(" ", 40, 40) then
-                                if isFav then
-                                    RemoveFavorite(prefab.path)
-                                else
-                                    SetFavorite(prefab.path)
-                                end
-                                if IsFavoritesSelected then
-                                    SelectFavorites()
-                                end
-                            end
-                        UiPop()
-
-                        UiTranslate(cellW, 0)
-
-                        queryIndex = queryIndex + 1
-                        if queryIndex >= queryLastIndex then break end
-
+                        if IsFavoritesSelected then SelectFavorites() end
                     end
                 UiPop()
 
-                if queryIndex >= queryLastIndex then break end
+                UiTranslate(cellW, 0)
 
-                UiTranslate(0, cellW) -- Moves to next row
-                yUsed = yUsed + cellW
+                if index % previewCellsWidthCount == 0 then
+                    UiTranslate(-cellW * previewCellsWidthCount, cellW) -- Moves to next row
+                end
 
             end
+
         UiPop()
 
         UiTranslate(0, gridH)
@@ -393,27 +499,51 @@ function draw_container_previews(w, h)
 
         if SelectedPrefab then
             UiPush()
-                UiText("Name:")
-                UiTranslate(FontSizes.text * 5)
-                UiText(SelectedPrefab.title)
-            UiPop()
-            UiTranslate(0, FontSizes.text)
+                UiTranslate(Pad, Pad)
+                UiPush()
+                    UiText("Name:")
+                    UiTranslate(FontSizes.text * 5)
+                    UiText(SelectedPrefab.title)
+                UiPop()
+                UiTranslate(0, FontSizes.text)
 
-            UiPush()
-                UiText("Author:")
-                UiTranslate(FontSizes.text * 5)
-                UiText(SelectedPrefab.folder)
-            UiPop()
-            UiTranslate(0, FontSizes.text)
+                UiPush()
+                    UiText("Author:")
+                    UiTranslate(FontSizes.text * 5)
+                    UiText(SelectedPrefab.folder)
+                UiPop()
+                UiTranslate(0, FontSizes.text)
 
-            UiPush()
-                UiText("Tags:")
-                UiTranslate(FontSizes.text * 5)
-                local tags = {}
-                for _, tag in ipairs(SelectedPrefab.tags) do
-                    table.insert(tags, tag.title)
-                end
-                UiText(table.concat(tags, ", "))
+                UiPush()
+                    UiText("Tags:")
+                    UiTranslate(FontSizes.text * 5)
+                    local tags = {}
+                    for _, tag in ipairs(SelectedPrefab.tags) do
+                        table.insert(tags, tag.title)
+                    end
+                    UiText(table.concat(tags, ", "))
+                UiPop()
+
+                UiPush()
+                    local favSize = 50
+                    UiAlign("right bottom")
+                    UiTranslate(w - Pad*1.5, 0)
+
+                    local isFav = IsFavorite(SelectedPrefab.path)
+                    if isFav then
+                        UiButtonImageBox(ImageFavSolid, 0,0, 0.8,0.6,0.2, 1)
+                    else
+                        UiButtonImageBox(ImageFavOutline, 0,0, 0.5,0.5,0.5, 1)
+                    end
+                    if UiTextButton(" ", favSize, favSize) then
+                        if isFav then
+                            RemoveFavorite(SelectedPrefab.path)
+                        else
+                            SetFavorite(SelectedPrefab.path)
+                        end
+                        if IsFavoritesSelected then SelectFavorites() end
+                    end
+                UiPop()
             UiPop()
         end
 

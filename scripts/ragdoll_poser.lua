@@ -25,7 +25,7 @@ BodyRelTransforms = {
 }
 
 RagdollPreviewRot = Quat()
-RagdollPreviewPosDist = { val = 2, min = 1.5, max = 4, scale = 0.01 }
+RagdollPreviewPosDist = { val = 2.25, min = 1.25, max = 4, scale = 0.01 }
 RagdollPreviewZoomFOV = { val = 100, min = 30, max = 140, scale = 5 }
 
 
@@ -38,7 +38,7 @@ function update_DriverPosing()
             for key, body in pairs(RagdollBodies) do
 
                 local bodyTr   = GetBodyTransform(body)
-                local infrontOfCamPos = TransformToParentPoint(GetCameraTransform(), Vec(0, 0.25, -RagdollPreviewPosDist.val))
+                local infrontOfCamPos = TransformToParentPoint(GetCameraTransform(), Vec(0, 0.2, -RagdollPreviewPosDist.val))
                 -- local infrontOfCamRot = TransformToParentPoint(GetCameraTransform(), Transform(Vec(), RagdollPreviewRot))
                 local driverTr = TransformToParentTransform(Transform(infrontOfCamPos, QuatRotateQuat(GetCameraTransform().rot, RagdollPreviewRot)), BodyRelTransforms[key])
 

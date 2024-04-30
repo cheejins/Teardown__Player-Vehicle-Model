@@ -36,7 +36,7 @@ Ui = {
 }
 
 REG = {
-    string_SavedRagdollModel = "",
+    string_SavedRagdollModelPath = "savegame.mod.SavedRagdollModelPath",
     string_QueryTags = "savegame.mod.QueryTags"
 }
 
@@ -55,17 +55,9 @@ function init()
     init_prefab_database()
 
     CFG.SPAWN_ALL_PREFABS = GetBool("level.VehiclePlayerModel.SPAWN_ALL_PREFABS")
-
     if CFG.SPAWN_ALL_PREFABS then
         SpawnAllPrefabs()
     end
-
-    -- local savedQueryTags = util.unserialize(REG.string_QueryTags)
-    -- print(savedQueryTags)
-    -- for index, value in ipairs(savedQueryTags) do
-    --     print(value)
-    -- end
-    -- QueryTags = 
 
     init_viewer()
 
@@ -78,6 +70,15 @@ function tick()
 
     -- Initial body spawn.
     if not Spawned then
+        local savedRagdollPath = GetString(REG.string_SavedRagdollModelPath)
+        if savedRagdollPath ~= "" then
+            CurrentPrefabPath = savedRagdollPath
+            SelectedPrefab = FindPrefabByPath(CurrentPrefabPath)
+            if not SelectedPrefab then
+                SetRandomRagdoll()
+            end
+        end
+
         InstantiateRagdoll()
         Spawned = true
     end
@@ -87,10 +88,6 @@ function tick()
     -- DebugWatch("QueryTags", table.concat(QueryTags))
 
     DidFilter = false
-
-    if InputPressed("mmb") then
-        DebugPrint(PrefabObjects)
-    end
 
 end
 
@@ -103,7 +100,6 @@ function update()
     -- end
 
     update_DriverPosing()
-
     CheckRespawnCount()
 
 end
@@ -114,8 +110,6 @@ function draw()
     UiAlign("top left")
 
     UiPush()
-        -- draw_debug_prefab_info()
-        -- draw_debug_current_prefab_path()
         if CFG.SPAWN_ALL_PREFABS then draw_prefab_positions() end
     UiPop()
 

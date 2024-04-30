@@ -1,9 +1,12 @@
 function margin(x,y) UiTranslate(x,y) end
 
-function uiDrawSquare()
+function uiDrawSquare(c)
     do UiPush()
-        UiAlign('center middle')
-        UiColor(1,0.5,1, 1)
+        if c then
+            UiColor(c[1], c[2], c[3], 1)
+        else
+            UiColor(1,0.5,1, 1)
+        end
         UiRect(5,5)
     UiPop() end
 end

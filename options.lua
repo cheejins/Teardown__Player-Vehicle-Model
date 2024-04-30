@@ -16,16 +16,25 @@ function draw()
     UiAlign("center middle")
     UiColor(1, 1, 1, 1)
     UiFont("bold.ttf", 24)
-
     UiTranslate(UiCenter(), 0)
 
     UiPush()
         UiTranslate(0, 50)
 
         UiPush()
-            UiFont("bold.ttf", 50)
+            UiTranslate(-220, 0)
+            UiAlign("left top")
+            UiFont("bold.ttf", 80)
+            UiColor(1, 1, 1, 1)
+
+            UiTranslate(-180, 0)
+            UiImageBox("MOD/img/Preview.png", 110, 110, 0, 0)
+
+            UiTranslate(130, 0)
             UiText("Vehicle Player Model")
-            UiTranslate(0, 60)
+
+            UiTranslate(0, 70)
+            UiFont("bold.ttf", 50)
             UiText("By: Cheejins")
         UiPop()
         UiTranslate(0, 300)
@@ -37,6 +46,22 @@ function draw()
         if UiTextButton("Load Ragdoll Viewer Map", 400, 50) then
             StartLevel("", "MOD/map_viewer.xml", "")
         end
+        UiTranslate(0, 200)
+
+        UiPush()
+            if ClearFavoritesPressed then
+                UiColor(1,1,1,1)
+                UiButtonImageBox('ui/common/box-outline-6.png', 6, 6, 1,1,1)
+            else
+                UiColor(1,0.1,0.1,1)
+                UiButtonImageBox('ui/common/box-outline-6.png', 6, 6, 1,0.1,0.1)
+            end
+            if UiTextButton(ternary(ClearFavoritesPressed, "Favorites Cleared", "Clear Favorites"), 300, 50) then
+                ClearFavoritesPressed = true
+                ClearKey("savegame.mod.favorites")
+            end
+        UiPop()
+
     UiPop()
 
     UiTranslate(0, UiHeight() - 100)

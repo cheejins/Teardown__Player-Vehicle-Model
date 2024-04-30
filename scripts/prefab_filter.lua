@@ -18,6 +18,7 @@ function filter_update()
         end
     end
 
+    SelectedQueryResultIndex = 0
     DidFilter = true
 end
 
@@ -35,4 +36,6 @@ function SelectFavorites()
         end
     end
 
+    SelectedQueryResultIndex = 0
+    DidFilter = true
 end
