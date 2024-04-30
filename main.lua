@@ -33,13 +33,21 @@ CFG = {
 
 Ui = {
     interact = true,
+    show_options = false,
 }
 
 REG = {
     string_SavedRagdollModelPath = "savegame.mod.SavedRagdollModelPath",
-    string_QueryTags = "savegame.mod.QueryTags"
+    string_QueryTags = "savegame.mod.QueryTags",
+
+    options = {
+        bool_keepRagdollInCar = "savegame.mod.options.keepRagdollInCar",
+        bool_keepRagdollInCarWithMenu = "savegame.mod.options.keepRagdollInCarWithMenu",
+    }
 }
 
+Version = "1.01"
+-- Version = "1.00"
 
 function init()
 
@@ -83,12 +91,16 @@ function tick()
         Spawned = true
     end
 
+    if GetPlayerVehicle() ~= 0 then
+        LastPlayerVehicle = GetPlayerVehicle()
+    end
+    -- DrawBodyOutline(GetVehicleBody(LastPlayerVehicle), 0,1,0, 1)
+
     -- DebugWatch("#RagdollBodies", GetTableSize(RagdollBodies))
     -- DebugWatch("#RagdollOtherBodies", #RagdollOtherBodies)
     -- DebugWatch("QueryTags", table.concat(QueryTags))
 
     DidFilter = false
-
 end
 
 function update()

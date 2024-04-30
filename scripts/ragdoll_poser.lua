@@ -31,100 +31,124 @@ RagdollPreviewZoomFOV = { val = 100, min = 30, max = 140, scale = 5 }
 
 function update_DriverPosing()
 
-    if GetPlayerVehicle() == 0 then -- Store the player body somewhere in another freaking universe.
+    local lastVehicleValid = IsHandleValid(LastPlayerVehicle)
+    local keepRagdollInCar = GetBool(REG.options.bool_keepRagdollInCar) and lastVehicleValid
+    local dontMoveRagdollInLastCar = GetBool(REG.options.bool_keepRagdollInCarWithMenu)
 
-        if Controls.toggles.showui.toggled then -- Position the ragdoll in the center of the UI
+    if Controls.toggles.showui.toggled and not dontMoveRagdollInLastCar then
 
-            for key, body in pairs(RagdollBodies) do
+        ragdoll_pose_infront_player()
 
-                local bodyTr   = GetBodyTransform(body)
-                local infrontOfCamPos = TransformToParentPoint(GetCameraTransform(), Vec(0, 0.2, -RagdollPreviewPosDist.val))
-                -- local infrontOfCamRot = TransformToParentPoint(GetCameraTransform(), Transform(Vec(), RagdollPreviewRot))
-                local driverTr = TransformToParentTransform(Transform(infrontOfCamPos, QuatRotateQuat(GetCameraTransform().rot, RagdollPreviewRot)), BodyRelTransforms[key])
+    elseif GetPlayerVehicle() == 0 then
 
-                ConstrainPosition(body, GetWorldBody(), bodyTr.pos, driverTr.pos)
-                ConstrainOrientation(body, GetWorldBody(), bodyTr.rot, driverTr.rot)
-
-                -- Position all other ragdoll bodies relative to head.
-                for index, rs in ipairs(RagdollOtherBodies) do
-
-                    local body_other = rs.body
-                    local headRelTr = rs.headRelTr
-
-                    local bodyTr_other = GetBodyTransform(body_other)
-                    local tr = TransformToParentTransform(GetBodyTransform(RagdollBodies["Head"]), headRelTr)
-
-                    if CFG.DEBUG then
-                        DebugCross(tr.pos, 1,1,0, 1)
-                    end
-
-                    ConstrainPosition(body_other, GetWorldBody(), bodyTr_other.pos, tr.pos)
-                    ConstrainOrientation(body_other, GetWorldBody(), bodyTr_other.rot, tr.rot)
-
-                end
-
-            end
-
-        else -- Store the ragdoll off screen
-
-            for key, body in pairs(RagdollBodies) do
-                SetBodyTransform(body, TransformToParentTransform(GetCameraTransform(), Transform(Vec(0,1000,0))))
-                SetBodyVelocity(body, Vec(0,0,0))
-            end
-
-            for key, body in pairs(RagdollOtherBodies) do
-                SetBodyTransform(body.body, TransformToParentTransform(GetCameraTransform(), Transform(Vec(0,1000,0))))
-                SetBodyVelocity(body.body, Vec(0,0,0))
-            end
-
+        if keepRagdollInCar then
+            ragdoll_pose_vehicle(LastPlayerVehicle)
+        else
+            ragdoll_pose_offscreen()
         end
 
-    else -- Move player body to driving position.
+    else
 
-        -- Vehicle.
-        local vBody = GetVehicleBody(GetPlayerVehicle())
-        local vehicleTr = GetVehicleTransform(GetPlayerVehicle())
-        local vehicleVel = VecScale(GetBodyVelocity(vBody), 1 / 30)
+        ragdoll_pose_vehicle(GetPlayerVehicle())
 
-        -- Vehicle driver pos.
-        local driverPos = TransformToParentPoint(vehicleTr, GetVehicleDriverPos(GetPlayerVehicle()))
-        driverPos = VecAdd(driverPos, vehicleVel)
+    end
 
-        -- Make model face forward.
-        -- vehicleTr.rot = QuatLookAt(vehicleTr.pos, TransformToParentPoint(vehicleTr, Vec(0,0,1)))
-        vehicleTr.rot = QuatRotateQuat(vehicleTr.rot, QuatEuler(0, -180, 0))
+end
 
-        -- Position the ragdoll
-        for key, body in pairs(RagdollBodies) do
 
-            local bodyTr   = GetBodyTransform(body)
-            local driverTr = TransformToParentTransform(Transform(driverPos, vehicleTr.rot), BodyRelTransforms[key])
+function ragdoll_pose_vehicle(v)
 
-            ConstrainPosition(body, GetWorldBody(), bodyTr.pos, driverTr.pos)
-            ConstrainOrientation(body, GetWorldBody(), bodyTr.rot, driverTr.rot)
+    -- Vehicle.
+    local vBody = GetVehicleBody(v)
+    local vehicleTr = GetVehicleTransform(v)
+    local vehicleVel = VecScale(GetBodyVelocity(vBody), 1 / 30)
 
-            if CFG.DEBUG then
-                DebugCross(bodyTr.pos, 1,0,0, 1)
-            end
+    -- Vehicle driver pos.
+    local driverPos = TransformToParentPoint(vehicleTr, GetVehicleDriverPos(v))
+    driverPos = VecAdd(driverPos, vehicleVel)
 
+    -- Make model face forward.
+    -- vehicleTr.rot = QuatLookAt(vehicleTr.pos, TransformToParentPoint(vehicleTr, Vec(0,0,1)))
+    vehicleTr.rot = QuatRotateQuat(vehicleTr.rot, QuatEuler(0, -180, 0))
+
+    -- Position the ragdoll
+    for key, body in pairs(RagdollBodies) do
+
+        local bodyTr   = GetBodyTransform(body)
+        local driverTr = TransformToParentTransform(Transform(driverPos, vehicleTr.rot), BodyRelTransforms[key])
+
+        ConstrainPosition(body, GetWorldBody(), bodyTr.pos, driverTr.pos)
+        ConstrainOrientation(body, GetWorldBody(), bodyTr.rot, driverTr.rot)
+
+        if CFG.DEBUG then
+            DebugCross(bodyTr.pos, 1,0,0, 1)
         end
+
+    end
+
+    -- Position all other ragdoll bodies relative to head.
+    for index, rs in ipairs(RagdollOtherBodies) do
+
+        local body = rs.body
+        local headRelTr = rs.headRelTr
+
+        local bodyTr = GetBodyTransform(body)
+        local tr = TransformToParentTransform(GetBodyTransform(RagdollBodies["Head"]), headRelTr)
+        tr.pos = VecAdd(tr.pos, vehicleVel)
+
+        if CFG.DEBUG then
+            DebugCross(tr.pos, 1,1,0, 1)
+        end
+
+        ConstrainPosition(body, GetWorldBody(), bodyTr.pos, tr.pos)
+        ConstrainOrientation(body, GetWorldBody(), bodyTr.rot, tr.rot)
+
+    end
+
+    
+end
+
+function ragdoll_pose_offscreen()
+
+    for key, body in pairs(RagdollBodies) do
+        SetBodyTransform(body, TransformToParentTransform(GetCameraTransform(), Transform(Vec(0,1000,0))))
+        SetBodyVelocity(body, Vec(0,0,0))
+    end
+
+    for key, body in pairs(RagdollOtherBodies) do
+        SetBodyTransform(body.body, TransformToParentTransform(GetCameraTransform(), Transform(Vec(0,1000,0))))
+        SetBodyVelocity(body.body, Vec(0,0,0))
+    end
+
+end
+
+function ragdoll_pose_infront_player()
+
+    for key, body in pairs(RagdollBodies) do
+
+        local bodyTr   = GetBodyTransform(body)
+        local infrontOfCamPos = TransformToParentPoint(GetCameraTransform(), Vec(0, 0.2, -RagdollPreviewPosDist.val))
+        -- local infrontOfCamRot = TransformToParentPoint(GetCameraTransform(), Transform(Vec(), RagdollPreviewRot))
+        local driverTr = TransformToParentTransform(Transform(infrontOfCamPos, QuatRotateQuat(GetCameraTransform().rot, RagdollPreviewRot)), BodyRelTransforms[key])
+
+        ConstrainPosition(body, GetWorldBody(), bodyTr.pos, driverTr.pos)
+        ConstrainOrientation(body, GetWorldBody(), bodyTr.rot, driverTr.rot)
 
         -- Position all other ragdoll bodies relative to head.
         for index, rs in ipairs(RagdollOtherBodies) do
 
-            local body = rs.body
+            local body_other = rs.body
             local headRelTr = rs.headRelTr
 
-            local bodyTr = GetBodyTransform(body)
+            local bodyTr_other = GetBodyTransform(body_other)
             local tr = TransformToParentTransform(GetBodyTransform(RagdollBodies["Head"]), headRelTr)
-            tr.pos = VecAdd(tr.pos, vehicleVel)
 
             if CFG.DEBUG then
                 DebugCross(tr.pos, 1,1,0, 1)
             end
 
-            ConstrainPosition(body, GetWorldBody(), bodyTr.pos, tr.pos)
-            ConstrainOrientation(body, GetWorldBody(), bodyTr.rot, tr.rot)
+            ConstrainPosition(body_other, GetWorldBody(), bodyTr_other.pos, tr.pos)
+            ConstrainOrientation(body_other, GetWorldBody(), bodyTr_other.rot, tr.rot)
 
         end
 

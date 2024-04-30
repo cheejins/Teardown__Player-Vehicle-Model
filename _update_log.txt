@@ -1,0 +1,2 @@
+1.01 (2024-04-30)
+Added option to keep ragdoll in last vehicle.

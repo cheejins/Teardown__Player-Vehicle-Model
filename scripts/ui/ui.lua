@@ -41,6 +41,7 @@ function draw_container(w, h, a)
 
         local marginY = 0
         local marginX = 0
+        local fontSize = 24
 
         if Ui.interact and not Controls.down.disableInteractive.held then UiMakeInteractive() end
 
@@ -55,6 +56,12 @@ function draw_container(w, h, a)
         marginY = marginY + 100
         draw_container_title(w, marginY)
 
+        if Ui.show_options then
+            UiTranslate(0, marginY)
+            draw_container_options(w, h - marginY)
+            return
+        end
+
         -- Filter section
         UiTranslate(0, marginY)
         marginX = marginX + w/3
@@ -64,7 +71,6 @@ function draw_container(w, h, a)
         UiTranslate(marginX, 0)
         draw_container_ragdoll_preview(marginX, h - marginY)
         UiTranslate(-marginX, 0)
-
 
         -- Previews section
         marginX = marginX + w/3
@@ -83,11 +89,17 @@ function draw_container_title(w, h)
 
         UiPush()
             UiTranslate(w, 0)
+            UiTranslate(-1, 1)
             UiAlign("right top")
             UiButtonImageBox("MOD/img/close.png", 0, 0, 1, 1, 1, 1)
             if UiBlankButton(h/1.5, h/1.5) then
                 Controls.toggles.showui.toggled = false
             end
+
+            UiFont("bold", h/1.5)
+            UiColor(0.75,0.75,0.75,1)
+            UiTranslate(-2, (h/1.5)+2)
+            UiText("v" .. Version)
         UiPop()
 
         UiPush()
@@ -95,18 +107,36 @@ function draw_container_title(w, h)
             UiTranslate(h*0.05, h*0.05)
             UiImageBox("MOD/img/Preview.png", h*0.9, h*0.9, 0, 0)
         UiPop()
-        UiTranslate(h, 0)
 
-        UiTranslate(Pad, Pad)
-        UiWindow(w - Pad*2, h, true)
-        UiColor(0,0,0, BgAlpha)
+        UiPush()
+            UiTranslate(h, 0)
+            UiTranslate(Pad, Pad)
+            UiWindow(w - Pad*2, h, true)
+            UiColor(0,0,0, BgAlpha)
 
-        uiSetFont(FontSizes.title)
-        UiText("Vehicle Player Model")
+            uiSetFont(FontSizes.title)
+            UiText("Vehicle Player Model")
 
-        UiTranslate(0, FontSizes.title)
-        uiSetFont(FontSizes.header)
-        UiText("By: Cheejins")
+            UiTranslate(0, FontSizes.title)
+            uiSetFont(FontSizes.header)
+            UiText("By: Cheejins")
+        UiPop()
+
+        UiPush() -- Options button
+            UiTranslate(w/2, h/2)
+            UiAlign("center middle")
+            UiFont("bold.ttf", h/3)
+            if Ui.show_options then
+                UiColor(1,1,1,1)
+                UiButtonImageBox(ImageBoxOutline, 6, 6, 1, 1, 1, 1)
+            else
+                UiColor(0.5,0.5,0.5,1)
+                UiButtonImageBox(ImageBoxOutline, 6, 6, 0.5, 0.5, 0.5, 1)
+            end
+            if UiTextButton("Options", 200, h/2) then
+                Ui.show_options = not Ui.show_options
+            end
+        UiPop()
 
     UiPop()
 end
@@ -547,5 +577,79 @@ function draw_container_previews(w, h)
             UiPop()
         end
 
+    UiPop()
+end
+
+function draw_container_options(w, h)
+
+    -- Background
+    UiColor(0,0,0, BgAlpha)
+    UiImageBox(ImageBoxSolid, w, h, 6, 6)
+
+    local bw = 100
+    local bh = 40
+    UiColor(1,1,1, BgAlpha)
+    UiTranslate(Pad, Pad)
+
+    ui_checkBox_create("Keep ragdoll in last vehicle", REG.options.bool_keepRagdollInCar, bh/1.5, bw, bh)
+    UiTranslate(0, bh + Pad)
+
+    ui_checkBox_create("Do not move ragdoll to preview while it's in the last vehicle", REG.options.bool_keepRagdollInCarWithMenu, bh/1.5, bw, bh)
+    UiTranslate(0, bh + Pad)
+
+end
+
+function ui_checkBox_create(title, registryPath, fontSize, bw, bh)
+    UiPush()
+
+        local value = GetBool(registryPath)
+
+        UiAlign('left middle')
+
+        -- Toggle BG
+        UiAlign('left top')
+        UiColor(0.4,0.4,0.4, 1)
+        local tglW = bw or 140
+        local tglH = bh or 40
+        UiRect(tglW, bh or tglH)
+
+        -- Render toggle
+        do UiPush()
+
+            local toggleText = 'ON'
+
+            if value then
+                UiTranslate(tglW/2, 0)
+                UiColor(0,0.8,0, 1)
+            else
+                toggleText = 'OFF'
+                UiColor(0.8,0,0, 1)
+            end
+
+            UiRect(tglW/2, tglH)
+
+            do UiPush()
+                UiTranslate(tglW/4, tglH/2)
+                UiColor(1,1,1, 1)
+                UiFont('bold.ttf', fontSize)
+                UiAlign('center middle')
+                UiText(toggleText)
+            UiPop() end
+
+        UiPop() end
+
+        -- UiButtonImageBox('ui/common/box-outline-6.png', 10,10, 0,0,0, 1)
+        if UiBlankButton(tglW, tglH) then
+            SetBool(registryPath, not value)
+            PlaySound(LoadSound('clickdown.ogg'), GetCameraTransform().pos, 1)
+        end
+
+        UiTranslate(bw + 4, bh/2)
+        UiAlign("left middle")
+
+        -- Text header
+        UiColor(1,1,1, 1)
+        UiFont('regular.ttf', fontSize)
+        UiText(title)
     UiPop()
 end
