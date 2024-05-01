@@ -3,8 +3,6 @@ ImageBoxOutline = 'ui/common/box-outline-6.png'
 ImageFavOutline = 'MOD/img/fav_outline.png'
 ImageFavSolid   = 'MOD/img/fav_solid.png'
 
-SelectedPrefab = nil
-
 
 function init_draw()
 
@@ -34,6 +32,7 @@ function draw_ui()
 
     UiPop()
 end
+
 
 
 function draw_container(w, h, a)
@@ -79,7 +78,6 @@ function draw_container(w, h, a)
 
     UiPop()
 end
-
 
 function draw_container_title(w, h)
     UiPush()
@@ -591,6 +589,10 @@ function draw_container_options(w, h)
     UiColor(1,1,1, BgAlpha)
     UiTranslate(Pad, Pad)
 
+    ui_checkBox_create("Disable Ragdoll", REG.bool_DisableRagdoll, bh/1.5, bw, bh)
+    UiTranslate(0, bh + Pad)
+    UiTranslate(0, bh + Pad)
+
     ui_checkBox_create("Keep ragdoll in last vehicle", REG.options.bool_keepRagdollInCar, bh/1.5, bw, bh)
     UiTranslate(0, bh + Pad)
 
@@ -598,6 +600,8 @@ function draw_container_options(w, h)
     UiTranslate(0, bh + Pad)
 
 end
+
+
 
 function ui_checkBox_create(title, registryPath, fontSize, bw, bh)
     UiPush()
@@ -616,13 +620,13 @@ function ui_checkBox_create(title, registryPath, fontSize, bw, bh)
         -- Render toggle
         do UiPush()
 
-            local toggleText = 'ON'
+            local toggleText = 'Y'
 
             if value then
                 UiTranslate(tglW/2, 0)
                 UiColor(0,0.8,0, 1)
             else
-                toggleText = 'OFF'
+                toggleText = 'N'
                 UiColor(0.8,0,0, 1)
             end
 

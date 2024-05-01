@@ -7,6 +7,10 @@ activePath = '.'
 lastKeyPressed = '.'
 
 
+ResetModPressed = false
+ClearFavoritesPressed = false
+
+
 function init()
     init_controls()
 end
@@ -60,8 +64,21 @@ function draw()
                 ClearFavoritesPressed = true
                 ClearKey("savegame.mod.favorites")
             end
-        UiPop()
+            UiTranslate(0, 60)
 
+            if ResetModPressed then
+                UiColor(1,1,1,1)
+                UiButtonImageBox('ui/common/box-outline-6.png', 6, 6, 1,1,1)
+            else
+                UiColor(1,0.1,0.1,1)
+                UiButtonImageBox('ui/common/box-outline-6.png', 6, 6, 1,0.1,0.1)
+            end
+            if UiTextButton(ternary(ResetModPressed, "Mod Has Been Reset", "Reset Mod"), 300, 50) then
+                ResetModPressed = true
+                ClearKey("savegame.mod")
+                SetString("savegame.mod.controls.showui", "f1")
+            end
+        UiPop()
     UiPop()
 
     UiTranslate(0, UiHeight() - 100)

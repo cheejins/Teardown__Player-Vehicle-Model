@@ -1,6 +1,6 @@
-name = Vehicle Player Model
+name = Vehicle Player Model (Gore Ragdolls)
 author = Cheejins
-description = [noupload] Spawns a gore ragdoll, poses it and places it in the seat of any vehicle.
+description = [noupload] Press "f1" to open the UI menu. This keybind can be changed in Mod Manager > Options.
 tags = Gameplay
 
 # If description contains [noupload] the description on Steam workshop will not be overwritten.

@@ -1,2 +1,8 @@
+1.03 (2024-04-30)
+Added option to disable ragdoll.
+
+1.02 (2024-04-30)
+Fixed ragdoll init spawning and posing.
+
 1.01 (2024-04-30)
 Added option to keep ragdoll in last vehicle.

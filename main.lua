@@ -1,3 +1,11 @@
+------------------------------------------------------------------------------------------------
+-- Vehicle Player Model
+-- By: Cheejins
+------------------------------------------------------------------------------------------------
+-- Do not reupload this mod without permission.
+------------------------------------------------------------------------------------------------
+
+
 --[[
 #include "scripts/controls.lua"
 #include "scripts/prefab_data.lua"
@@ -12,44 +20,42 @@
 ]]
 
 
-------------------------------------------------------------------------------------------------
--- Vehicle Player Model
--- By: Cheejins
-------------------------------------------------------------------------------------------------
--- Do not reupload this mod without permission.
-------------------------------------------------------------------------------------------------
-
-
-RootPath = "MOD/main/Gore Ragdolls 2/" --- Path to the root ragdoll prefabs folder.
-SpawnedPrefabs = {}
-CurrentPrefabPath = "-"
-
-CFG = {
-    RUN_POSING = true, -- Pose the current ragdoll.
-    RUN_PRINTER = false, -- Prints the transform values for a manually posed ragdoll.
-    SPAWN_ALL_PREFABS = false, -- Spawn all ragdoll entities.
-    DEBUG = false,
-}
-
-Ui = {
-    interact = true,
-    show_options = false,
-}
-
-REG = {
-    string_SavedRagdollModelPath = "savegame.mod.SavedRagdollModelPath",
-    string_QueryTags = "savegame.mod.QueryTags",
-
-    options = {
-        bool_keepRagdollInCar = "savegame.mod.options.keepRagdollInCar",
-        bool_keepRagdollInCarWithMenu = "savegame.mod.options.keepRagdollInCarWithMenu",
-    }
-}
-
-Version = "1.01"
+Version = "1.03"
+-- Version = "1.02"
+-- Version = "1.01"
 -- Version = "1.00"
 
+
 function init()
+
+    CFG = {
+        -- RUN_POSING        = true, -- Pose the current ragdoll.
+        RUN_PRINTER       = false, -- Prints the transform values for a manually posed ragdoll.
+        SPAWN_ALL_PREFABS = false, -- Spawn all ragdoll entities.
+        DEBUG             = false,
+    }
+
+    Ui = {
+        interact = true,
+        show_options = false,
+    }
+
+    REG = {
+        bool_DisableRagdoll = "savegame.mod.DisableRagdoll",
+
+        string_SavedRagdollModelPath = "savegame.mod.SavedRagdollModelPath",
+        string_QueryTags = "savegame.mod.QueryTags",
+
+        options = {
+            bool_keepRagdollInCar = "savegame.mod.options.keepRagdollInCar",
+            bool_keepRagdollInCarWithMenu = "savegame.mod.options.keepRagdollInCarWithMenu",
+        }
+    }
+
+    RootPath = "MOD/main/Gore Ragdolls 2/" --- Path to the root ragdoll prefabs folder.
+    SpawnedPrefabs = {}
+    CurrentPrefabPath = "-"
+    SelectedPrefab = nil
 
     Spawned = false
     RespawnCount = 0
@@ -79,15 +85,14 @@ function tick()
     -- Initial body spawn.
     if not Spawned then
         local savedRagdollPath = GetString(REG.string_SavedRagdollModelPath)
-        if savedRagdollPath ~= "" then
+        if savedRagdollPath == "" then
+            SetRandomRagdoll()
+        else
             CurrentPrefabPath = savedRagdollPath
             SelectedPrefab = FindPrefabByPath(CurrentPrefabPath)
-            if not SelectedPrefab then
-                SetRandomRagdoll()
-            end
         end
 
-        InstantiateRagdoll()
+        InstantiateRagdoll(SelectedPrefab.path)
         Spawned = true
     end
 
@@ -105,14 +110,7 @@ end
 
 function update()
 
-    -- -- Repawn body if deleted.
-    -- if not IsHandleValid(PlayerBody) then
-    --     InstantiateBody()
-    --     RespawnCount = RespawnCount + 1
-    -- end
-
     update_DriverPosing()
-    CheckRespawnCount()
 
 end
 
@@ -127,33 +125,6 @@ function draw()
 
     if Controls.toggles.showui.toggled then
         draw_ui()
-    end
-
-end
-
-
-function draw_prefab_positions()
-
-    for index, pos in ipairs(SpawnedPrefabs) do
-
-        local camTr = GetCameraTransform()
-
-        local isInfront = TransformToLocalPoint(camTr, pos.pos)[3] < 0
-        local angle = QuatAngle(camTr.rot, QuatLookAt(camTr.pos, pos.pos)) < 10
-        -- local dist = VecDist(camTr.pos, pos.pos)
-
-        if isInfront and angle then
-            UiPush()
-                local x,y = UiWorldToPixel(pos.pos)
-                UiTranslate(x,y)
-                uiSetFont(24)
-                UiColor(1,1,1, 1)
-                UiAlign("left middle")
-                UiText(pos.path)
-                UiText(pos.path)
-            UiPop()
-        end
-
     end
 
 end

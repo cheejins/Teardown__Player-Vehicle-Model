@@ -1,10 +1,30 @@
-[h1] About [/h1]
-This mod dynamically works with any Gore Ragdoll model.
-Over 200 ragdoll models to choose from and more to come!
+[img]https://steamuserimages-a.akamaihd.net/ugc/819002974403344349/DD18664314A26EA83C62E9B0127FFCB35092B53A/[/img]
 
-[h1] Notice [/h1]
-Mod is still WIP.
-I hope to improve the overall UI.
+[h1] About [/h1]
+[list]
+[*] Places a gore ragdoll in the driver seat of your vehicle.
+[*] This mod will not support blood and gore. Its only intent is to add a simple player model.
+[*] This mod dynamically works with any Gore Ragdoll model.
+[*] Over 200 ragdoll models to choose from with more to come!
+[/list]
 
 [h1] Thanks [/h1]
-Thanks to SnakeyWakey, Offensive PDF, Avertnus and many others in the Teardown modding community for creating all of the different gore ragdoll models. This mod would not have been possible without them.
+[list]
+[*] Thanks to Agro, Avertnus, Darren, Elboydo, EVGSTORE, FoxyPlayzYT, idixticlol, Jacob, Morvex, OffensivePDF, SnakeyWakey and many others in the Teardown modding community for creating all of the different gore ragdoll models. This mod would not have been possible without them.
+[/list]
+
+[h1] How To Use [/h1]
+[list]
+[*] Press "f1" to open the UI menu. This keybind can be changed in Mod Manager > Options
+[*] The ragdoll will spawn automatically and stay spawned once the map loads. If it gets deleted it is likely due to a performance mod or a mod that moves or deletes the gore ragdoll.
+[/list]
+
+[h1] Notice [/h1]
+[list]
+[*] Mod is still WIP
+[*] I know the tag selection is a bit basic. I aim to add much more detailed selection with folding lists and maybe a search bar. This is particularly to filter through military models of different factions, classes and eras.
+[/list]
+
+
+
+[h3] Do not re-upload this mod without permission. [/h3]

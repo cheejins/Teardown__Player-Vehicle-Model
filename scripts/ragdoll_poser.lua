@@ -31,11 +31,17 @@ RagdollPreviewZoomFOV = { val = 100, min = 30, max = 140, scale = 5 }
 
 function update_DriverPosing()
 
+    if GetBool(REG.bool_DisableRagdoll) then
+        ragdoll_pose_offscreen()
+        return
+    end
+
+
     local lastVehicleValid = IsHandleValid(LastPlayerVehicle)
     local keepRagdollInCar = GetBool(REG.options.bool_keepRagdollInCar) and lastVehicleValid
     local dontMoveRagdollInLastCar = GetBool(REG.options.bool_keepRagdollInCarWithMenu)
 
-    if Controls.toggles.showui.toggled and not dontMoveRagdollInLastCar then
+    if Controls.toggles.showui.toggled and not dontMoveRagdollInLastCar and GetPlayerVehicle() == 0 then
 
         ragdoll_pose_infront_player()
 
@@ -153,5 +159,25 @@ function ragdoll_pose_infront_player()
         end
 
     end
+
+end
+
+function ragdoll_hide(bool)
+
+    local func = ternary(bool, SetTag, RemoveTag)
+
+    for _, body in pairs(RagdollBodies) do
+        for _, shape in ipairs(GetBodyShapes(body)) do
+            func(shape, "hidden")
+        end
+    end
+    RagdollBodies = {}
+
+    for index, body in pairs(RagdollOtherBodies) do
+        for _, shape in ipairs(GetBodyShapes(body.body)) do
+            func(shape, "hidden")
+        end
+    end
+    RagdollOtherBodies = {}
 
 end
