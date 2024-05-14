@@ -1,8 +1,13 @@
+1.04 (2024-05-02)
+- Added option to remove head while in first person.
+- Added ragdoll position offset options.
+- Added menu ui keybind to in-game options. 
+
 1.03 (2024-04-30)
-Added option to disable ragdoll.
+- Added option to disable ragdoll.
 
 1.02 (2024-04-30)
-Fixed ragdoll init spawning and posing.
+- Fixed ragdoll init spawning and posing.
 
 1.01 (2024-04-30)
-Added option to keep ragdoll in last vehicle.
+- Added option to keep ragdoll in last vehicle.

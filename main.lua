@@ -20,7 +20,8 @@
 ]]
 
 
-Version = "1.03"
+Version = "1.04" -- 2024-05-02
+-- Version = "1.03"
 -- Version = "1.02"
 -- Version = "1.01"
 -- Version = "1.00"
@@ -38,6 +39,7 @@ function init()
     Ui = {
         interact = true,
         show_options = false,
+        show_ragdollPlacerUi = false,
     }
 
     REG = {
@@ -49,6 +51,14 @@ function init()
         options = {
             bool_keepRagdollInCar = "savegame.mod.options.keepRagdollInCar",
             bool_keepRagdollInCarWithMenu = "savegame.mod.options.keepRagdollInCarWithMenu",
+            bool_debugmode = "savegame.mod.options.debugmode",
+            bool_removeHead = "savegame.mod.options.removeHead"
+        },
+
+        float_ragdollOffset = {
+            x = "savegame.mod.ragdollOffset.x",
+            y = "savegame.mod.ragdollOffset.y",
+            z = "savegame.mod.ragdollOffset.z"
         }
     }
 
@@ -61,23 +71,36 @@ function init()
     RespawnCount = 0
     RespawnCountWarning = 10
 
+    CFG.SPAWN_ALL_PREFABS = GetBool("level.VehiclePlayerModel.SPAWN_ALL_PREFABS")
+    if CFG.SPAWN_ALL_PREFABS then
+        SpawnAllPrefabs()
+    end
+
     init_draw()
     init_controls()
 
     init_prefab_tags()
     init_prefab_objects()
     init_prefab_database()
-
-    CFG.SPAWN_ALL_PREFABS = GetBool("level.VehiclePlayerModel.SPAWN_ALL_PREFABS")
-    if CFG.SPAWN_ALL_PREFABS then
-        SpawnAllPrefabs()
-    end
-
+    init_ragdoll_poser()
     init_viewer()
+
+    local driver = TransformToParentPoint( GetVehicleTransform( GetPlayerVehicle() ), GetVehicleDriverPos( GetPlayerVehicle() ) )
+    IsFirstPerson = VecLength( VecSub( driver, GetCameraTransform().pos ) ) < 1
 
 end
 
 function tick()
+
+    local playerDriving = GetPlayerVehicle() ~= 0
+    local keepRagdoll = GetBool(REG.options.bool_keepRagdollInCar) and IsHandleValid(LastPlayerVehicle)
+    local notPreviewingRagdoll = GetBool(REG.options.bool_keepRagdollInCarWithMenu) or (not GetBool(REG.options.bool_keepRagdollInCarWithMenu) and not Controls.toggles.showui.toggled)
+    IsRagdollInVehicle = (not GetBool(REG.bool_DisableRagdoll)) and (playerDriving or (keepRagdoll and notPreviewingRagdoll))
+
+    local driver = TransformToParentPoint( GetVehicleTransform( GetPlayerVehicle() ), GetVehicleDriverPos( GetPlayerVehicle() ) )
+    IsFirstPerson = VecLength( VecSub( driver, GetCameraTransform().pos ) ) < 1
+
+    CFG.DEBUG = GetBool(REG.options.bool_debugmode)
 
     tick_controls()
     tick_viewer()
@@ -105,12 +128,15 @@ function tick()
     -- DebugWatch("#RagdollOtherBodies", #RagdollOtherBodies)
     -- DebugWatch("QueryTags", table.concat(QueryTags))
 
+    tick_ragdoll_poser()
+
+
     DidFilter = false
 end
 
 function update()
 
-    update_DriverPosing()
+    update_ragdoll_poser()
 
 end
 

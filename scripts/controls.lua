@@ -24,6 +24,8 @@ end
 
 function tick_controls()
 
+    Controls.toggles.showui.key = GetString("savegame.mod.controls.showui")
+
     for _, value in pairs(Controls.toggles) do
         if InputPressed(value.key) then
             value.toggled = not value.toggled

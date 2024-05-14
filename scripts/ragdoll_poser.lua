@@ -6,36 +6,72 @@
 
 
 -- Contains the body references of the current driver ragdoll.
+Ragdolls = {}
 RagdollBodies = {}
+RagdollHeadShapes = {}
 RagdollOtherBodies = {}
 
 
--- From MOD/prefabs/sit.xml using MOD/ragdoll_xml_extractor.lua to extract and print the lua data to Thomasim's extrenal console.
-BodyRelTransforms = {
-    RRLEG = Transform(Vec(-0.30000004172325, -0.70000004768372, 0.099999971687794), Quat(-0.25881904363632, 0, 0, 0.96592581272125)),
-    Head  = Transform(Vec(0, 0, 0), Quat(0, 0, 0, 1)),
-    Torso = Transform(Vec(1.2617366706991e-08, -0.40000009536743, -0.19999998807907), Quat(0, -1, 0, -4.3711388286738e-08)),
-    LARM  = Transform(Vec(0.5, -0.20000004768372, -0.24999994039536), Quat(-0.5712525844574, -0.084108546376228, -0.022537779062986, 0.81614238023758)),
-    RRARM = Transform(Vec(-0.10000001639128, -0.30000007152557, 0.1000000089407), Quat(0.56774789094925, -0.11312747746706, -0.13403674960136, -0.80430006980896)),
-    LLARM = Transform(Vec(0.39999997615814, -0.30000007152557, 0.20000006258488), Quat(-0.56486254930496, -0.14224433898926, -0.099600560963154, 0.80670726299286)),
-    RARM  = Transform(Vec(-0.19999998807907, -0.20000004768372, -0.29999998211861), Quat(0.5712525844574, -0.084108471870422, -0.022537726908922, -0.81614238023758)),
-    LLLEG = Transform(Vec(-1.0033978981028e-08, -0.70000004768372, 0.10000002384186), Quat(-0.25881904363632, 0, 0, 0.96592581272125)),
-    LLEG  = Transform(Vec(1.2617366706991e-08, -0.70000004768372, -0.19999998807907), Quat(0.81915205717087, 5.014364745648e-08, 7.1612547003497e-08, -0.5735764503479)),
-    RLEG  = Transform(Vec(-0.30000001192093, -0.70000004768372, -0.20000001788139), Quat(0.81915205717087, 5.014364745648e-08, 7.1612547003497e-08, -0.5735764503479)),
-}
+function init_ragdoll_poser()
 
-RagdollPreviewRot = Quat()
-RagdollPreviewPosDist = { val = 2.25, min = 1.25, max = 4, scale = 0.01 }
-RagdollPreviewZoomFOV = { val = 100, min = 30, max = 140, scale = 5 }
+    RagdollDriverOffsetTr = Transform(
+        Vec(
+            -GetFloat(REG.float_ragdollOffset.x),
+            GetFloat(REG.float_ragdollOffset.y),
+            GetFloat(REG.float_ragdollOffset.z)
+        ))
 
+    -- From MOD/prefabs/sit.xml using MOD/ragdoll_xml_extractor.lua to extract and print the lua data to Thomasim's extrenal console.
+    BodyRelTransforms = {
+        RRLEG = Transform(Vec(-0.30000004172325, -0.70000004768372, 0.099999971687794), Quat(-0.25881904363632, 0, 0, 0.96592581272125)),
+        Head  = Transform(Vec(0, 0, 0), Quat(0, 0, 0, 1)),
+        Torso = Transform(Vec(1.2617366706991e-08, -0.40000009536743, -0.19999998807907), Quat(0, -1, 0, -4.3711388286738e-08)),
+        LARM  = Transform(Vec(0.5, -0.20000004768372, -0.24999994039536), Quat(-0.5712525844574, -0.084108546376228, -0.022537779062986, 0.81614238023758)),
+        RRARM = Transform(Vec(-0.10000001639128, -0.30000007152557, 0.1000000089407), Quat(0.56774789094925, -0.11312747746706, -0.13403674960136, -0.80430006980896)),
+        LLARM = Transform(Vec(0.39999997615814, -0.30000007152557, 0.20000006258488), Quat(-0.56486254930496, -0.14224433898926, -0.099600560963154, 0.80670726299286)),
+        RARM  = Transform(Vec(-0.19999998807907, -0.20000004768372, -0.29999998211861), Quat(0.5712525844574, -0.084108471870422, -0.022537726908922, -0.81614238023758)),
+        LLLEG = Transform(Vec(-1.0033978981028e-08, -0.70000004768372, 0.10000002384186), Quat(-0.25881904363632, 0, 0, 0.96592581272125)),
+        LLEG  = Transform(Vec(1.2617366706991e-08, -0.70000004768372, -0.19999998807907), Quat(0.81915205717087, 5.014364745648e-08, 7.1612547003497e-08, -0.5735764503479)),
+        RLEG  = Transform(Vec(-0.30000001192093, -0.70000004768372, -0.20000001788139), Quat(0.81915205717087, 5.014364745648e-08, 7.1612547003497e-08, -0.5735764503479)),
+    }
 
-function update_DriverPosing()
+    RagdollPreviewRot = Quat()
+    RagdollPreviewPosDist = { val = 2.25, min = 1.25, max = 4, scale = 0.01 }
+    RagdollPreviewZoomFOV = { val = 100, min = 30, max = 140, scale = 5 }
 
-    if GetBool(REG.bool_DisableRagdoll) then
-        ragdoll_pose_offscreen()
-        return
+end
+
+function tick_ragdoll_poser()
+
+    RagdollDriverOffsetTr = Transform(
+        Vec(
+            -GetFloat(REG.float_ragdollOffset.x),
+            GetFloat(REG.float_ragdollOffset.y),
+            GetFloat(REG.float_ragdollOffset.z)
+        )
+    )
+
+    local removeHead = IsFirstPerson and IsRagdollInVehicle and GetBool(REG.options.bool_removeHead)
+    local tagFunc = ternary(removeHead, SetTag, RemoveTag)
+    for index, s in ipairs(RagdollHeadShapes) do
+        tagFunc(s, "invisible")
     end
 
+    -- for index, s in ipairs(RagdollHeadShapes) do
+    --     DrawShapeOutline(s, 1,1,0, 1)
+    -- end
+    -- DebugWatch("RagdollHeadShapes", #RagdollHeadShapes)
+    -- DebugWatch("removeHead", removeHead)
+
+end
+
+
+function update_ragdoll_poser()
+
+    if GetBool(REG.bool_DisableRagdoll) then
+        ragdoll_store_offscreen()
+        return
+    end
 
     local lastVehicleValid = IsHandleValid(LastPlayerVehicle)
     local keepRagdollInCar = GetBool(REG.options.bool_keepRagdollInCar) and lastVehicleValid
@@ -50,7 +86,7 @@ function update_DriverPosing()
         if keepRagdollInCar then
             ragdoll_pose_vehicle(LastPlayerVehicle)
         else
-            ragdoll_pose_offscreen()
+            ragdoll_store_offscreen()
         end
 
     else
@@ -74,19 +110,23 @@ function ragdoll_pose_vehicle(v)
     driverPos = VecAdd(driverPos, vehicleVel)
 
     -- Make model face forward.
-    -- vehicleTr.rot = QuatLookAt(vehicleTr.pos, TransformToParentPoint(vehicleTr, Vec(0,0,1)))
     vehicleTr.rot = QuatRotateQuat(vehicleTr.rot, QuatEuler(0, -180, 0))
+
+    -- Offset driver position
+    local driverTr = Transform(driverPos, vehicleTr.rot)
+    driverTr.pos = TransformToParentPoint(driverTr, RagdollDriverOffsetTr.pos)
 
     -- Position the ragdoll
     for key, body in pairs(RagdollBodies) do
 
         local bodyTr   = GetBodyTransform(body)
-        local driverTr = TransformToParentTransform(Transform(driverPos, vehicleTr.rot), BodyRelTransforms[key])
+        local bodyNewTr = TransformToParentTransform(driverTr, BodyRelTransforms[key])
 
-        ConstrainPosition(body, GetWorldBody(), bodyTr.pos, driverTr.pos)
-        ConstrainOrientation(body, GetWorldBody(), bodyTr.rot, driverTr.rot)
+        ConstrainPosition(body, GetWorldBody(), bodyTr.pos, bodyNewTr.pos)
+        ConstrainOrientation(body, GetWorldBody(), bodyTr.rot, bodyNewTr.rot)
 
         if CFG.DEBUG then
+            DebugLine(bodyNewTr.pos, bodyTr.pos, 1,0,0, 0.5)
             DebugCross(bodyTr.pos, 1,0,0, 1)
         end
 
@@ -111,10 +151,9 @@ function ragdoll_pose_vehicle(v)
 
     end
 
-    
 end
 
-function ragdoll_pose_offscreen()
+function ragdoll_store_offscreen()
 
     for key, body in pairs(RagdollBodies) do
         SetBodyTransform(body, TransformToParentTransform(GetCameraTransform(), Transform(Vec(0,1000,0))))
@@ -162,22 +201,22 @@ function ragdoll_pose_infront_player()
 
 end
 
-function ragdoll_hide(bool)
+-- function ragdoll_hide(bool)
 
-    local func = ternary(bool, SetTag, RemoveTag)
+--     local func = ternary(bool, SetTag, RemoveTag)
 
-    for _, body in pairs(RagdollBodies) do
-        for _, shape in ipairs(GetBodyShapes(body)) do
-            func(shape, "hidden")
-        end
-    end
-    RagdollBodies = {}
+--     for _, body in pairs(RagdollBodies) do
+--         for _, shape in ipairs(GetBodyShapes(body)) do
+--             func(shape, "invisible")
+--         end
+--     end
+--     RagdollBodies = {}
 
-    for index, body in pairs(RagdollOtherBodies) do
-        for _, shape in ipairs(GetBodyShapes(body.body)) do
-            func(shape, "hidden")
-        end
-    end
-    RagdollOtherBodies = {}
+--     for index, body in pairs(RagdollOtherBodies) do
+--         for _, shape in ipairs(GetBodyShapes(body.body)) do
+--             func(shape, "invisible")
+--         end
+--     end
+--     RagdollOtherBodies = {}
 
-end
+-- end

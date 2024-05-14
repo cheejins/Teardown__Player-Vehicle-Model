@@ -83,6 +83,8 @@ function InstantiateRagdoll(path_xml)
 
     end
 
+    local headBody = RagdollBodies["Head"]
+    RagdollHeadShapes = GetBodyShapes(headBody)
 
     for index, ent in ipairs(entities) do -- Process all shapes.
 
@@ -91,6 +93,13 @@ function InstantiateRagdoll(path_xml)
             SetShapeCollisionFilter(ent, 0, 0) -- Disable all collisions.
             SetTag(ent, "unbreakable")
 
+            local joints = GetShapeJoints(ent)
+            for _, joint in ipairs(joints) do
+                if HasTag(joint, "eye") or HasTag(joint, "jaw") then
+                    table.insert(RagdollHeadShapes, ent)
+                end
+            end
+
         elseif GetEntityType(ent) == "joint" then -- Delete all joints.
 
             Delete(ent)
@@ -98,6 +107,17 @@ function InstantiateRagdoll(path_xml)
         end
 
     end
+
+    -- local mi, ma = GetBodyBounds(headBody)
+    -- mi = VecAdd(mi, Vec(0.25,0.25,0.25))
+    -- ma = VecAdd(ma, Vec(-0.25,-0.25,-0.25))
+
+    -- local q_shapes = QueryAabbShapes(mi, ma)
+    -- for _, s in ipairs(q_shapes) do
+    --     if not HasTag(GetShapeBody(s), "TORSO") then
+    --         table.insert(RagdollHeadShapes, s)
+    --     end
+    -- end
 
 end
 
@@ -112,6 +132,8 @@ function DeleteRagdoll()
         Delete(rb.body)
     end
     RagdollOtherBodies = {}
+
+    RagdollHeadShapes = {}
 
 end
 
@@ -205,4 +227,9 @@ end
 
 function IsFavorite(path)
     return GetBool("savegame.mod.favorites." .. path)
+end
+
+
+function ragdoll_assign_vehicle(ragdoll, vehicle)
+    
 end

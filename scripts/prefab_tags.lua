@@ -24,7 +24,6 @@ function init_prefab_tags()
         Squareblock     = "Squareblock's ragdoll pack/",
     }
 
-
     Tags = { --- Make sure there are no duplicate tag names.
         --- Loose tags that can be applied to any prefab.
         business        = tag_create("business",        "Business"),
